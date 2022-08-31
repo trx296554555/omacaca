@@ -23,6 +23,7 @@
          - Rainbow Brackets 彩虹括号，别问，问就是可爱
          - Translation 起名字神器
          - CodeGlance Pro 代码小地图
+         - GitToolBox：Git功能扩展
 
 3. **浏览器 Edge** Chrome也行，IE狗都不用
    - 一些有用的插件可以装一下 (想到在写)
