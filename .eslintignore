@@ -1,0 +1,17 @@
+public/
+note/
+src/main.ts
+src/vite-env.d.ts
+*.sh
+*.md
+*.woff
+*.ttf
+.vscode
+.idea
+.husky
+.local
+dist
+node_modules
+Dockerfile
+/docs
+/bin
