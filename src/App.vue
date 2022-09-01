@@ -8,15 +8,9 @@
 		</a>
 	</div>
 	<!--	<HelloWorld msg="Vite + Vue" />-->
-	<test></test>
 </template>
 
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-// import HelloWorld from './components/HelloWorld.vue'
-import test from './components/test.vue'
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .logo {
