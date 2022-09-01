@@ -293,6 +293,13 @@
 
 4. 配置 Git 与 GitHub 
    
-   Git 的软件需要自己下载配置安装。我是之前下载的，下次在写这部分
+   Git 的软件需要自己下载配置安装，命令行使用，webstorm也集成了相关功能
+   
+   要远程连接github仓库，初次使用时除了在登录你的邮箱账号外，还需要配置下 ssh key 确保不会被github拒绝
 
+   可以在git bash 中输入 ```ssh-keygen```
+   
+   将生成的 ```id_rsa.pub``` 上传到github的设置 ssh key 中
+   
+   记得生成的时候加一个密码，第一上传时 Webstorm 会要求你填写密码
    
