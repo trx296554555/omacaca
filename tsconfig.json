@@ -15,8 +15,12 @@
 			"DOM"
 		],
 		"skipLibCheck": true,
-		"removeComments": true
-		// 删除编译后的所有的注释
+		"removeComments": true, // 删除编译后的所有的注释
+		"baseUrl": ".", //配置路径别名时需要添加
+		"paths": {
+			"@/*": ["src/*"],
+			"@img/*": ["src/assets/img/*"]
+		}
 	},
 	"include": [
 		"src/**/*.ts",
