@@ -1,36 +1,55 @@
 {
 	"compilerOptions": {
 		"target": "ESNext",
-		"useDefineForClassFields": true,
 		"module": "ESNext",
 		"moduleResolution": "Node",
 		"strict": true,
+		"noLib": false,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules":true,
+		"allowSyntheticDefaultImports": true,
+		"strictFunctionTypes": false,
 		"jsx": "preserve",
+		"baseUrl": ".",
+		"allowJs": true,
 		"sourceMap": true,
-		"resolveJsonModule": true,
-		"isolatedModules": true,
 		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"experimentalDecorators": true,
 		"lib": [
 			"ESNext",
 			"DOM"
 		],
+		"noImplicitAny": false,
 		"skipLibCheck": true,
-		"removeComments": true, // 删除编译后的所有的注释
-		"baseUrl": ".", //配置路径别名时需要添加
+		"types": ["vite/client"],
+		"removeComments": true,
 		"paths": {
 			"@/*": ["src/*"],
-			"@img/*": ["src/assets/img/*"]
-		}
+			"#/*": ["types/*"],
+			"@img/*": ["src/assets/*"],
+			"@icon/*": ["src/assets/icons/*"]
+		},
+		"references": [
+			{
+				"path": "./tsconfig.node.json"
+			}
+		],
 	},
 	"include": [
+		"tests/**/*.ts",
 		"src/**/*.ts",
 		"src/**/*.d.ts",
 		"src/**/*.tsx",
-		"src/**/*.vue"
+		"src/**/*.vue",
+		"types/*.d.ts",
+		"types/*.ts",
+		"build/**/*.ts",
+		"build/**/*.d.ts",
+		"mock/**/*.ts",
+		"vite.config.ts"
 	],
-	"references": [
-		{
-			"path": "./tsconfig.node.json"
-		}
-	]
+	"exclude": ["node_modules", "tests/server/**/*.ts", "dist", "**/*.js"],
 }

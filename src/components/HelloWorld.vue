@@ -11,8 +11,8 @@
 
 	<p>
 		Check out
-		<a href="https://vuejs.org/guide/quick-start.html#local" target="_blank">create-vue</a>, the official Vue + Vite
-		starter
+		<a href="https://vuejs.org/guide/quick-start.html#local" target="_blank">create-vue</a>, the
+		official Vue + Vite starter
 	</p>
 	<p>
 		Install
@@ -28,20 +28,6 @@ import { ref } from 'vue'
 // const a = { name: '123', aw: '123', qweqwe: 12412, '123': 123123 }
 // const c = { name: '123', aw: '123', qweqwe: 12412, '123': 123123 }
 // const d = { name: '123', aw: '123', qweqwe: 12412, '123': '786' }
-
-function printUser(
-	firstName: string,
-	lastName: string,
-	number: number,
-	street: string,
-	code: number,
-	city: string,
-	country: string
-): void {
-	console.log(`${firstName} ${lastName} lives at ${number}, ${street}, ${code} in ${city}, ${country}`)
-}
-
-printUser('John', 'Doe', 48, '998 Primrose Lane', 53718, 'Madison', 'United States of America')
 
 const count = ref(0)
 </script>
