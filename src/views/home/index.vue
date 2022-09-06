@@ -3,7 +3,7 @@
 	<div>{{ num }}</div>
 	<a-button type="primary" @click="num++">Home-test</a-button>
 
-	<a-button type="primary" @click="test(num)">Home-console</a-button>
+	<a-button type="warning" @click="test(num)">Home-console</a-button>
 </template>
 
 <script setup lang="ts">

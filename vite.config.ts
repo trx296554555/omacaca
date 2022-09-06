@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import eslintPlugin from 'vite-plugin-eslint'
 import { resolve } from 'path'
+import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
 function pathResolve(dir: string) {
 	return resolve(process.cwd(), '.', dir)
@@ -33,11 +35,15 @@ export default defineConfig({
 			},
 			{
 				find: '@img',
-				replacement: pathResolve('src/assets'),
+				replacement: pathResolve('src/assets/img'),
 			},
 			{
 				find: '@icon',
 				replacement: pathResolve('src/assets/icons'),
+			},
+			{
+				find: '@style',
+				replacement: pathResolve('src/assets/styles'),
 			},
 		],
 	},
@@ -59,11 +65,22 @@ export default defineConfig({
 			],
 			cache: false, // 禁用 eslint 缓存
 		}),
+		// ant UI 组件按需导入
+		Components({
+			dts: true, // ts支持
+			dirs: ['src'], // 配置需要默认导入的自定义组件文件夹，该文件夹下的所有组件都会自动 import
+			resolvers: [
+				AntDesignVueResolver({
+					importStyle: true, // 是否需要自动随引入加载对应的组件样式，禁用，因为某些二级组件（比如 DateRangePicker）没办法准确地识别正确路径，手动引入全局样式
+					resolveIcons: false, // 可使用@ant-design/icons-vue图标库
+				}),
+			],
+		}),
 	],
 	css: {
 		preprocessorOptions: {
 			less: {
-				additionalData: `@import '@/assets/styles/config.less';`,
+				additionalData: `@import '@/assets/styles/global.less';`,
 				javascriptEnabled: true,
 			},
 		},

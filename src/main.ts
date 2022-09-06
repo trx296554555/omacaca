@@ -1,17 +1,14 @@
-import './style.css'
-import 'ant-design-vue/dist/antd.css'
-
 import { createApp } from 'vue'
 import App from './App.vue'
-import Antd from 'ant-design-vue'
 import { setupStore } from './store'
 import { setupI18n } from '@/locales/setupI18n'
 import { setupRouter } from '@/router'
 
+import '@style/global.less'
+import '@style/main.css'
+
 async function bootstrap() {
 	const app = createApp(App)
-	// UI配置
-	app.use(Antd)
 	// Configure store
 	// 配置 store
 	setupStore(app)
