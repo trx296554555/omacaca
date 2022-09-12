@@ -209,14 +209,14 @@
 					Click Me
 				</button>
 				<button
-					class="bg-purple-600 text-sm text-white font-montserrat py-2 px-6 font-medium rounded-xl hover:bg-purple-500 transition-all duration-300"
+					class="bg-purple-600 text-sm text-white py-2 px-6 font-medium rounded-xl hover:bg-purple-500 transition-all duration-300"
 				>
 					Click Me
 				</button>
 			</div>
 		</div>
 		<div>
-			<h1>123</h1>
+			<h1 class="">123</h1>
 			<h2>123</h2>
 		</div>
 	</div>

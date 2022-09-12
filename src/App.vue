@@ -1,8 +1,8 @@
 <template>
 	<RouterView />
-	<TestB></TestB>
+	<Footer></Footer>
 </template>
 
 <script setup lang="ts">
-import TestB from '@/components/TestButton.vue'
+import Footer from '@/views/public/Footer.vue'
 </script>

@@ -6,19 +6,24 @@ import '@vue/runtime-core'
 export {}
 
 declare module '@vue/runtime-core' {
-	export interface GlobalComponents {
-		AButton: typeof import('ant-design-vue/es')['Button']
-		App: typeof import('./src/App.vue')['default']
-		HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-		Home: typeof import('./src/views/home/index.vue')['default']
-		MainOut: typeof import('./src/views/main-out/index.vue')['default']
-		PageNotFound: typeof import('./src/views/sys/exception/PageNotFound.vue')['default']
-		RouterLink: typeof import('vue-router')['RouterLink']
-		RouterView: typeof import('vue-router')['RouterView']
-		Test: typeof import('./src/components/test.vue')['default']
-		Test1: typeof import('./src/views/ltgem/test1.vue')['default']
-		Test2: typeof import('./src/views/ltgem/test2.vue')['default']
-		Test3: typeof import('./src/views/ltgem/test3.vue')['default']
-		TestButton: typeof import('./src/components/TestButton.vue')['default']
-	}
+  export interface GlobalComponents {
+    AButton: typeof import('ant-design-vue/es')['Button']
+    App: typeof import('./src/App.vue')['default']
+    ATooltip: typeof import('ant-design-vue/es')['Tooltip']
+    ChangeLocale: typeof import('./src/components/ChangeLocale.vue')['default']
+    ChangeTheme: typeof import('./src/components/ChangeTheme.vue')['default']
+    Footer: typeof import('./src/views/public/Footer.vue')['default']
+    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    Home: typeof import('./src/views/home/index.vue')['default']
+    HomeHeader: typeof import('./src/views/home/components/HomeHeader.vue')['default']
+    MainOut: typeof import('./src/views/main-out/index.vue')['default']
+    PageNotFound: typeof import('./src/views/sys/exception/PageNotFound.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+    Test: typeof import('./src/components/test.vue')['default']
+    Test1: typeof import('./src/views/ltgem/test1.vue')['default']
+    Test2: typeof import('./src/views/ltgem/test2.vue')['default']
+    Test3: typeof import('./src/views/ltgem/test3.vue')['default']
+    TestButton: typeof import('./src/components/TestButton.vue')['default']
+  }
 }

@@ -1,8 +1,8 @@
 <template>
 	<div id="ErrorPage">
 		<div class="error-title">
-			<div class="error-title-404">Error 404</div>
-			<div class="error-title-pnf">Sorry! Page not found~</div>
+			<div class="error-title-404">{{ $t('sys.api.errTitle') }}</div>
+			<div class="error-title-pnf">{{ $t('sys.api.errMsg404') }}</div>
 		</div>
 		<div class="error-dino">
 			<iframe
@@ -11,12 +11,12 @@
 				style="width: 100%; height: 100%; border: 0"
 			></iframe>
 		</div>
-		<a-button class="error-back-btn" type="dashed" @click="$router.go(-1)"
-			>Back to Home</a-button
-		>
+		<a-button class="error-back-btn" type="dashed" @click="$router.go(-1)">
+			{{ $t('sys.exception.backHome') }}
+		</a-button>
 	</div>
 </template>
-<style scoped="scoped">
+<style scoped>
 #ErrorPage {
 	text-align: center;
 }
@@ -31,7 +31,7 @@
 	display: inline-block;
 }
 .error-title-pnf {
-	font-size: 34px;
+	font-size: 24px;
 	font-family: 'Lato', sans-serif;
 	color: #888;
 }

@@ -2,7 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { setupStore } from './store'
 import { setupI18n } from '@/locales/setupI18n'
-import { setupRouter } from '@/router'
+import { router, setupRouter } from '@/router'
+import { setupRouterGuard } from '@/router/guard'
 
 import '@style/global.less'
 import '@style/main.css'
@@ -19,6 +20,9 @@ async function bootstrap() {
 	// Configure routing
 	// 配置路由
 	setupRouter(app)
+	// router-guard
+	// 路由守卫
+	setupRouterGuard(router)
 
 	app.mount('#app')
 }

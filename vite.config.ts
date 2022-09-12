@@ -4,6 +4,7 @@ import eslintPlugin from 'vite-plugin-eslint'
 import { resolve } from 'path'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+// vite.config.ts
 
 function pathResolve(dir: string) {
 	return resolve(process.cwd(), '.', dir)
