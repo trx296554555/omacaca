@@ -98,7 +98,7 @@ const transform: AxiosTransform = {
 				if (errorMessageMode === 'modal') {
 					Modal.error({ title: t('sys.api.errorTip'), content: errMessage })
 				} else if (errorMessageMode === 'message') {
-					Message.error(errMessage, 10)
+					Message.error(errMessage, 5)
 				}
 				return Promise.reject(error)
 			}

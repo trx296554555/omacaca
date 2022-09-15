@@ -11,11 +11,18 @@
 				style="width: 100%; height: 100%; border: 0"
 			></iframe>
 		</div>
-		<a-button class="error-back-btn" type="dashed" @click="$router.go(-1)">
+		<a-button class="error-back-btn" type="dashed" @click="backToHome()">
 			{{ $t('sys.exception.backHome') }}
 		</a-button>
 	</div>
 </template>
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const backToHome = () => {
+	router.push('/')
+}
+</script>
 <style scoped>
 #ErrorPage {
 	text-align: center;

@@ -2,7 +2,7 @@
 	<div>
 		<label class="swap swap-rotate">
 			<!-- this hidden checkbox controls the state -->
-			<input type="checkbox" class="swap-input" />
+			<input v-model="switchLocale" type="checkbox" class="swap-input" />
 			<!-- lang-en icon -->
 			<icon id="lang-en" class="swap-on">
 				<template #component>
@@ -90,6 +90,24 @@
 
 <script setup lang="ts">
 import Icon from '@ant-design/icons-vue'
+import { ref, watch } from 'vue'
+import { useLocale } from '@/locales/useLocale'
+import { useLocaleStoreWithOut } from '@/store/modules/locale'
+
+const { changeLocale } = useLocale()
+// 调整切换图标方向，使当前使用的语言在上方
+const iconDefault: boolean = useLocaleStoreWithOut().getLocale === 'zh_CN'
+const switchLocale = ref(iconDefault)
+
+watch(switchLocale, (now) => {
+	if (now) {
+		changeLocale('zh_CN')
+		localStorage.lang = 'zh_CN'
+	} else {
+		changeLocale('en')
+		localStorage.lang = 'en'
+	}
+})
 </script>
 
 <style scoped lang="less">
@@ -103,7 +121,7 @@ import Icon from '@ant-design/icons-vue'
 }
 
 .swap-input {
-	@apply appearance-none;
+	@apply hidden;
 }
 
 .swap-on {

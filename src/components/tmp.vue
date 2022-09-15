@@ -7,7 +7,7 @@
 	<div>{{ num }}</div>
 	<a-button type="primary" @click="num++">Home-test</a-button>
 
-	<a-button class="test" type="warning" @click="test(num)">Home-console</a-button>
+	<a-button class="test" type="warning" @click="tmp(num)">Home-console</a-button>
 
 	<div class="test">123 123</div>
 
@@ -40,7 +40,7 @@ console.log(get1)
 const t1 = false
 const t2 = true
 
-t2 && test(1111)
+t2 && tmp(1111)
 
 const info = () => {
 	message.info('This is a normal message', 60)

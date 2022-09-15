@@ -1,13 +1,11 @@
 <template>
-	<div id="HomePage" style="height: 880px">
+	<div id="HomePage" class="bg-white dark:bg-dark" style="height: 1880px">
 		<HomeHeader></HomeHeader>
+		<HomeCarousel></HomeCarousel>
+		" background-color: #141414 " " background-color: #ffffff "
 	</div>
-	<a-button @click="toggleDark">123</a-button>
+	<a-button>123</a-button>
+	{{ $t('footer.sichuanUniversity') }}
 </template>
 
-<script setup lang="ts">
-import { useDark, useToggle } from '@vueuse/core'
-
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
-</script>
+<script setup lang="ts"></script>

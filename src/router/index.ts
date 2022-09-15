@@ -21,3 +21,13 @@ export const router = createRouter({
 export function setupRouter(app: App<Element>) {
 	app.use(router)
 }
+
+// 路由跳转，默认push 用replace的话是替换当前页面，不能再返回
+// 也可以使用router-link的方式
+export function routerGo(path: string, isReplace: boolean = false) {
+	const { push, replace } = router
+	function handleError(e: Error) {
+		console.error(e)
+	}
+	isReplace ? replace(path).catch(handleError) : push(path).catch(handleError)
+}

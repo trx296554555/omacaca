@@ -1,4 +1,5 @@
 export type LocaleType = 'zh_CN' | 'en' | 'ru' | 'ja' | 'ko'
+export type ThemeType = 'light' | 'dark'
 
 export interface LocaleSetting {
 	showPicker: boolean
@@ -8,4 +9,13 @@ export interface LocaleSetting {
 	fallback: LocaleType
 	// available Locales
 	availableLocales: LocaleType[]
+}
+
+export interface ThemeSetting {
+	// Current theme
+	theme: ThemeType
+	// default theme
+	fallback: ThemeType
+	// available themes
+	availableThemes: ThemeType[]
 }

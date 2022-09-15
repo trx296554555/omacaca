@@ -12,7 +12,12 @@ export let i18n: ReturnType<typeof createI18n>
 
 async function createI18nOptions(): Promise<I18nOptions> {
 	const localeStore = useLocaleStoreWithOut()
-	const locale = localeStore.getLocale
+	// 如果本地没有 localStorage.lang 设定的话，则使用默认配置
+	const locale = localStorage.lang ?? localeStore.getLocale
+	// 与本地保存的locale设定绑定
+	if (localStorage.lang) {
+		localeStore.setLocaleInfo({ locale: localStorage.lang })
+	}
 	const defaultLocal = await import(`./lang/${locale}.ts`)
 	const message = defaultLocal.default?.message ?? {}
 

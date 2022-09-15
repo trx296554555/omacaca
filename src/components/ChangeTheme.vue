@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<label class="swap swap-rotate">
+		<label ref="themeToDefault" class="swap swap-rotate">
 			<!-- this hidden checkbox controls the state -->
-			<input type="checkbox" class="swap-input" />
+			<input v-model="switchTheme" type="checkbox" class="swap-input" />
 			<!-- sun icon -->
 			<icon id="theme-light" class="swap-on">
 				<template #component>
@@ -50,6 +50,46 @@
 
 <script setup lang="ts">
 import Icon from '@ant-design/icons-vue'
+import { ref, watch } from 'vue'
+import { useThemeStoreWithOut } from '@/store/modules/theme'
+
+// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+// 以下代码兼容了随系统切换和让用户主动切换日间、暗夜模式的功能
+// 默认是跟随系统的颜色模式，通过getColorScheme设置
+
+// 如果手动修改过主题颜色，则会在本地生成记录之后都使用本地颜色
+const localTheme: any = localStorage.getItem('theme')
+if (localTheme) {
+	changeTheme(localTheme)
+	useThemeStoreWithOut().setThemeInfo({ theme: localTheme })
+} else {
+	useThemeStoreWithOut().getColorScheme()
+	changeTheme(useThemeStoreWithOut().getTheme)
+}
+
+// 调整切换图标类型，以显示当前颜色模式
+const iconDefault: boolean = useThemeStoreWithOut().getTheme === 'dark'
+const switchTheme = ref(iconDefault)
+
+watch(switchTheme, (now) => {
+	if (now) {
+		useThemeStoreWithOut().setThemeInfo({ theme: 'dark' })
+		changeTheme('dark')
+		localStorage.theme = 'dark'
+	} else {
+		useThemeStoreWithOut().setThemeInfo({ theme: 'light' })
+		changeTheme('light')
+		localStorage.theme = 'light'
+	}
+})
+
+function changeTheme(theme: string) {
+	if (theme === 'dark') {
+		document.documentElement.classList.add('dark')
+	} else {
+		document.documentElement.classList.remove('dark')
+	}
+}
 </script>
 
 <style scoped lang="less">
