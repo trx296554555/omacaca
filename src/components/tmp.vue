@@ -40,8 +40,6 @@ console.log(get1)
 const t1 = false
 const t2 = true
 
-t2 && tmp(1111)
-
 const info = () => {
 	message.info('This is a normal message', 60)
 }

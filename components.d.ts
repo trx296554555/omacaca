@@ -9,12 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
     ACarousel: typeof import('ant-design-vue/es')['Carousel']
-    ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
-    ACheckboxGroup: typeof import('ant-design-vue/es')['CheckboxGroup']
-    ACol: typeof import('ant-design-vue/es')['Col']
-    AImage: typeof import('ant-design-vue/es')['Image']
     App: typeof import('./src/App.vue')['default']
-    ARow: typeof import('ant-design-vue/es')['Row']
     ATooltip: typeof import('ant-design-vue/es')['Tooltip']
     ChangeLocale: typeof import('./src/components/ChangeLocale.vue')['default']
     ChangeTheme: typeof import('./src/components/ChangeTheme.vue')['default']
@@ -32,7 +27,6 @@ declare module '@vue/runtime-core' {
     Test1: typeof import('./src/views/ltgem/test1.vue')['default']
     Test2: typeof import('./src/views/ltgem/test2.vue')['default']
     Test3: typeof import('./src/views/ltgem/test3.vue')['default']
-    TestButton: typeof import('./src/views/main-out/TestButton.vue')['default']
     Tmp: typeof import('./src/components/tmp.vue')['default']
   }
 }
