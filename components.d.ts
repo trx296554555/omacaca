@@ -7,9 +7,18 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AAnchor: typeof import('ant-design-vue/es')['Anchor']
+    AAnchorLink: typeof import('ant-design-vue/es')['AnchorLink']
     AButton: typeof import('ant-design-vue/es')['Button']
     ACarousel: typeof import('ant-design-vue/es')['Carousel']
+    ACollapse: typeof import('ant-design-vue/es')['Collapse']
+    ACollapsePanel: typeof import('ant-design-vue/es')['CollapsePanel']
+    ADropdown: typeof import('ant-design-vue/es')['Dropdown']
+    AMenu: typeof import('ant-design-vue/es')['Menu']
+    AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
+    AMenuItemGroup: typeof import('ant-design-vue/es')['MenuItemGroup']
     App: typeof import('./src/App.vue')['default']
+    ASubMenu: typeof import('ant-design-vue/es')['SubMenu']
     ATooltip: typeof import('ant-design-vue/es')['Tooltip']
     ChangeLocale: typeof import('./src/components/ChangeLocale.vue')['default']
     ChangeTheme: typeof import('./src/components/ChangeTheme.vue')['default']

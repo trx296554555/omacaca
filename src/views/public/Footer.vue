@@ -1,6 +1,6 @@
 <template>
 	<div id="Footer" v-show="!isErrorStore.isError">
-		<footer class="px-0 2xl:px-16 text-center 2xl:text-left bg-primary text-gray-100">
+		<footer class="px-0 2xl:px-16 text-center 2xl:text-left bg-primary-500 text-gray-100">
 			<div class="mx-6 py-6 text-center md:text-left">
 				<div class="foot-link grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 py-2">
 					<div class="col-span-2">
