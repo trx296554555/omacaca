@@ -30,7 +30,13 @@ module.exports = {
 					'900': '#2e5d44',
 					'trans':'rgba(93,190,138,0.8)'
 				},
-				dark:'#141414'
+				dark:'#141414',
+				'dark-w':{
+					'first':'rgba(255,255,255,0.85)',
+					'secondary': 'rgba(255,255,255,0.45)',
+					'inverse': '#fff',
+					'hover': 'rgba(255,255,255,0.75)',
+				},
 			},
 		},
 	},

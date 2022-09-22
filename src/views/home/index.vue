@@ -3,72 +3,27 @@
 		<HomeHeader></HomeHeader>
 		<HomeCarousel></HomeCarousel>
 
-		<button @click="nextpage">123</button>
-		" #141414 #ffffff background-color: " " background-color: "
-		<ul class="navlist">
-			<li><a>Home</a></li>
-			<li><a>Something</a></li>
-			<li><a>other</a></li>
-			<li><a>About</a></li>
-			<li><a>Contact</a></li>
-		</ul>
-		<ul class="navlist">
-			<li><a>Home</a></li>
-			<li><a>Something</a></li>
-			<li><a>other</a></li>
-			<li><a>About</a></li>
-			<li><a>Contact</a></li>
-		</ul>
-		<ul class="navlist">
-			<li><a>Home</a></li>
-			<li><a>Something</a></li>
-			<li><a>other</a></li>
-			<li><a>About</a></li>
-			<li><a>Contact</a></li>
-		</ul>
-		<ul class="navlist">
-			<li><a>Home</a></li>
-			<li><a>Something</a></li>
-			<li><a>other</a></li>
-			<li><a>About</a></li>
-			<li><a>Contact</a></li>
-		</ul>
-		<ul class="navlist">
-			<li><a>Home</a></li>
-			<li><a>Something</a></li>
-			<li><a>other</a></li>
-			<li><a>About</a></li>
-			<li><a>Contact</a></li>
-		</ul>
-		<ul class="navlist">
-			<li><a>Home</a></li>
-			<li><a>Something</a></li>
-			<li><a>other</a></li>
-			<li><a>About</a></li>
-			<li><a>Contact</a></li>
-		</ul>
+		<a-button type="primary" @click="toggleTheme({ scopeName: 'theme-dark' })">dark</a-button>
+		<a-button type="primary" @click="toggleTheme({ scopeName: 'theme-light' })">light</a-button>
+		<a-button type="primary">Primary Button</a-button>
+		<a-button class="trtr">Default</a-button>
+		<a-button type="dashed">Dashed</a-button>
+		<a-button type="text">Text</a-button>
+		<a-button type="link">Link</a-button>
 
-		<ul class="navlist">
-			<li><a>Home</a></li>
-			<li><a>Something</a></li>
-			<li><a>other</a></li>
-			<li><a>About</a></li>
-			<li><a>Contact</a></li>
-		</ul>
-		<ul class="navlist">
-			<li><a>Home</a></li>
-			<li><a>Something</a></li>
-			<li><a>other</a></li>
-			<li><a>About</a></li>
-			<li><a>Contact</a></li>
-		</ul>
+		<button class="tett">123</button>
+
+		123 123 123
+		<div>123 123 123 123</div>
 	</div>
-	<a-button>123</a-button>
-	{{ $t('footer.sichuanUniversity') }}
 </template>
 
 <script setup lang="ts">
-function nextpage() {
-	document.documentElement.scrollTop = 1000
-}
+import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-utils'
+// toggleTheme({ scopeName: 'theme-dark' })
 </script>
+<style scoped lang="less">
+.tett {
+	background-color: @primary-color;
+}
+</style>

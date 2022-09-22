@@ -52,6 +52,7 @@
 import Icon from '@ant-design/icons-vue'
 import { ref, watch } from 'vue'
 import { useThemeStoreWithOut } from '@/store/modules/theme'
+import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-utils'
 
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC
 // 以下代码兼容了随系统切换和让用户主动切换日间、暗夜模式的功能
@@ -86,8 +87,10 @@ watch(switchTheme, (now) => {
 function changeTheme(theme: string) {
 	if (theme === 'dark') {
 		document.documentElement.classList.add('dark')
+		toggleTheme({ scopeName: 'theme-' + theme })
 	} else {
 		document.documentElement.classList.remove('dark')
+		toggleTheme({ scopeName: 'theme-' + theme })
 	}
 }
 </script>

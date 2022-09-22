@@ -1,31 +1,32 @@
 <template>
-	<nav
-		ref="HomeHeader"
-		:class="viewData.navShow ? 'navOn' : 'navOff'"
-		class="text-gray-900 nv-bg-carousel"
-	>
+	<nav ref="HomeHeader" :class="viewData.navShow ? 'navOn' : 'navOff'" class="nv-bg-carousel">
 		<div class="md:flex justify-between">
-			<div class="flex relative py-5">
-				<img class="h-8 mx-4 mt-2 md:mt-0" src="@icon/monkey.svg" />
-				<h1 class="mt-2.5 md:mt-0 text-lg md:text-2xl md:font-semibold text-white z-10">
-					Omics Research of Wildlife
-				</h1>
-				<div class="md:hidden absolute left-0 z-0">
+			<div class="flex relative py-2.5 md:py-4">
+				<img class="h-7 mx-4 mt-0 z-10" src="@icon/monkey.svg" />
+				<h1 class="HomeTitle">Omics Research of Wildlife</h1>
+				<div class="md:hidden absolute left-0 top-0 z-0">
 					<a-menu
 						id="mobile-dropMenu"
 						:style="'width:' + viewData.viewWidth + 'px'"
-						style="background: transparent; border: none"
+						style="border: none"
 						mode="inline"
 					>
-						<a-sub-menu key="sub2" expand-icon>
+						<a-sub-menu key="sub1">
 							<template #expandIcon
-								><menu-outlined :style="{ color: '#fff' }"
+								><menu-outlined
+									:style="{
+										color: useThemeStoreWithOut().getThemeCol('primaryCol'),
+									}"
 							/></template>
-							<a-menu-item key="5">Option 5</a-menu-item>
-							<a-menu-item key="6">Option 6</a-menu-item>
-							<a-sub-menu key="sub3" title="Submenu">
-								<a-menu-item key="7">Option 7</a-menu-item>
-								<a-menu-item key="8">Option 8</a-menu-item>
+							<a-menu-item key="2">{{
+								useThemeStoreWithOut().getThemeCol('primaryCol')
+							}}</a-menu-item>
+							<a-menu-item key="3">Option 6</a-menu-item>
+							<a-menu-item key="4">Option 6</a-menu-item>
+							<a-menu-item key="5">Option 6</a-menu-item>
+							<a-sub-menu key="sub2" title="Submenu">
+								<a-menu-item key="6">Option 7</a-menu-item>
+								<a-menu-item key="7">Option 8</a-menu-item>
 							</a-sub-menu>
 						</a-sub-menu>
 					</a-menu>
@@ -34,59 +35,39 @@
 
 			<ul class="hidden md:flex">
 				<!--Regular Link-->
-				<li class="text-white dark:text-gray-300">
-					<router-link
-						to="/home"
-						class="block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold hover:text-primary-500"
-						>Home</router-link
-					>
+				<li>
+					<router-link to="/home" class="HeadLink">Home</router-link>
 				</li>
-				<li class="text-white dark:text-gray-300">
-					<router-link
-						to="/news"
-						class="block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold hover:text-primary-500"
-						>News</router-link
-					>
+				<li>
+					<router-link to="/news" class="HeadLink">News</router-link>
 				</li>
-				<li class="text-white dark:text-gray-300">
-					<router-link
-						to="/member"
-						class="block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold hover:text-primary-500"
-						>Member</router-link
-					>
+				<li>
+					<router-link to="/member" class="HeadLink">Member</router-link>
 				</li>
-				<li class="text-white dark:text-gray-300">
-					<router-link
-						to="/publication"
-						class="block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold hover:text-primary-500"
-						>Publication</router-link
-					>
+				<li>
+					<router-link to="/publication" class="HeadLink">Publication</router-link>
 				</li>
 				<!--Hoverable Link-->
-				<li class="hovered text-white dark:text-gray-300">
-					<router-link
-						to="/research"
-						class="block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold hover:text-primary-500"
-						>Research</router-link
-					>
+				<li class="hovered">
+					<router-link to="/research" class="HeadLink">Research</router-link>
 					<div
 						ref="MegaMenu"
 						class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl nv-bg-carousel-r"
 					>
 						<div class="px-4 mx-auto w-full flex flex-wrap justify-between mx-2">
 							<div class="w-full mb-4">
-								<h2 class="font-bold text-primary-700 text-xl">
+								<p class="font-bold text-primary-700 text-xl">
 									Provides Interactive Visual Data Analysis
-								</h2>
+								</p>
 							</div>
 							<router-link
 								to="/ltgem"
 								class="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3"
 							>
 								<div class="">
-									<h3 class="font-bold text-xl text-white mb-2">
+									<p class="font-bold text-xl text-white mb-2">
 										Long-term Tracking of Baby Macaque
-									</h3>
+									</p>
 									<p class="text-gray-100 text-sm">
 										We performed a long-term tracking on captivity macaques,
 										monitored the indicators and environmental information
@@ -106,7 +87,8 @@
 import { onMounted, watch, reactive, ref } from 'vue'
 import type { MenuProps } from 'ant-design-vue'
 import { MenuOutlined } from '@ant-design/icons-vue'
-import { debounce } from 'xe-utils'
+import { useThemeStoreWithOut } from '@/store/modules/theme'
+
 // 用于自适应显示的数据，包括网页可见区域宽高等
 const viewData = reactive({
 	top: 0,
@@ -114,6 +96,7 @@ const viewData = reactive({
 	viewWidth: 0,
 	navShow: true,
 })
+
 // 获取组件对象
 const HomeHeader = ref<HTMLElement | null>(null)
 const MegaMenu = ref<HTMLElement | null>(null)
@@ -139,14 +122,14 @@ watch(
 			if (HomeHeader.value && MegaMenu.value) {
 				HomeHeader.value.classList.remove('nv-bg-carousel')
 				MegaMenu.value.classList.remove('nv-bg-carousel-r')
-				HomeHeader.value.classList.add('bg-primary-trans')
-				MegaMenu.value.classList.add('bg-primary-trans')
+				HomeHeader.value.classList.add('nv-bg-body')
+				MegaMenu.value.classList.add('nv-bg-body')
 			}
 		} else {
 			viewData.navShow = true
 			if (HomeHeader.value && MegaMenu.value) {
-				HomeHeader.value.classList.remove('bg-primary-trans')
-				MegaMenu.value.classList.remove('bg-primary-trans')
+				HomeHeader.value.classList.remove('nv-bg-body')
+				MegaMenu.value.classList.remove('nv-bg-body')
 				HomeHeader.value.classList.add('nv-bg-carousel')
 				MegaMenu.value.classList.add('nv-bg-carousel-r')
 			}
@@ -156,6 +139,20 @@ watch(
 </script>
 
 <style scoped lang="less">
+.HomeTitle {
+	@apply mt-0 md:mt-0 text-lg md:text-2xl md:font-semibold z-10;
+	@apply md:text-white dark:md:text-dark-w-first;
+}
+
+.HeadLink {
+	@apply block py-6 px-2 lg:p-5 text-sm lg:text-base font-bold text-white hover:text-primary-700;
+	@apply dark:text-dark-w-first dark:hover:text-primary-700;
+}
+
+.nv-bg-body {
+	background-color: @primary-trans;
+}
+
 .nv-bg-carousel {
 	background-image: linear-gradient(to bottom, rgba(20, 20, 20, 0.5), transparent);
 }
@@ -191,6 +188,7 @@ watch(
 	position: absolute;
 	text-align: left;
 	width: 100%;
+	transition: all 0.2s ease-in-out 0.2s;
 }
 
 /* #hoverable Class Styles

@@ -1,5 +1,12 @@
 <template>
-	<a-carousel autoplay arrows :autoplay-speed="6000" effect="fade" :pause-on-hover="false">
+	<a-carousel
+		autoplay
+		arrows
+		:autoplay-speed="6000"
+		effect="fade"
+		:pause-on-hover="false"
+		dots-class="slick-dots"
+	>
 		<template #prevArrow>
 			<div class="custom-slick-arrow" style="left: 10px; z-index: 1">
 				<left-outlined />
@@ -106,6 +113,11 @@ const homeCarouseImg = reactive(getImgUrl())
 }
 .ant-carousel :deep(.custom-slick-arrow:hover) {
 	opacity: 0.5;
+}
+
+/* 触点样式 */
+.ant-carousel :deep(.slick-dots) {
+	z-index: 1;
 }
 
 :deep(.slideshow) {

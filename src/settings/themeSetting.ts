@@ -8,6 +8,11 @@ export const THEME: { [key: string]: ThemeType } = {
 export const themeSetting: ThemeSetting = {
 	// Current theme
 	theme: THEME.LIGHT,
+	// theme color
+	themeCol: {
+		light: { primaryCol: '#5dbe8a' },
+		dark: { primaryCol: '#2e5d44' },
+	},
 	// default theme
 	fallback: THEME.LIGHT,
 	// available themes

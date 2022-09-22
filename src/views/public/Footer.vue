@@ -1,11 +1,11 @@
 <template>
 	<div id="Footer" v-show="!isErrorStore.isError">
-		<footer class="px-0 2xl:px-16 text-center 2xl:text-left bg-primary-500 text-gray-100">
-			<div class="mx-6 py-6 text-center md:text-left">
+		<footer class="foot">
+			<div class="mx-8 py-6 text-center md:text-left">
 				<div class="foot-link grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 py-2">
 					<div class="col-span-2">
 						<p
-							class="uppercase text-xl font-semibold mb-4 flex justify-center 2xl:justify-start"
+							class="uppercase text-xl font-semibold mb-4 flex justify-center md:justify-start"
 						>
 							{{ $t('footer.research') }}
 						</p>
@@ -95,16 +95,23 @@ const isErrorStore = useCheckErrorPageStore()
 </script>
 
 <style scoped lang="less">
+.foot {
+	@apply px-0 2xl:px-16 text-center 2xl:text-left text-gray-100;
+	background-color: @primary-trans;
+	transition: all 0.2s ease-in-out 0.2s;
+}
+
 .foot-link {
 	a {
-		@apply block text-gray-100 hover:underline mb-3;
+		@apply block text-gray-100 dark:text-dark-w-first hover:underline mb-3;
 	}
 }
 .foot-tools > * {
 	a {
-		@apply block text-gray-100 text-base md:text-lg hover:underline mx-3 md:mx-4 ;
+		@apply block text-gray-100 dark:text-dark-w-first text-base md:text-lg hover:underline mx-3 md:mx-4 ;
 	}
 }
+
 .bottom-icon {
 	font-size: 2rem;
 }

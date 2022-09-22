@@ -1,4 +1,4 @@
-import type { ThemeSetting, ThemeType } from '#/config'
+import type { ThemeSetting, ThemeType, ThemeCol } from '#/config'
 
 import { defineStore } from 'pinia'
 import { store } from '@/store'
@@ -28,6 +28,9 @@ export const useThemeStore = defineStore({
 			} else {
 				this.setThemeInfo({ theme: 'light' })
 			}
+		},
+		getThemeCol(key): ThemeCol {
+			return this.themeInfo?.themeCol[this.getTheme][key]
 		},
 		/**
 		 * Set up theme information and cache
