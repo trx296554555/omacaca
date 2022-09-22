@@ -64,11 +64,11 @@
 								to="/ltgem"
 								class="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3"
 							>
-								<div class="">
-									<p class="font-bold text-xl text-white mb-2">
+								<div>
+									<p class="font-bold text-xl white-text mb-2">
 										Long-term Tracking of Baby Macaque
 									</p>
-									<p class="text-gray-100 text-sm">
+									<p class="white-text text-sm">
 										We performed a long-term tracking on captivity macaques,
 										monitored the indicators and environmental information
 										during its growth and development.
