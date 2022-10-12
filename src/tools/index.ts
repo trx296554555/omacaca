@@ -27,3 +27,26 @@ export function setObjToUrlParams(baseUrl: string, obj: any): string {
 	parameters = parameters.replace(/&$/, '')
 	return /\?$/.test(baseUrl) ? baseUrl + parameters : baseUrl.replace(/\/?$/, '?') + parameters
 }
+
+export function getStaticImage(name: string): string {
+	return new URL(`../assets/img/${name}`, import.meta.url).href
+}
+
+export function getStaticImageUrl(name: string) {
+	const modules = import.meta.glob(['@img/*/*.jpg', '@img/*/*.png'], {
+		eager: true,
+	})
+	const imgModuleList: string[] = []
+
+	Object.keys(modules).forEach((key) => {
+		// @ts-ignore
+		const mod = modules[key]?.default || {}
+		const modList = Array.isArray(mod) ? [...mod] : [mod]
+		imgModuleList.push(...modList)
+	})
+	function findName(file) {
+		return file.indexOf(name) !== -1
+	}
+	const specifyImg = imgModuleList.find(findName)
+	return specifyImg
+}

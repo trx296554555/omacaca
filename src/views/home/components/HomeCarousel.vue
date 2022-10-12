@@ -89,7 +89,7 @@ const homeCarouseImg = reactive(getImgUrl())
 }
 
 //ipad pro && ipad mini 768px
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
 	.ant-carousel :deep(.slick-slide) {
 		position: relative;
 		height: 40vh;

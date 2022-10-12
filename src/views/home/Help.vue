@@ -1,6 +1,8 @@
 <template>
+	<HomeHeaderFix></HomeHeaderFix>
 	<a-button ref="themeToDefault" @click="buttonMe">Reset local Setting</a-button>
 	<router-link to="/main-out/test">test</router-link>
+	<div style="height: 999px"></div>
 </template>
 
 <script setup lang="ts">

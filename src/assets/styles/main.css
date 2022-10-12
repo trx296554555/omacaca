@@ -4,6 +4,9 @@
 		display: inline;
 		vertical-align: baseline;
 	}
+	img {
+		display: inline;
+	}
 }
 @tailwind components;
 @tailwind utilities;
