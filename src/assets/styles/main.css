@@ -10,3 +10,19 @@
 }
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: 'Pacifico';
+	font-display: auto;
+	font-style: normal;
+	font-weight: 400;
+	src: url('@style/font/Pacifico.ttf');
+}
+
+@font-face {
+	font-family: 'Dancing Script';
+	font-display: auto;
+	font-style: normal;
+	font-weight: 400;
+	src: url('@style/font/DancingScript-Regular.otf');
+}

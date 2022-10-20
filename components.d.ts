@@ -7,7 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AButton: typeof import('ant-design-vue/es')['Button']
     ACarousel: typeof import('ant-design-vue/es')['Carousel']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     AMenu: typeof import('ant-design-vue/es')['Menu']
@@ -23,6 +22,7 @@ declare module '@vue/runtime-core' {
     Home: typeof import('./src/views/home/index.vue')['default']
     HomeCards: typeof import('./src/views/home/components/HomeCards.vue')['default']
     HomeCarousel: typeof import('./src/views/home/components/HomeCarousel.vue')['default']
+    HomeFigure: typeof import('./src/views/home/components/HomeFigure.vue')['default']
     HomeHeader: typeof import('./src/views/home/components/HomeHeader.vue')['default']
     HomeHeaderFix: typeof import('./src/views/home/components/HomeHeaderFix.vue')['default']
     HomeIntroduction: typeof import('./src/views/home/components/HomeIntroduction.vue')['default']

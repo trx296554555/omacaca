@@ -6,5 +6,6 @@
 		<HomeNews></HomeNews>
 		<HomeCards></HomeCards>
 		<HomeTools></HomeTools>
+		<HomeFigure></HomeFigure>
 	</div>
 </template>
