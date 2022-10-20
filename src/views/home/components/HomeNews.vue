@@ -87,15 +87,15 @@ const NewsInfo: NewsType[] = reactive([
 <style scoped lang="less">
 .HomeNews {
 	@apply font-sans;
-	@apply pt-0 pb-12 md:pt-12 pl-6 pr-6 md:pl-24 md:pr-0;
+	@apply pt-0 pb-12 md:pt-12 pl-6 pr-6 md:pl-32 md:pr-0;
 	@apply md:grid md:grid-rows-3 md:grid-cols-3 md:gap-0;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1080px) {
 		height: 110vh;
 	}
 
 	//ipad pro && ipad mini 768px
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 1080px) {
 		height: auto;
 	}
 
@@ -168,7 +168,7 @@ const NewsInfo: NewsType[] = reactive([
 				transition: all 0.5s ease;
 			}
 			.newsTitle {
-				@apply font-semibold text-lg p-4 mr-8;
+				@apply font-semibold text-xl p-4 mr-8;
 				border-bottom: 1px solid #eee;
 				transition: all 0.5s ease;
 			}

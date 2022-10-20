@@ -5,7 +5,6 @@
 		<HomeIntroduction></HomeIntroduction>
 		<HomeNews></HomeNews>
 		<HomeCards></HomeCards>
-		<!--		<HomeTools></HomeTools>-->
-		<div style="height: 600px"></div>
+		<HomeTools></HomeTools>
 	</div>
 </template>

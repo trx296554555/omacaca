@@ -49,8 +49,8 @@
 <style scoped lang="less">
 .HomeCards {
 	@apply font-sans text-justify;
-	@apply py-12 px-10 md:px-24;
-	@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+	@apply py-12 px-10 md:px-36;
+	@apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8;
 	background-color: fade(@primary-color, 80%);
 	font-family: 'Rubik', sans-serif;
 }
@@ -70,7 +70,7 @@
 
 	// web
 	@media screen and (min-width: 768px) {
-		height: 440px;
+		height: 540px;
 	}
 
 	//ipad pro && ipad mini 768px
@@ -131,7 +131,7 @@
 		&:nth-child(@{index}):before {
 			background-image: url(@url);
 			background-repeat: no-repeat;
-			background-size: auto 460px;
+			background-size: auto 660px;
 		}
 		.loop(@index + 1);
 	}

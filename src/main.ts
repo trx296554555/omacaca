@@ -7,6 +7,7 @@ import { setupRouterGuard } from '@/router/guard'
 
 import '@style/global.less'
 import '@style/main.css'
+import 'animate.css'
 
 async function bootstrap() {
 	const app = createApp(App)

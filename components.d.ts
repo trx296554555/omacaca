@@ -27,6 +27,7 @@ declare module '@vue/runtime-core' {
     HomeHeaderFix: typeof import('./src/views/home/components/HomeHeaderFix.vue')['default']
     HomeIntroduction: typeof import('./src/views/home/components/HomeIntroduction.vue')['default']
     HomeNews: typeof import('./src/views/home/components/HomeNews.vue')['default']
+    HomeTools: typeof import('./src/views/home/components/HomeTools.vue')['default']
     MainOut: typeof import('./src/views/main-out/index.vue')['default']
     PageNotFound: typeof import('./src/views/sys/exception/PageNotFound.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

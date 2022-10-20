@@ -96,7 +96,7 @@ const isErrorStore = useCheckErrorPageStore()
 
 <style scoped lang="less">
 .foot {
-	@apply px-0 xl:px-16 text-center 2xl:text-left text-gray-100;
+	@apply px-0 xl:px-28 text-center 2xl:text-left text-gray-100;
 	background-color: @primary-trans;
 	transition: all 0.2s ease-in-out 0.2s;
 }
