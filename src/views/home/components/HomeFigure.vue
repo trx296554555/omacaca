@@ -16,7 +16,7 @@
 	position: relative;
 
 	.figTitle {
-		font-size: 46px;
+		font-size: 2rem;
 		font-family: 'Dancing Script', cursive;
 	}
 

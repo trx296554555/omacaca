@@ -3,10 +3,49 @@
 		<div class="title">Research Tools</div>
 		<div class="content">
 			<div class="col-span-1">
-				<p class="subtitle">在线工具</p>
+				<div class="subtitle">
+					<tool-outlined />
+					<p>在线工具</p>
+				</div>
+				<ul>
+					<li>
+						<a href="https://biit.cs.ut.ee/gprofiler/gost" target="_blank"
+							>Function Enrichment (g:Profiler)
+						</a>
+					</li>
+					<li>
+						<a href="https://biodbnet-abcc.ncifcrf.gov/db/db2db.php" target="_blank"
+							>ID Convert (bioDBnet)
+						</a>
+					</li>
+					<li>
+						<a href="https://biodbnet-abcc.ncifcrf.gov/db/db2db.php" target="_blank"
+							>Tree Visualization (ITOL)
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://cn.string-db.org/cgi/input?sessionId=bsWjw2PtflBX&input_page_show_search=on"
+							target="_blank"
+						>
+							PPI Network (STRING)
+						</a>
+					</li>
+					<li>
+						<a href="http://www.ehbio.com/test/venn/#/" target="_blank"
+							>Venn Plot (Evenn)</a
+						>
+					</li>
+					<li>
+						<a href="https://tool.lu/" target="_blank">Tool Box (tools)</a>
+					</li>
+				</ul>
 			</div>
 			<div class="col-span-1">
-				<p class="subtitle">集群管理</p>
+				<div class="subtitle">
+					<hdd-outlined />
+					<p>集群管理</p>
+				</div>
 				<ul>
 					<li>
 						<a href="https://http://222.18.10.6:404/" target="_blank"
@@ -47,18 +86,28 @@
 				</ul>
 			</div>
 			<div class="col-span-1">
-				<p class="subtitle">友情链接</p>
+				<div class="subtitle">
+					<link-outlined />
+					<p>友情链接</p>
+				</div>
 				<ul>
 					<li><a href="http://uprobiotics.cn/" target="_blank">益生菌产学研联盟</a></li>
 
 					<li><a href="https://www.littleming.ml/" target="_blank">小明网盘</a></li>
-				</ul>
 
-				<a href="http://big.cdu.edu.cn/macsnvdb/" target="_blank">Macaque SNV Database</a>
+					<li>
+						<a href="http://big.cdu.edu.cn/macsnvdb/" target="_blank"
+							>Macaque SNV Database</a
+						>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 </template>
+<script setup lang="ts">
+import { ToolOutlined, HddOutlined, LinkOutlined } from '@ant-design/icons-vue'
+</script>
 
 <style scoped lang="less">
 .HomeTools {
@@ -73,8 +122,11 @@
 	.content {
 		@apply grid grid-cols-1 md:grid-cols-3 gap-8;
 		.subtitle {
-			@apply uppercase text-lg font-medium mb-2 flex justify-center md:justify-start;
+			@apply uppercase text-lg font-medium mb-2 flex items-center justify-center md:justify-start;
 			color: @primary-color;
+			p {
+				margin-left: 0.5rem;
+			}
 		}
 		li {
 			@apply mb-2;
