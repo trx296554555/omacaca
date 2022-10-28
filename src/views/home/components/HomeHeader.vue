@@ -18,15 +18,25 @@
 										color: useThemeStoreWithOut().getThemeCol('primaryCol'),
 									}"
 							/></template>
-							<a-menu-item key="2">{{
-								useThemeStoreWithOut().getThemeCol('primaryCol')
-							}}</a-menu-item>
-							<a-menu-item key="3">Option 6</a-menu-item>
-							<a-menu-item key="4">Option 6</a-menu-item>
-							<a-menu-item key="5">Option 6</a-menu-item>
-							<a-sub-menu key="sub2" title="Submenu">
-								<a-menu-item key="6">Option 7</a-menu-item>
-								<a-menu-item key="7">Option 8</a-menu-item>
+							<a-menu-item key="2"
+								><router-link to="/home">Home</router-link></a-menu-item
+							>
+							<a-menu-item key="3"
+								><router-link to="/news">News</router-link></a-menu-item
+							>
+							<a-menu-item key="4"
+								><router-link to="/member">Member</router-link></a-menu-item
+							>
+							<a-menu-item key="5"
+								><router-link to="/publication"
+									>Publication</router-link
+								></a-menu-item
+							>
+							<a-sub-menu key="sub2" title="Research">
+								<a-menu-item key="6"
+									><router-link to="/ltgem">Ltgem</router-link></a-menu-item
+								>
+								<!--<a-menu-item key="7"><router-link to="/ltgem">Ltgem</router-link></a-menu-item>-->
 							</a-sub-menu>
 						</a-sub-menu>
 					</a-menu>

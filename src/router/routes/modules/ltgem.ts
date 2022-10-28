@@ -4,6 +4,7 @@ import type { AppRouteModule } from '@/router/types'
 const ltgem: AppRouteModule = {
 	path: '/ltgem',
 	name: 'LtgemPage',
+	component: () => import('@/views/ltgem/index.vue'),
 	redirect: '/ltgem/introduction',
 	meta: {
 		title: 'Long-term Tracking of Gene Expression in Baby Macaque',

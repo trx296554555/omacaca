@@ -48,7 +48,7 @@
 				</div>
 				<ul>
 					<li>
-						<a href="https://http://222.18.10.6:404/" target="_blank"
+						<a href="http://222.18.10.6:404/" target="_blank"
 							>服务器集群登录（校园网）
 						</a>
 					</li>
@@ -66,7 +66,11 @@
 						<a
 							href="https://sculife404wukongnas.cn3.quickconnect.cn/#/signin"
 							target="_blank"
-							>储存服务器访问-WukongNas</a
+							>储存服务器访问-WukongNas<span
+								><a href="https://192.168.199.138" target="_blank"
+									>（内网）</a
+								></span
+							></a
 						>
 					</li>
 					<li>
