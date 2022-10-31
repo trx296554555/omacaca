@@ -1,44 +1,114 @@
 <template>
-	<nav :class="viewData.navShow ? 'navOn' : 'navOff'" class="nv-bg-body">
-		<a-menu mode="horizontal" style="background-color: #2e5d44">
-			<a-menu-item key="mail">
-				<template #icon>
-					<mail-outlined />
-				</template>
-				Navigation One
-			</a-menu-item>
-			<a-menu-item key="app" disabled>
-				<template #icon>
-					<appstore-outlined />
-				</template>
-				Navigation Two
-			</a-menu-item>
-			<a-sub-menu key="sub1">
-				<template #icon>
-					<setting-outlined />
-				</template>
-				<template #title>Navigation Three - Submenu</template>
-				<a-menu-item-group title="Item 1">
-					<a-menu-item key="setting:1">Option 1</a-menu-item>
-					<a-menu-item key="setting:2">Option 2</a-menu-item>
-				</a-menu-item-group>
-				<a-menu-item-group title="Item 2">
-					<a-menu-item key="setting:3">Option 3</a-menu-item>
-					<a-menu-item key="setting:4">Option 4</a-menu-item>
-				</a-menu-item-group>
-			</a-sub-menu>
-			<a-menu-item key="alipay">
-				<a href="https://antdv.com" target="_blank" rel="noopener noreferrer">
-					Navigation Four - Link
-				</a>
-			</a-menu-item>
-		</a-menu>
+	<nav ref="HomeHeader" :class="viewData.navShow ? 'navOn' : 'navOff'" class="nv-bg-body">
+		<div class="md:flex justify-between">
+			<div class="flex relative py-2.5 md:py-4">
+				<img class="h-7 mx-4 mt-0 z-10" src="@icon/monkey.svg" />
+				<h1 class="HomeTitle">Long-term Tracking of Baby Macaque</h1>
+				<div class="md:hidden absolute left-0 top-0 z-0">
+					<a-menu
+						id="mobile-dropMenu"
+						:style="'width:' + viewData.viewWidth + 'px'"
+						style="border: none"
+						mode="inline"
+					>
+						<a-sub-menu key="sub1">
+							<template #expandIcon
+								><menu-outlined
+									:style="{
+										color: useThemeStoreWithOut().getThemeCol('primaryCol'),
+									}"
+							/></template>
+							<a-menu-item key="2"
+								><router-link to="/home">Home</router-link></a-menu-item
+							>
+							<a-menu-item key="3"
+								><router-link to="/news">Introduction</router-link></a-menu-item
+							>
+							<a-sub-menu key="sub4" title="Transcriptomics Analysis">
+								<a-menu-item key="sub4-1"
+									><router-link to="/ltgem">123123</router-link></a-menu-item
+								>
+							</a-sub-menu>
+							<a-sub-menu key="sub5" title="Metagenomics Analysis">
+								<a-menu-item key="sub5-1"
+									><router-link to="/ltgem">3232</router-link></a-menu-item
+								>
+							</a-sub-menu>
+							<a-menu-item key="6"
+								><router-link to="/publication"
+									>Co-analysis</router-link
+								></a-menu-item
+							>
+						</a-sub-menu>
+					</a-menu>
+				</div>
+			</div>
+
+			<ul class="hidden md:flex">
+				<!--Regular Link-->
+				<li>
+					<router-link to="/home" class="HeadLink">Home</router-link>
+				</li>
+				<li>
+					<router-link to="/news" class="HeadLink">Introduction</router-link>
+				</li>
+				<!--Hoverable Link-->
+				<li class="hovered">
+					<a-dropdown>
+						<router-link to="/research" class="HeadLink"
+							>Transcriptomics Analysis</router-link
+						>
+						<template #overlay>
+							<a-menu>
+								<a-menu-item class="test">
+									<router-link to="/research" class="test">hahahah</router-link>
+								</a-menu-item>
+								<a-menu-item>2nd menu item</a-menu-item>
+								<a-sub-menu key="sub1" title="sub menu">
+									<a-menu-item>3rd menu item</a-menu-item>
+									<a-menu-item>4th menu item</a-menu-item>
+								</a-sub-menu>
+								<a-sub-menu key="sub2" title="disabled sub menu" disabled>
+									<a-menu-item>5d menu item</a-menu-item>
+									<a-menu-item>6th menu item</a-menu-item>
+								</a-sub-menu>
+							</a-menu>
+						</template>
+					</a-dropdown>
+				</li>
+				<li class="hovered">
+					<a-dropdown>
+						<router-link to="/research" class="HeadLink"
+							>Metagenomics Analysis</router-link
+						>
+						<template #overlay>
+							<a-menu>
+								<a-menu-item>1st menu item</a-menu-item>
+								<a-menu-item>2nd menu item</a-menu-item>
+								<a-sub-menu key="sub1" title="sub menu">
+									<a-menu-item>3rd menu item</a-menu-item>
+									<a-menu-item>4th menu item</a-menu-item>
+								</a-sub-menu>
+								<a-sub-menu key="sub2" title="disabled sub menu" disabled>
+									<a-menu-item>5d menu item</a-menu-item>
+									<a-menu-item>6th menu item</a-menu-item>
+								</a-sub-menu>
+							</a-menu>
+						</template>
+					</a-dropdown>
+				</li>
+				<li>
+					<router-link to="/member" class="HeadLink">Co-analysis</router-link>
+				</li>
+			</ul>
+		</div>
 	</nav>
-	<div class="h-12 md:h-16">123</div>
+	<div class="h-12 md:h-16"></div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch, reactive } from 'vue'
+import { onMounted, watch, reactive, ref } from 'vue'
+import type { MenuProps } from 'ant-design-vue'
 import { MenuOutlined } from '@ant-design/icons-vue'
 import { useThemeStoreWithOut } from '@/store/modules/theme'
 
@@ -49,6 +119,9 @@ const viewData = reactive({
 	viewWidth: 0,
 	navShow: true,
 })
+
+// 获取组件对象
+const HomeHeader = ref<HTMLElement | null>(null)
 
 onMounted(() => {
 	viewData.viewHeight = document.documentElement.clientHeight || document.body.clientHeight
@@ -66,10 +139,10 @@ onMounted(() => {
 watch(
 	() => viewData.top,
 	(newValue, oldValue) => {
-		if (newValue > viewData.viewHeight) {
-			viewData.navShow = newValue <= oldValue
-		} else {
+		if (viewData.viewWidth < 640) {
 			viewData.navShow = true
+		} else {
+			viewData.navShow = newValue <= oldValue
 		}
 	}
 )
@@ -77,13 +150,16 @@ watch(
 
 <style scoped lang="less">
 .HomeTitle {
-	@apply mt-0 md:mt-0 text-lg md:text-2xl md:font-semibold z-10;
+	@apply mt-0 md:mt-0 text-base md:text-2xl md:font-semibold z-10;
 	@apply md:text-white dark:md:text-dark-w-first;
 }
 
 .HeadLink {
 	@apply block py-6 px-2 lg:p-5 text-sm lg:text-base font-bold text-white hover:text-primary-700;
 	@apply dark:text-dark-w-first dark:hover:text-primary-700;
+}
+.test {
+	font-size: 1rem;
 }
 
 .nv-bg-body {
@@ -109,18 +185,6 @@ watch(
 	transform: translate3d(0, -100%, 0);
 }
 
-/* #Mega Menu Styles
-	–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.mega-menu {
-	display: none;
-	left: 0;
-	top: 100%;
-	position: absolute;
-	text-align: left;
-	width: 100%;
-	transition: all 0.2s ease-in-out 0.2s;
-}
-
 /* #hoverable Class Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .hovered {
@@ -134,9 +198,5 @@ watch(
 	padding-left: 6px;
 	position: relative;
 	top: -1px;
-}
-
-.hovered:hover .mega-menu {
-	display: block;
 }
 </style>

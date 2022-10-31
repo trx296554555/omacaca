@@ -9,7 +9,7 @@
 						>
 							{{ $t('footer.research') }}
 						</p>
-						<a href="#!">Long-term Tracking of Baby Macaque</a>
+						<router-link to="/ltgem">Long-term Tracking of Baby Macaque</router-link>
 						<a href="#!">Gene Expression Features of Breast-feeding Rhesus Macaque</a>
 						<a href="#!">Sex-specific Gene Expression of Four Primates</a>
 						<router-link to="/main-out">Persistent Diarrhoea in Rhesus Macaque</router-link>
