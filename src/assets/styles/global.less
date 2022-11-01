@@ -4,6 +4,10 @@
 	// ant design 有些二级组件的样式无法用插件引入时 需要手动引入下
 @import 'ant-design-vue/es/message/style/index.less';
 
+.-container {
+	@apply px-6 md:px-12 lg:px-16 xl:px-32 2xl:px-64;
+}
+
 .white-text {
 	@apply text-white;
 	@apply dark:text-dark-w-first;

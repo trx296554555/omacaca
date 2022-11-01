@@ -9,7 +9,7 @@
 						>
 							{{ $t('footer.research') }}
 						</p>
-						<router-link to="/ltgem">Long-term Tracking of Baby Macaque</router-link>
+						<router-link to="/ltbm">Long-term Tracking of Baby Macaque</router-link>
 						<a href="#!">Gene Expression Features of Breast-feeding Rhesus Macaque</a>
 						<a href="#!">Sex-specific Gene Expression of Four Primates</a>
 						<router-link to="/main-out">Persistent Diarrhoea in Rhesus Macaque</router-link>
@@ -97,7 +97,7 @@ const isErrorStore = useCheckErrorPageStore()
 <style scoped lang="less">
 .foot {
 	@apply px-0 xl:px-28 text-center 2xl:text-left text-gray-100;
-	background-color: @primary-trans;
+	background-color: @primary-color;
 	transition: all 0.2s ease-in-out 0.2s;
 }
 

@@ -1,5 +1,5 @@
 <template>
-	<div id="HomeTools" class="HomeTools">
+	<div id="HomeTools" class="HomeTools -container">
 		<div class="title">Research Tools</div>
 		<div class="content">
 			<div class="col-span-1">
@@ -115,8 +115,7 @@ import { ToolOutlined, HddOutlined, LinkOutlined } from '@ant-design/icons-vue'
 
 <style scoped lang="less">
 .HomeTools {
-	@apply text-justify;
-	@apply py-12 px-10 md:px-36 text-center 2xl:text-left;
+	@apply py-12 text-center 2xl:text-left;
 
 	.title {
 		@apply font-sans text-left pb-8 text-2xl;

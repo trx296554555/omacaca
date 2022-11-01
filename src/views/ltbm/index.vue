@@ -1,7 +1,6 @@
 <template>
-	<LtgemHeaderFix></LtgemHeaderFix>
+	<LtbmHeaderFix></LtbmHeaderFix>
 	<div>
-		<h2>index</h2>
 		<RouterView />
 	</div>
 </template>

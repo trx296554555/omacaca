@@ -6,15 +6,6 @@ module.exports = {
 	],
 	darkMode: 'class', // or 'media' or 'class'
 	theme: {
-		container: {
-			width: '100%',
-			padding: {
-				sm: '0rem',
-				lg: '2rem',
-				xl: '4rem',
-				'2xl': '4rem',
-			},
-		},
 		extend: {
 			colors:{
 				'primary': {

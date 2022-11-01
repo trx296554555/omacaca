@@ -34,9 +34,9 @@
 							>
 							<a-sub-menu key="sub2" title="Research">
 								<a-menu-item key="6"
-									><router-link to="/ltgem">Ltgem</router-link></a-menu-item
+									><router-link to="/ltbm">Ltgem</router-link></a-menu-item
 								>
-								<!--<a-menu-item key="7"><router-link to="/ltgem">Ltgem</router-link></a-menu-item>-->
+								<!--<a-menu-item key="7"><router-link to="/ltbm">Ltgem</router-link></a-menu-item>-->
 							</a-sub-menu>
 						</a-sub-menu>
 					</a-menu>
@@ -71,7 +71,7 @@
 								</p>
 							</div>
 							<router-link
-								to="/ltgem"
+								to="/ltbm"
 								class="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3"
 							>
 								<div>

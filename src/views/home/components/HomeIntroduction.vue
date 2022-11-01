@@ -1,5 +1,5 @@
 <template>
-	<div id="HomeIntroduction" class="HomeIntroduction">
+	<div id="HomeIntroduction" class="HomeIntroduction -container">
 		<div class="title">Research Interests</div>
 		<div class="content">
 			The past 30 years of ageing research has transitioned from identifying ageing phenotypes
@@ -14,7 +14,7 @@
 <style scoped lang="less">
 .HomeIntroduction {
 	@apply font-sans text-justify;
-	@apply py-12 px-6 md:px-36;
+	@apply py-12;
 	.title {
 		@apply text-center pb-8 text-2xl;
 		color: @primary-color;

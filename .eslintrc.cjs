@@ -40,6 +40,8 @@ module.exports = {
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'no-var': 'error',
 		'prettier/prettier': 'error',
+		// 禁止多行字符串
+		'no-multi-str': 'off',
 		// 禁止出现重复的 case 标签
 		'no-duplicate-case': 'warn',
 		// 禁止出现空语句块

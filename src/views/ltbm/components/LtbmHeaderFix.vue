@@ -26,12 +26,12 @@
 							>
 							<a-sub-menu key="sub4" title="Transcriptomics Analysis">
 								<a-menu-item key="sub4-1"
-									><router-link to="/ltgem">123123</router-link></a-menu-item
+									><router-link to="/ltbm">123123</router-link></a-menu-item
 								>
 							</a-sub-menu>
 							<a-sub-menu key="sub5" title="Metagenomics Analysis">
 								<a-menu-item key="sub5-1"
-									><router-link to="/ltgem">3232</router-link></a-menu-item
+									><router-link to="/ltbm">3232</router-link></a-menu-item
 								>
 							</a-sub-menu>
 							<a-menu-item key="6"
@@ -103,7 +103,6 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="h-12 md:h-16"></div>
 </template>
 
 <script setup lang="ts">

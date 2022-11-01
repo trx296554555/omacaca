@@ -1,5 +1,5 @@
 <template>
-	<div id="HomeCards" class="HomeCards">
+	<div id="HomeCards" class="HomeCards -container">
 		<div class="homecard">
 			<div class="homecontent">
 				<h2 class="hometitle">Genomics</h2>
@@ -49,9 +49,9 @@
 <style scoped lang="less">
 .HomeCards {
 	@apply font-sans text-justify;
-	@apply py-12 px-10 md:px-36;
+	@apply py-12;
 	@apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8;
-	background-color: fade(@primary-color, 80%);
+	background-color: @primary-trans;
 	font-family: 'Rubik', sans-serif;
 }
 .homecard {
@@ -70,12 +70,12 @@
 
 	// web
 	@media screen and (min-width: 768px) {
-		height: 540px;
+		height: 32rem;
 	}
 
 	//ipad pro && ipad mini 768px
 	@media screen and (max-width: 768px) {
-		height: 400px;
+		height: 25rem;
 	}
 
 	&:before {

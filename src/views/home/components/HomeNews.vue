@@ -87,7 +87,7 @@ const NewsInfo: NewsType[] = reactive([
 <style scoped lang="less">
 .HomeNews {
 	@apply font-sans;
-	@apply pt-0 pb-12 md:pt-12 pl-6 pr-6 md:pl-32 md:pr-0;
+	@apply pt-0 pb-12 md:pt-12 pl-6 pr-6 md:pl-12 lg:pl-16 xl:pl-32 2xl:pl-64 md:pr-0;
 	@apply md:grid md:grid-rows-3 md:grid-cols-3 md:gap-0;
 
 	@media screen and (min-width: 1080px) {
