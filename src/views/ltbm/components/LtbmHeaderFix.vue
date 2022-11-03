@@ -230,7 +230,7 @@ watch(
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 10;
+	z-index: 99;
 	transition: all 0.2s ease-in-out 0.2s;
 	transform: translateZ(0);
 }

@@ -9,13 +9,11 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
     ACard: typeof import('ant-design-vue/es')['Card']
-    ACardMeta: typeof import('ant-design-vue/es')['CardMeta']
     ACarousel: typeof import('ant-design-vue/es')['Carousel']
     ACollapse: typeof import('ant-design-vue/es')['Collapse']
     ACollapsePanel: typeof import('ant-design-vue/es')['CollapsePanel']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     ADropdown: typeof import('ant-design-vue/es')['Dropdown']
-    AImage: typeof import('ant-design-vue/es')['Image']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     App: typeof import('./src/App.vue')['default']
@@ -44,8 +42,6 @@ declare module '@vue/runtime-core' {
     LtbmCollapse: typeof import('./src/views/ltbm/introduction/LtbmCollapse.vue')['default']
     LtbmHeaderFix: typeof import('./src/views/ltbm/components/LtbmHeaderFix.vue')['default']
     LtbmTimeline: typeof import('./src/views/ltbm/introduction/LtbmTimeline.vue')['default']
-    Ltgem: typeof import('./src/views/ltgem/index.vue')['default']
-    LtgemHeaderFix: typeof import('./src/views/ltgem/components/LtgemHeaderFix.vue')['default']
     MainOut: typeof import('./src/views/main-out/index.vue')['default']
     MoonIcon: typeof import('./src/assets/icons/moonIcon.vue')['default']
     Ora: typeof import('./src/views/ltbm/transcriptomics/ora/index.vue')['default']
@@ -55,5 +51,6 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     Test: typeof import('./src/views/main-out/Test.vue')['default']
     Tmp: typeof import('./src/components/tmp.vue')['default']
+    UmapPlot: typeof import('./src/views/ltbm/components/UmapPlot.vue')['default']
   }
 }

@@ -5,13 +5,14 @@
 		<div class="OraAnalysis">
 			<div class="OraSelTable"><OraSelTable></OraSelTable></div>
 			<div class="OraOptions">2</div>
-			<div class="OraUmapPlot">3</div>
+			<div class="OraUmapPlot"><UmapPlot></UmapPlot></div>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import OraSelTable from './OraSelTable.vue'
+import UmapPlot from '../../components/UmapPlot.vue'
 </script>
 
 <style scoped lang="less">
