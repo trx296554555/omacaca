@@ -4,6 +4,7 @@ import { setupStore } from './store'
 import { setupI18n } from '@/locales/setupI18n'
 import { router, setupRouter } from '@/router'
 import { setupRouterGuard } from '@/router/guard'
+import { setupVxeTable } from '@/setup/setupVxeTable'
 
 import '@style/global.less'
 import '@style/main.css'
@@ -24,6 +25,9 @@ async function bootstrap() {
 	// router-guard
 	// 路由守卫
 	setupRouterGuard(router)
+	// VexTable setup
+	// 表格组件配置
+	setupVxeTable(app)
 
 	app.mount('#app')
 }

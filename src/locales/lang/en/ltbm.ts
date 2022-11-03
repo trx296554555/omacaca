@@ -1,4 +1,20 @@
 export default {
+	ltbm_title: {
+		project: 'Long-term Tracking of Baby Macaque',
+		home: 'Home',
+		introduction: 'Introduction',
+		transcriptomics: 'Transcriptomics Analysis',
+		metagenomics: 'Metagenomics Analysis',
+		co_analysis: 'Co-analysis',
+		csa: 'Gene Differential Expression Analysis (Cross-sectional)',
+		deg: 'Gene Differential Expression Analysis',
+		lma: 'Gene Expression Clustering Analysis (Longitudinal Model)',
+		ora: 'Over-representation Enrichment Analysis',
+		gsea: 'Gene Set Enrichment Analysis',
+		tsa: 'Time Series Analysis',
+		vpa: 'Variance Partition Analysis',
+		wgcna: 'Weighted Gene Co-expression Network Analysis',
+	},
 	ltbm_introduction: {
 		background: 'Background',
 		background1:

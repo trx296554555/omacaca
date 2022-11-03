@@ -17,6 +17,22 @@ const ltbm: AppRouteModule = {
 				title: 'Ltbm Introduction',
 			},
 		},
+		{
+			path: 'ora',
+			name: 'OraPage',
+			component: () => import('@/views/ltbm/transcriptomics/ora/index.vue'),
+			meta: {
+				title: 'Ltbm Over-representation Enrichment Analysis',
+			},
+		},
+		{
+			path: 'gsea',
+			name: 'GseaPage',
+			component: () => import('@/views/ltbm/transcriptomics/gsea/index.vue'),
+			meta: {
+				title: 'Ltbm Gene Set Enrichment Analysis',
+			},
+		},
 	],
 }
 

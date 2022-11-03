@@ -1,4 +1,20 @@
 export default {
+	ltbm_title: {
+		project: '长期追踪猕猴幼崽组学变化',
+		home: '首页',
+		introduction: '简介',
+		transcriptomics: '转录组分析',
+		metagenomics: '宏基因组分析',
+		co_analysis: '联合分析',
+		csa: '基因差异表达分析（横向）',
+		lma: '基因表达聚类分析（纵向）',
+		deg: '基因差异表达分析',
+		ora: '过表达富集分析',
+		gsea: '基因集富集分析',
+		tsa: '时间序列分析',
+		vpa: '方差分解分析',
+		wgcna: '加权基因共表达网络分析',
+	},
 	ltbm_introduction: {
 		background: '背景',
 		background1:
