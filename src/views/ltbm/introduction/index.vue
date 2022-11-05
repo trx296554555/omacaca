@@ -30,7 +30,7 @@ document.title = 'Long-term Tracking of Baby Macaque'
 <style scoped lang="less">
 .LtbmIntroduction {
 	background-attachment: fixed;
-	background-image: url('@img/ltbmFig/ltbmBackground.jpg');
+	background-image: url('@img/ltbmFig/LtbmBackground.jpg');
 	background-size: cover;
 }
 
