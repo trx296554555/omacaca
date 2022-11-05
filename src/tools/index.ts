@@ -47,6 +47,5 @@ export function getStaticImageUrl(name: string) {
 	function findName(file) {
 		return file.indexOf(name) !== -1
 	}
-	const specifyImg = imgModuleList.find(findName)
-	return specifyImg
+	return imgModuleList.find(findName) ?? ''
 }

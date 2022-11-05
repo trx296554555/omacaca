@@ -13,7 +13,7 @@
 				<div
 					class="fig"
 					:class="{ 'fig-active': index === hoverIndex }"
-					:style="'background-image:url(' + getStaticImageUrl(item.newsFigure) + ')'"
+					:style="'background-image:url(' + item.newsFigurePath + ')'"
 				></div>
 			</div>
 		</div>
@@ -49,6 +49,7 @@ interface NewsType {
 	newsTitle: string
 	newsAbstract: string
 	newsFigure: string
+	newsFigurePath: string
 }
 
 const NewsInfo: NewsType[] = reactive([
@@ -59,6 +60,7 @@ const NewsInfo: NewsType[] = reactive([
 			'基于11只腹泻个体和18只无症状个体的粪便宏基因组测序，结合肠道微生物的耐药性研究，' +
 			'揭示了肠道微生物的组成、功能和耐药性对慢性腹泻的影响机制',
 		newsFigure: 'homeNews/newsFig1.png',
+		newsFigurePath: getStaticImageUrl('newsFig1'),
 	},
 	{
 		newsTitle: '刘少英研究员团队综合基因组学和形态学研究合作揭示鼠兔的适应性进化',
@@ -68,18 +70,21 @@ const NewsInfo: NewsType[] = reactive([
 			'并对其中81个具有代表性的样本（共计27种鼠兔）进行了基因组测序，' +
 			'再结合生境数据和细胞水平功能验证，揭示了鼠兔的系统发育关系、形态特征演化历史、环境的适应性进化。',
 		newsFigure: 'homeNews/newsFig2.png',
+		newsFigurePath: getStaticImageUrl('newsFig2'),
 	},
 	{
 		newsTitle: '恭喜四川大学吕明壹团队在Nature上发表文章揭示邪恶小明的一天',
 		newsAbstract:
 			'这是一条新闻的内容这是一条新闻的内容这是一条新闻的内容这是一条新闻，的内容这是一条新闻的内容这是一条新闻的内容这是一条新闻的内容，这是一条新闻的内容这是一条新闻的内容这是，内容这是一条新闻的内容这是一条新闻的内容',
 		newsFigure: 'homeNews/newsFig3.png',
+		newsFigurePath: getStaticImageUrl('newsFig3'),
 	},
 	{
 		newsTitle: '恭喜四川大学吕明壹团队在Science上发表文章深入探究小明今天吃什么',
 		newsAbstract:
 			'这是一条新闻的内容这是一条新闻的内容这是一条新闻的内容这是一条新闻的内容这是，一条新闻的内容这是一条新闻的内容这是一条新闻的内容这是一条新闻的内容这是一条新闻的，内容这是一条新闻的内容这是一条新闻的内容这是一条新闻的内容',
 		newsFigure: 'homeNews/newsFig4.png',
+		newsFigurePath: getStaticImageUrl('newsFig4'),
 	},
 ])
 </script>
