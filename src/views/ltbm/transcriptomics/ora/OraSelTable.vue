@@ -1,406 +1,283 @@
 <template>
-	<vxe-grid ref="xGrid" v-bind="gridOptions" class="mytable-scrollbar"></vxe-grid>
+	<vxe-table
+		ref="xTable1"
+		border
+		stripe
+		auto-resize
+		align="center"
+		class="degTable-style"
+		:header-cell-class-name="headerCellClassName"
+		:cell-class-name="cellClassName"
+		:row-config="{ isHover: true }"
+		:data="tableData6"
+		:checkbox-config="TableConfig.ableCheckboxConfig"
+		:tooltip-config="TableConfig.tableTooltipConfig"
+		@cell-click="cellClickEvent"
+		@checkbox-change="selectChangeEvent"
+	>
+		<vxe-column type="checkbox" width="100" title="Stage"></vxe-column>
+
+		<vxe-colgroup title="Sample (female)">
+			<vxe-column field="s1" title="01"></vxe-column>
+			<vxe-column field="s2" title="02"></vxe-column>
+			<vxe-column field="s3" title="03"></vxe-column>
+			<vxe-column field="s4" title="04"></vxe-column>
+			<vxe-column field="s5" title="05"></vxe-column>
+			<vxe-column field="s6" title="06"></vxe-column>
+			<vxe-column field="s7" title="07"></vxe-column>
+			<vxe-column field="s8" title="08"></vxe-column>
+			<vxe-column field="s9" title="09"></vxe-column>
+			<vxe-column field="s10" title="10"></vxe-column>
+		</vxe-colgroup>
+		<vxe-colgroup title="Sample (male)">
+			<vxe-column field="s11" title="11"></vxe-column>
+			<vxe-column field="s12" title="12"></vxe-column>
+			<vxe-column field="s13" title="13"></vxe-column>
+			<vxe-column field="s14" title="14"></vxe-column>
+			<vxe-column field="s15" title="15"></vxe-column>
+			<vxe-column field="s16" title="16"></vxe-column>
+			<vxe-column field="s17" title="17"></vxe-column>
+			<vxe-column field="s18" title="18"></vxe-column>
+			<vxe-column field="s19" title="19"></vxe-column>
+			<vxe-column field="s20" title="20"></vxe-column>
+			<vxe-column field="s21" title="21"></vxe-column>
+		</vxe-colgroup>
+	</vxe-table>
 </template>
 
 <script setup lang="ts">
 import { defineComponent, onMounted, reactive, ref, computed } from 'vue'
-import { VXETable, VxeGridInstance, VxeGridProps } from 'vxe-table'
+import { VxeTablePropTypes, VxeTableInstance, VxeTableEvents } from 'vxe-table'
 import XEUtils from 'xe-utils'
 
-const xGrid = ref<VxeGridInstance>()
-const serveApiUrl = ref('https://api.vxetable.cn/demo')
-const gridOptions = reactive<VxeGridProps>({
-	border: true,
-	showHeaderOverflow: true,
-	showOverflow: true,
-	keepSource: true,
-	id: 'full_edit_1',
-	height: 600,
-	rowConfig: {
-		keyField: 'id',
-		isHover: true,
-	},
-	columnConfig: {
-		resizable: true,
-	},
-	customConfig: {
-		storage: true,
-		checkMethod({ column }) {
-			if (['nickname', 'role'].includes(column.field)) {
-				return false
-			}
-			return true
-		},
-	},
-	printConfig: {
-		columns: [
-			{ field: 'name' },
-			{ field: 'email' },
-			{ field: 'nickname' },
-			{ field: 'age' },
-			{ field: 'amount' },
-		],
-	},
-	sortConfig: {
-		trigger: 'cell',
-		remote: true,
-	},
-	filterConfig: {
-		remote: true,
-	},
-	pagerConfig: {
-		pageSize: 10,
-		pageSizes: [5, 10, 15, 20, 50, 100, 200, 500, 1000],
-	},
-	formConfig: {
-		titleWidth: 100,
-		titleAlign: 'right',
-		items: [
-			{
-				field: 'name',
-				title: 'app.body.label.name',
-				span: 8,
-				titlePrefix: {
-					message: 'app.body.valid.rName',
-					icon: 'vxe-icon-question-circle-fill',
-				},
-				itemRender: { name: '$input', props: { placeholder: '请输入名称' } },
-			},
-			{
-				field: 'email',
-				title: '邮件',
-				span: 8,
-				titlePrefix: {
-					useHTML: true,
-					message:
-						'点击链接：<a class="link" href="https://vxetable.cn" target="_blank">vxe-table官网</a>',
-					icon: 'vxe-icon-question-circle-fill',
-				},
-				itemRender: { name: '$input', props: { placeholder: '请输入邮件' } },
-			},
-			{
-				field: 'nickname',
-				title: '昵称',
-				span: 8,
-				itemRender: { name: '$input', props: { placeholder: '请输入昵称' } },
-			},
-			{
-				field: 'role',
-				title: '角色',
-				span: 8,
-				folding: true,
-				itemRender: { name: '$input', props: { placeholder: '请输入角色' } },
-			},
-			{
-				field: 'sex',
-				title: '性别',
-				span: 8,
-				folding: true,
-				titleSuffix: { message: '注意，必填信息！', icon: 'vxe-icon-question-circle-fill' },
-				itemRender: { name: '$select', options: [] },
-			},
-			{
-				field: 'age',
-				title: '年龄',
-				span: 8,
-				folding: true,
-				itemRender: {
-					name: '$input',
-					props: { type: 'number', min: 1, max: 120, placeholder: '请输入年龄' },
-				},
-			},
-			{
-				span: 24,
-				align: 'center',
-				collapseNode: true,
-				itemRender: {
-					name: '$buttons',
-					children: [
-						{
-							props: {
-								type: 'submit',
-								content: 'app.body.label.search',
-								status: 'primary',
-							},
-						},
-						{ props: { type: 'reset', content: 'app.body.label.reset' } },
-					],
-				},
-			},
-		],
-	},
-	toolbarConfig: {
-		buttons: [
-			{ code: 'insert_actived', name: '新增' },
-			{ code: 'delete', name: '直接删除' },
-			{ code: 'mark_cancel', name: '删除/取消' },
-			{ code: 'save', name: 'app.body.button.save', status: 'success' },
-		],
-		refresh: true,
-		import: true,
-		export: true,
-		print: true,
-		zoom: true,
-		custom: true,
-	},
-	proxyConfig: {
-		seq: true, // 启用动态序号代理，每一页的序号会根据当前页数变化
-		sort: true, // 启用排序代理，当点击排序时会自动触发 query 行为
-		filter: true, // 启用筛选代理，当点击筛选时会自动触发 query 行为
-		form: true, // 启用表单代理，当点击表单提交按钮时会自动触发 reload 行为
-		// 对应响应结果 { result: [], page: { total: 100 } }
-		props: {
-			result: 'result', // 配置响应结果列表字段
-			total: 'page.total', // 配置响应结果总页数字段
-		},
-		// 只接收Promise，具体实现自由发挥
-		ajax: {
-			// 当点击工具栏查询按钮或者手动提交指令 query或reload 时会被触发
-			query: ({ page, sorts, filters, form }) => {
-				const queryParams: any = Object.assign({}, form)
-				// 处理排序条件
-				const firstSort = sorts[0]
-				if (firstSort) {
-					queryParams.sort = firstSort.field
-					queryParams.order = firstSort.order
-				}
-				// 处理筛选条件
-				filters.forEach(({ field, values }) => {
-					queryParams[field] = values.join(',')
-				})
-				return fetch(
-					`${serveApiUrl.value}/api/pub/page/list/${page.pageSize}/${
-						page.currentPage
-					}?${XEUtils.serialize(queryParams)}`
-				).then((response) => response.json())
-			},
-			// 当点击工具栏删除按钮或者手动提交指令 delete 时会被触发
-			delete: ({ body }) => {
-				return fetch(`${serveApiUrl.value}/api/pub/save`, {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(body),
-				}).then((response) => response.json())
-			},
-			// 当点击工具栏保存按钮或者手动提交指令 save 时会被触发
-			save: ({ body }) => {
-				return fetch(`${serveApiUrl.value}/api/pub/save`, {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(body),
-				}).then((response) => response.json())
-			},
-		},
-	},
-	columns: [
-		{ type: 'checkbox', title: 'ID', width: 120 },
-		{
-			field: 'name',
-			title: 'Name',
-			sortable: true,
-			titlePrefix: { message: '名称必须填写！' },
-			editRender: { name: 'input', attrs: { placeholder: '请输入名称' } },
-		},
-		{
-			field: 'role',
-			title: 'Role',
-			sortable: true,
-			titlePrefix: {
-				useHTML: true,
-				content:
-					'点击链接：<a class="link" href="https://vxetable.cn" target="_blank">vxe-table官网</a>',
-			},
-			filters: [
-				{ label: '前端开发', value: '前端' },
-				{ label: '后端开发', value: '后端' },
-				{ label: '测试', value: '测试' },
-				{ label: '程序员鼓励师', value: '程序员鼓励师' },
-			],
-			filterMultiple: false,
-			editRender: { name: 'input', attrs: { placeholder: '请输入角色' } },
-		},
-		{
-			field: 'email',
-			title: 'Email',
-			width: 160,
-			editRender: { name: '$input', props: { placeholder: '请输入邮件' } },
-		},
-		{
-			field: 'nickname',
-			title: 'Nickname',
-			editRender: { name: 'input', attrs: { placeholder: '请输入昵称' } },
-		},
-		{
-			field: 'sex',
-			title: 'Sex',
-			filters: [
-				{ label: '男', value: '1' },
-				{ label: '女', value: '0' },
-			],
-			editRender: { name: '$select', options: [], props: { placeholder: '请选择性别' } },
-		},
-		{
-			field: 'age',
-			title: 'Age',
-			visible: false,
-			sortable: true,
-			editRender: { name: '$input', props: { type: 'number', min: 1, max: 120 } },
-		},
-		{
-			field: 'amount',
-			title: 'Amount',
-			formatter({ cellValue }) {
-				return cellValue
-					? `￥${XEUtils.commafy(XEUtils.toNumber(cellValue), { digits: 2 })}`
-					: ''
-			},
-			editRender: {
-				name: '$input',
-				props: { type: 'float', digits: 2, placeholder: '请输入数值' },
-			},
-		},
-		{
-			field: 'updateDate',
-			title: 'Update Date',
-			width: 160,
-			visible: false,
-			sortable: true,
-			formatter({ cellValue }) {
-				return XEUtils.toDateString(cellValue, 'yyyy-MM-dd HH:ss:mm')
-			},
-		},
-		{
-			field: 'createDate',
-			title: 'Create Date',
-			width: 160,
-			visible: false,
-			sortable: true,
-			formatter({ cellValue }) {
-				return XEUtils.toDateString(cellValue, 'yyyy-MM-dd')
-			},
-		},
-	],
-	importConfig: {
-		remote: true,
-		types: ['xlsx'],
-		modes: ['insert'],
-		// 自定义服务端导入
-		importMethod({ file }) {
-			const $grid = xGrid.value
-			const formBody = new FormData()
-			formBody.append('file', file)
-			return fetch(`${serveApiUrl.value}/api/pub/import`, { method: 'POST', body: formBody })
-				.then((response) => response.json())
-				.then((data) => {
-					VXETable.modal.message({
-						content: `成功导入 ${data.result.insertRows} 条记录！`,
-						status: 'success',
-					})
-					// 导入完成，刷新表格
-					$grid.commitProxy('query')
-				})
-				.catch(() => {
-					VXETable.modal.message({
-						content: '导入失败，请检查数据是否正确！',
-						status: 'error',
-					})
-				})
-		},
-	},
-	exportConfig: {
-		remote: true,
-		types: ['xlsx'],
-		modes: ['current', 'selected', 'all'],
-		// 自定义服务端导出
-		exportMethod({ options }) {
-			const $grid = xGrid.value
-			const proxyInfo = $grid.getProxyInfo()
-			// 传给服务端的参数
-			const body = {
-				filename: options.filename,
-				sheetName: options.sheetName,
-				isHeader: options.isHeader,
-				original: options.original,
-				mode: options.mode,
-				pager: proxyInfo ? proxyInfo.pager : null,
-				ids: options.mode === 'selected' ? options.data.map((item) => item.id) : [],
-				fields: options.columns.map((column) => {
-					return {
-						field: column.field,
-						title: column.title,
-					}
-				}),
-			}
-			// 开始服务端导出
-			return fetch(`${serveApiUrl.value}/api/pub/export`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body),
-			})
-				.then((response) => response.json())
-				.then((data) => {
-					if (data.id) {
-						VXETable.modal.message({ content: '导出成功，开始下载', status: 'success' })
-						// 读取路径，请求文件
-						fetch(`${serveApiUrl.value}/api/pub/export/download/${data.id}`).then(
-							(response) => {
-								response.blob().then((blob) => {
-									// 开始下载
-									VXETable.saveFile({
-										filename: '导出数据',
-										type: 'xlsx',
-										content: blob,
-									})
-								})
-							}
-						)
-					}
-				})
-				.catch(() => {
-					VXETable.modal.message({ content: '导出失败！', status: 'error' })
-				})
-		},
-	},
-	checkboxConfig: {
+// 表格配置
+const TableConfig = reactive({
+	ableCheckboxConfig: {
 		labelField: 'id',
-		reserve: true,
+		checkStrictly: true,
 		highlight: true,
-		range: true,
-	},
-	editRules: {
-		name: [
-			{ required: true, message: 'app.body.valid.rName' },
-			{ min: 3, max: 50, message: '名称长度在 3 到 50 个字符' },
-		],
-		email: [{ required: true, message: '邮件必须填写' }],
-		role: [{ required: true, message: '角色必须填写' }],
-	},
-	editConfig: {
-		trigger: 'click',
-		mode: 'row',
-		showStatus: true,
-	},
+		trigger: 'row',
+	} as VxeTablePropTypes.CheckboxConfig,
+	tableTooltipConfig: {
+		showAll: true,
+		enterable: true,
+		contentMethod: ({ type, column, row, items, _columnIndex }) => {
+			if (type === 'header') {
+				return ''
+			}
+			const cell = row.id + column.title
+			// 重写默认的提示内容
+			if (removeSampleList.indexOf(cell) !== -1) {
+				return `个体${cell}在采样前已死亡`
+			}
+			// 返回空字符串，控制单元格不显示提示内容
+			return ''
+		},
+	} as VxeTablePropTypes.TooltipConfig,
 })
 
-onMounted(() => {
-	const sexList = [
-		{ label: '女', value: '0' },
-		{ label: '男', value: '1' },
-	]
-	const { formConfig, columns } = gridOptions
-	if (columns) {
-		const sexColumn = columns[5]
-		if (sexColumn && sexColumn.editRender) {
-			sexColumn.editRender.options = sexList
-		}
+// 表格自定义样式
+const removeSampleList = ['BCRG03', 'BCRG20']
+
+const headerCellClassName: VxeTablePropTypes.HeaderCellClassName = ({ column }) => {
+	return 'col-primary'
+}
+const cellClassName: VxeTablePropTypes.CellClassName = ({ row, column }) => {
+	const cell = row.id + column.title
+	console.log(column)
+	if (removeSampleList.indexOf(cell) !== -1) {
+		return 'col-default'
 	}
-	if (formConfig && formConfig.items) {
-		const sexItem = formConfig.items[4]
-		if (sexItem && sexItem.itemRender) {
-			sexItem.itemRender.options = sexList
-		}
+	return null
+}
+
+// 表格数据
+const tableData6 = ref([
+	{
+		id: 'BCRA',
+		s1: '01',
+		s2: '02',
+		s3: '03',
+		s4: '04',
+		s5: '05',
+		s6: '06',
+		s7: '07',
+		s8: '08',
+		s9: '09',
+		s10: '10',
+		s11: '11',
+		s12: '12',
+		s13: '13',
+		s14: '14',
+		s15: '15',
+		s16: '16',
+		s17: '17',
+		s18: '18',
+		s19: '19',
+		s20: '20',
+		s21: '21',
+	},
+	{
+		id: 'BCRB',
+		s1: '01',
+		s2: '02',
+		s3: '03',
+		s4: '04',
+		s5: '05',
+		s6: '06',
+		s7: '07',
+		s8: '08',
+		s9: '09',
+		s10: '10',
+		s11: '11',
+		s12: '12',
+		s13: '13',
+		s14: '14',
+		s15: '15',
+		s16: '16',
+		s17: '17',
+		s18: '18',
+		s19: '19',
+		s20: '20',
+		s21: '21',
+	},
+	{
+		id: 'BCRC',
+		s1: '01',
+		s2: '02',
+		s3: '03',
+		s4: '04',
+		s5: '05',
+		s6: '06',
+		s7: '07',
+		s8: '08',
+		s9: '09',
+		s10: '10',
+		s11: '11',
+		s12: '12',
+		s13: '13',
+		s14: '14',
+		s15: '15',
+		s16: '16',
+		s17: '17',
+		s18: '18',
+		s19: '19',
+		s20: '20',
+		s21: '21',
+	},
+	{
+		id: 'BCRD',
+		s1: '01',
+		s2: '02',
+		s3: '03',
+		s4: '04',
+		s5: '05',
+		s6: '06',
+		s7: '07',
+		s8: '08',
+		s9: '09',
+		s10: '10',
+		s11: '11',
+		s12: '12',
+		s13: '13',
+		s14: '14',
+		s15: '15',
+		s16: '16',
+		s17: '17',
+		s18: '18',
+		s19: '19',
+		s20: '20',
+		s21: '21',
+	},
+	{
+		id: 'BCRE',
+		s1: '01',
+		s2: '02',
+		s3: '03',
+		s4: '04',
+		s5: '05',
+		s6: '06',
+		s7: '07',
+		s8: '08',
+		s9: '09',
+		s10: '10',
+		s11: '11',
+		s12: '12',
+		s13: '13',
+		s14: '14',
+		s15: '15',
+		s16: '16',
+		s17: '17',
+		s18: '18',
+		s19: '19',
+		s20: '20',
+		s21: '21',
+	},
+	{
+		id: 'BCRF',
+		s1: '01',
+		s2: '02',
+		s3: '03',
+		s4: '04',
+		s5: '05',
+		s6: '06',
+		s7: '07',
+		s8: '08',
+		s9: '09',
+		s10: '10',
+		s11: '11',
+		s12: '12',
+		s13: '13',
+		s14: '14',
+		s15: '15',
+		s16: '16',
+		s17: '17',
+		s18: '18',
+		s19: '19',
+		s20: '20',
+		s21: '21',
+	},
+	{
+		id: 'BCRG',
+		s1: '01',
+		s2: '02',
+		s3: '03',
+		s4: '04',
+		s5: '05',
+		s6: '06',
+		s7: '07',
+		s8: '08',
+		s9: '09',
+		s10: '10',
+		s11: '11',
+		s12: '12',
+		s13: '13',
+		s14: '14',
+		s15: '15',
+		s16: '16',
+		s17: '17',
+		s18: '18',
+		s19: '19',
+		s20: '20',
+		s21: '21',
+	},
+])
+
+// 表格绑定事件
+const xTable1 = ref<VxeTableInstance>()
+
+const cellClickEvent: VxeTableEvents.CellClick = ({ column, row }) => {
+	console.log(`单元格点击${column.title}`, row.id)
+}
+const selectChangeEvent: VxeTableEvents.CheckboxChange = ({ checked, row }) => {
+	const $table = xTable1.value
+	const records = $table.getCheckboxRecords()
+	console.log(checked ? '勾选事件' : '取消事件', records)
+	if (records.length > 2) {
+		alert('123')
+		$table.toggleCheckboxRow(row)
 	}
-})
+}
 </script>
 
-<style scoped></style>
+<style scoped lang="less"></style>

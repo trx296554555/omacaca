@@ -63,14 +63,8 @@
 						>
 					</li>
 					<li>
-						<a
-							href="https://sculife404wukongnas.cn3.quickconnect.cn/#/signin"
-							target="_blank"
-							>储存服务器访问-WukongNas<span
-								><a href="https://192.168.199.138" target="_blank"
-									>（内网）</a
-								></span
-							></a
+						<a href="https://192.168.199.138" target="_blank"
+							>储存服务器访问-WukongNas</a
 						>
 					</li>
 					<li>

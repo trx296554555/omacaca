@@ -22,6 +22,21 @@
 			<strong>Notes</strong>
 			<li>{{ $t('ltbm_introduction.stageanote') }}</li>
 		</a-card>
+		<!--stageM-->
+		<a-card title="Stage-Mother" class="timeline-card">
+			<template #extra
+				><a-tag color="success">
+					<template #icon>
+						<moonIcon></moonIcon>
+					</template>
+					7 Years avg </a-tag
+				><a-tag color="success">
+					<template #icon><clock-circle-outlined /> </template>
+					DAY-1</a-tag
+				></template
+			>
+			<p>{{ $t('ltbm_introduction.stagem') }}</p>
+		</a-card>
 		<!-- stageB -->
 		<span class="timeline-stamp">2019-10-11</span>
 		<a-card title="Stage-B" class="timeline-card">
@@ -140,6 +155,22 @@
 		<a-card class="timeline-card">
 			<strong>Notes</strong>
 			<li>{{ $t('ltbm_introduction.stagegnote') }}</li>
+		</a-card>
+		<!--stageO-->
+		<span class="timeline-stamp">2021-08-30</span>
+		<a-card title="Stage-Others" class="timeline-card">
+			<template #extra
+				><a-tag color="success">
+					<template #icon>
+						<moonIcon></moonIcon>
+					</template>
+					8 Years avg </a-tag
+				><a-tag color="success">
+					<template #icon><clock-circle-outlined /> </template>
+					DAY-704</a-tag
+				></template
+			>
+			<p>{{ $t('ltbm_introduction.stageo') }}</p>
 		</a-card>
 	</div>
 </template>

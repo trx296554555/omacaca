@@ -54,6 +54,8 @@ export default {
 			Baby monkeys eat mainly breast milk but may pick up food from their mothers.',
 		stageanote:
 			'After sampling, the 21 baby monkeys were separated from their mothers and placed in a large cage.',
+		stagem: 'At the same time of first sampling, samples of each baby monkey mother were also collected; \
+			these female monkeys lived in the adult housing and ate adult feed and seasonal fresh fruits.',
 		stageb: 'Second sampling, 21 baby monkeys lived in a large cage (monkey kindergarten). Diet formula was baby monkey feed + fruit + milk powder.',
 		stagec: 'Third sampling, 21 baby monkeys lived in a large cage (monkey kindergarten). Diet formula was baby monkey feed + fruit + milk powder.',
 		stagecnote:
@@ -73,5 +75,8 @@ export default {
 		stageg: 'Seventh sampling, 21 baby monkeys lived in the large cage (monkey kindergarten). Diet formula was new baby monkey feed + fruit',
 		stagegnote:
 			'The two monkeys, BCR03 and BCR20, had developed diarrhea and under treatment were dead before this sampling',
+		stageo: 'Considering that lactating female monkeys may be in a special physiological state, \
+			some rhesus monkeys of similar age and living environment were selected as normal adult controls; \
+			they also lived in the adult housing and ate adult feed and seasonal fresh fruits.',
 	},
 }
