@@ -9,7 +9,7 @@
 				</h2>
 			</transition>
 		</div>
-		<div class="homeContent -container">
+		<div class="homeContent">
 			<div class="col-span-2">
 				<LtbmCollapse></LtbmCollapse>
 			</div>
@@ -43,6 +43,7 @@ document.title = 'Long-term Tracking of Baby Macaque'
 }
 
 .homeContent {
-	@apply md:grid md:grid-cols-3 md:gap-8 pb-16;
+	@apply container mx-auto px-6 py-6 pb-16;
+	@apply md:grid md:grid-cols-3 md:gap-8;
 }
 </style>

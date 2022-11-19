@@ -1,7 +1,6 @@
 <template>
-	<div id="Footer" v-show="!isErrorStore.isError">
-		<footer class="foot">
-			<div class="mx-8 py-6 text-center md:text-left">
+	<footer id="Footer" v-show="!isErrorStore.isError" class="FooterBg">
+			<div class="Footer">
 				<div class="foot-link grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 py-2">
 					<div class="col-span-2">
 						<p
@@ -80,8 +79,7 @@
 					</div>
 				</div>
 			</div>
-		</footer>
-	</div>
+	</footer>
 </template>
 
 
@@ -95,9 +93,12 @@ const isErrorStore = useCheckErrorPageStore()
 </script>
 
 <style scoped lang="less">
-.foot {
-	@apply px-0 xl:px-28 text-center 2xl:text-left text-gray-100;
+.FooterBg {
 	background-color: @primary-color;
+}
+.Footer {
+	@apply container mx-auto px-6 py-6;
+	@apply text-center lg:text-left text-gray-100;
 	transition: all 0.2s ease-in-out 0.2s;
 }
 

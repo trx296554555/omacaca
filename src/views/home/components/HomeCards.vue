@@ -1,57 +1,61 @@
 <template>
-	<div id="HomeCards" class="HomeCards -container">
-		<div class="homecard">
-			<div class="homecontent">
-				<h2 class="hometitle">Genomics</h2>
-				<p class="homecopy">
-					Whole genome resequencing, for reseach of genetics and population evolution.
-				</p>
-				<a href="http://big.cdu.edu.cn/macsnvdb/" target="_blank">
+	<div id="HomeCards" class="HomeCardBg">
+		<div class="HomeCards">
+			<div class="homecard">
+				<div class="homecontent">
+					<h2 class="hometitle">Genomics</h2>
+					<p class="homecopy">
+						Whole genome resequencing, for reseach of genetics and population evolution.
+					</p>
+					<a href="http://big.cdu.edu.cn/macsnvdb/" target="_blank">
+						<button class="homebtn">More</button>
+					</a>
+				</div>
+			</div>
+			<div class="homecard">
+				<div class="homecontent">
+					<h2 class="hometitle">Transcriptomics</h2>
+					<p class="homecopy">
+						Transcriptome sequencing can obtain gene expression information and
+						accurately analyze gene expression differences, gene structural variation,
+						RNA interaction network analysis, etc.
+					</p>
 					<button class="homebtn">More</button>
-				</a>
+				</div>
 			</div>
-		</div>
-		<div class="homecard">
-			<div class="homecontent">
-				<h2 class="hometitle">Transcriptomics</h2>
-				<p class="homecopy">
-					Transcriptome sequencing can obtain gene expression information and accurately
-					analyze gene expression differences, gene structural variation, RNA interaction
-					network analysis, etc.
-				</p>
-				<button class="homebtn">More</button>
+			<div class="homecard">
+				<div class="homecontent">
+					<h2 class="hometitle">Metagenomics</h2>
+					<p class="homecopy">
+						Metagenomic sequencing, to analyze microbial community structure diversity,
+						microbial community gene composition, etc.
+					</p>
+					<button class="homebtn">More</button>
+				</div>
 			</div>
-		</div>
-		<div class="homecard">
-			<div class="homecontent">
-				<h2 class="hometitle">Metagenomics</h2>
-				<p class="homecopy">
-					Metagenomic sequencing, to analyze microbial community structure diversity,
-					microbial community gene composition, etc.
-				</p>
-				<button class="homebtn">More</button>
-			</div>
-		</div>
-		<div class="homecard">
-			<div class="homecontent">
-				<h2 class="hometitle">Metabolomics</h2>
-				<p class="homecopy">
-					Metabolomics is the quantitative analysis of all metabolites in a living
-					organism and the search for the relative relationship between metabolites and
-					physiological and pathological changes.
-				</p>
-				<button class="homebtn">More</button>
+			<div class="homecard">
+				<div class="homecontent">
+					<h2 class="hometitle">Metabolomics</h2>
+					<p class="homecopy">
+						Metabolomics is the quantitative analysis of all metabolites in a living
+						organism and the search for the relative relationship between metabolites
+						and physiological and pathological changes.
+					</p>
+					<button class="homebtn">More</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <style scoped lang="less">
+.HomeCardBg {
+	background-color: @primary-trans;
+}
 .HomeCards {
 	@apply font-sans text-justify;
-	@apply py-12;
+	@apply container mx-auto py-12 px-6;
 	@apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8;
-	background-color: @primary-trans;
 	font-family: 'Rubik', sans-serif;
 }
 .homecard {

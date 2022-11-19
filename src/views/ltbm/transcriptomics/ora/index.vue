@@ -1,5 +1,5 @@
 <template>
-	<div id="LtbmORA" class="LtbmORA -container">
+	<div id="LtbmORA" class="LtbmORA">
 		<div class="h-12 md:h-16"></div>
 		<div class="pageTitle">{{ $t(`ltbm_title.deg`) }} (ORA)</div>
 		<div class="OraAnalysis">
@@ -16,6 +16,9 @@ import UmapPlot from '../../components/UmapPlot.vue'
 </script>
 
 <style scoped lang="less">
+.LtbmORA {
+	@apply container mx-auto px-6;
+}
 .pageTitle {
 	@apply text-2xl py-6;
 }
