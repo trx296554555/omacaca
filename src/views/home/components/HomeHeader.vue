@@ -120,6 +120,8 @@ onMounted(() => {
 	window.addEventListener('scroll', getTop)
 	if (viewData.viewWidth < 640) {
 		viewData.viewHeight = viewData.viewHeight * 0.4
+	} else {
+		console.log(viewData.viewWidth)
 	}
 })
 

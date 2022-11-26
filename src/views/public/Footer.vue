@@ -97,7 +97,7 @@ const isErrorStore = useCheckErrorPageStore()
 	background-color: @primary-color;
 }
 .Footer {
-	@apply container mx-auto px-6 py-6;
+	@apply Container py-6;
 	@apply text-center lg:text-left text-gray-100;
 	transition: all 0.2s ease-in-out 0.2s;
 }

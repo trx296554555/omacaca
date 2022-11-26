@@ -54,7 +54,7 @@
 }
 .HomeCards {
 	@apply font-sans text-justify;
-	@apply container mx-auto py-12 px-6;
+	@apply Container py-12;
 	@apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8;
 	font-family: 'Rubik', sans-serif;
 }

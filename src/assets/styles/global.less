@@ -6,6 +6,36 @@
 // 为了设置主题色，将vxeTable原有的css转为了less，提取出其中的颜色主题文件（他是用scss写的，改很麻烦）
 @import '@style/vxeTable/vxeTable.less';
 
+.Container {
+	/* 不知道为什么原有的container类在我的笔记本上缩放后无法生效，自己手搓了一个用 */
+	@apply mx-auto px-6 w-full;
+
+	/* Small (sm) */
+	@media (min-width: 640px) {
+		max-width: 640px;
+	}
+
+	/* Medium (md) */
+	@media (min-width: 768px) {
+		max-width: 768px;
+	}
+
+	/* Large (lg) */
+	@media (min-width: 1024px) {
+		max-width: 1024px;
+	}
+
+	/* Extra Large (xl) */
+	@media (min-width: 1280px) {
+		max-width: 1280px;
+	}
+
+	/* 2 Extra Large (2xl) */
+	@media (min-width: 1537px) {
+		max-width: 1537px;
+	}
+}
+
 .white-text {
 	@apply text-white;
 	@apply dark:text-dark-w-first;

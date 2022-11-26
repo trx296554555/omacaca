@@ -17,7 +17,7 @@ import UmapPlot from '../../components/UmapPlot.vue'
 
 <style scoped lang="less">
 .LtbmORA {
-	@apply container mx-auto px-6;
+	@apply Container;
 }
 .pageTitle {
 	@apply text-2xl py-6;

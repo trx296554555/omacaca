@@ -109,7 +109,8 @@ import { ToolOutlined, HddOutlined, LinkOutlined } from '@ant-design/icons-vue'
 
 <style scoped lang="less">
 .HomeTools {
-	@apply container mx-auto px-6 py-12 text-center lg:text-left;
+	@apply Container py-12;
+	@apply text-center lg:text-left;
 
 	.title {
 		@apply font-sans text-center 2xl:text-left pb-8 text-2xl;

@@ -14,7 +14,7 @@
 <style scoped lang="less">
 .HomeIntroduction {
 	@apply font-sans text-justify;
-	@apply container mx-auto px-6 py-12;
+	@apply Container py-12;
 	.title {
 		@apply text-center pb-8 text-2xl;
 		color: @primary-color;

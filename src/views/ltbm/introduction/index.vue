@@ -43,7 +43,7 @@ document.title = 'Long-term Tracking of Baby Macaque'
 }
 
 .homeContent {
-	@apply container mx-auto px-6 py-6 pb-16;
+	@apply Container py-6 pb-16;
 	@apply md:grid md:grid-cols-3 md:gap-8;
 }
 </style>

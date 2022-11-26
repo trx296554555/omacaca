@@ -1,4 +1,7 @@
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
 	svg {
 		display: inline;
@@ -8,8 +11,6 @@
 		display: inline;
 	}
 }
-@tailwind components;
-@tailwind utilities;
 
 @font-face {
 	font-family: 'Pacifico';
