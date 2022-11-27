@@ -1,6 +1,6 @@
 <template>
 	<vxe-table
-		ref="xTable1"
+		ref="DegSelTable"
 		border
 		stripe
 		auto-resize
@@ -9,7 +9,7 @@
 		:header-cell-class-name="headerCellClassName"
 		:cell-class-name="cellClassName"
 		:row-config="{ isHover: true }"
-		:data="tableData6"
+		:data="tableData"
 		:checkbox-config="TableConfig.ableCheckboxConfig"
 		:tooltip-config="TableConfig.tableTooltipConfig"
 		@cell-click="cellClickEvent"
@@ -18,7 +18,7 @@
 		<vxe-column type="checkbox" width="100" title="Stage"></vxe-column>
 
 		<vxe-colgroup title="Sample (female)">
-			<vxe-column field="s1" title="01"></vxe-column>
+			<vxe-column field="s1" title="01" :visible="false"></vxe-column>
 			<vxe-column field="s2" title="02"></vxe-column>
 			<vxe-column field="s3" title="03"></vxe-column>
 			<vxe-column field="s4" title="04"></vxe-column>
@@ -84,7 +84,7 @@ const headerCellClassName: VxeTablePropTypes.HeaderCellClassName = ({ column }) 
 }
 const cellClassName: VxeTablePropTypes.CellClassName = ({ row, column }) => {
 	const cell = row.id + column.title
-	console.log(column)
+	// console.log(column)
 	if (removeSampleList.indexOf(cell) !== -1) {
 		return 'col-default'
 	}
@@ -92,7 +92,7 @@ const cellClassName: VxeTablePropTypes.CellClassName = ({ row, column }) => {
 }
 
 // 表格数据
-const tableData6 = ref([
+const tableData = ref([
 	{
 		id: 'BCRA',
 		s1: '01',
@@ -264,13 +264,13 @@ const tableData6 = ref([
 ])
 
 // 表格绑定事件
-const xTable1 = ref<VxeTableInstance>()
+const DegSelTable = ref<VxeTableInstance>()
 
 const cellClickEvent: VxeTableEvents.CellClick = ({ column, row }) => {
 	console.log(`单元格点击${column.title}`, row.id)
 }
 const selectChangeEvent: VxeTableEvents.CheckboxChange = ({ checked, row }) => {
-	const $table = xTable1.value
+	const $table = DegSelTable.value
 	const records = $table.getCheckboxRecords()
 	console.log(checked ? '勾选事件' : '取消事件', records)
 	if (records.length > 2) {

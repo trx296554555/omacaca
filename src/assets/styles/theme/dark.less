@@ -3,7 +3,12 @@
 @primary-trans: fade(@primary-color, 85%);
 @primary-light: mix(#D1E7DD, #141414, 25%);
 @secondary-color: #7d623d;
-@secondary-hover: color(~`colorPalette('@{secondary-color}', 7) `);
+@secondary-color-hover: color(~`colorPalette('@{secondary-color}', 5) `);
+@secondary-color-active: color(~`colorPalette('@{secondary-color}', 7) `);
+@old-color:mix(#1890ff, #141414, 85%);
+@old-color-hover: color(~`colorPalette('@{old-color}', 5) `);
+@old-color-active: color(~`colorPalette('@{old-color}', 7) `);
+@old-color-outline: fade(@old-color, @outline-fade);
 @white-color: rgba(255,255,255,0.85);
 @white-color2: rgba(255,255,255,0.45);
 @black-color: @white-color;
