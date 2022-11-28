@@ -7,6 +7,7 @@
 			<div class="theOptions"><DegOptions></DegOptions></div>
 			<div class="theUmapPlot"><UmapPlot></UmapPlot></div>
 		</div>
+		<div style="height: 200px"></div>
 	</div>
 </template>
 
@@ -17,7 +18,7 @@ import UmapPlot from '../../components/UmapPlot.vue'
 import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 
 const oraParamStore = useDegParamStore()
-oraParamStore.setDegParam({ analyse: 'ora' })
+oraParamStore.setDegParam({ analyse: 'ora', model: 'M1', full: true, gender: 'a', groups: [] })
 </script>
 
 <style scoped lang="less">

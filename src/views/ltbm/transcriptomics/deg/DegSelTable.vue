@@ -49,7 +49,11 @@
 import { defineComponent, onMounted, reactive, ref, computed } from 'vue'
 import { VxeTablePropTypes, VxeTableInstance, VxeTableEvents } from 'vxe-table'
 import XEUtils from 'xe-utils'
+import { useI18n } from '@/tools/useI18n'
+import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 
+// 翻译设置
+const { t } = useI18n()
 // 表格配置
 const TableConfig = reactive({
 	ableCheckboxConfig: {
@@ -67,8 +71,12 @@ const TableConfig = reactive({
 			}
 			const cell = row.id + column.title
 			// 重写默认的提示内容
-			if (removeSampleList.indexOf(cell) !== -1) {
-				return `个体${cell}在采样前已死亡`
+			if (deathSampleList.indexOf(cell) !== -1) {
+				return `${cell}: ${t('ltbm_dega.table_tooltip_death')}`
+			} else if (removeSampleList.indexOf(cell) !== -1) {
+				return `${cell}: ${t('ltbm_dega.table_tooltip_remove')}`
+			} else if (pollutionList.indexOf(cell) !== -1) {
+				return `${cell}: ${t('ltbm_dega.table_tooltip_population')}`
 			}
 			// 返回空字符串，控制单元格不显示提示内容
 			return ''
@@ -77,7 +85,9 @@ const TableConfig = reactive({
 })
 
 // 表格自定义样式
-const removeSampleList = ['BCRG03', 'BCRG20']
+const deathSampleList = ['BCRG03', 'BCRG20']
+const removeSampleList = ['BCRA04', 'BCRA05']
+const pollutionList = ['MCR04']
 
 const headerCellClassName: VxeTablePropTypes.HeaderCellClassName = ({ column }) => {
 	return 'col-primary'
@@ -85,7 +95,11 @@ const headerCellClassName: VxeTablePropTypes.HeaderCellClassName = ({ column }) 
 const cellClassName: VxeTablePropTypes.CellClassName = ({ row, column }) => {
 	const cell = row.id + column.title
 	// console.log(column)
-	if (removeSampleList.indexOf(cell) !== -1) {
+	if (deathSampleList.indexOf(cell) !== -1) {
+		return 'col-default'
+	} else if (removeSampleList.indexOf(cell) !== -1) {
+		return 'col-default'
+	} else if (pollutionList.indexOf(cell) !== -1) {
 		return 'col-default'
 	}
 	return null
@@ -278,6 +292,10 @@ const selectChangeEvent: VxeTableEvents.CheckboxChange = ({ checked, row }) => {
 		$table.toggleCheckboxRow(row)
 	}
 }
+const degParamStore = useDegParamStore()
+degParamStore.$subscribe((mutation, state) => {
+	console.log(state, '111')
+})
 </script>
 
 <style scoped lang="less"></style>

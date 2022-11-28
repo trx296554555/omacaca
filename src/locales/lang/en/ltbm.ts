@@ -84,7 +84,7 @@ export default {
 		sample: 'Sample',
 		env: 'Environment',
 		gender: 'Sex',
-		all: 'all samples',
+		all: 'all sexes',
 		male: 'male',
 		female: 'female',
 		step1: '1. Select the source data set',
@@ -99,32 +99,27 @@ export default {
 					The design formula containing additional variables for Deseq2 analysis requirements is in square brackets, \
 					and the variable at the end of the formula is the main research factor.\
 					（The design formula is used to estimate the dispersions and to estimate the log2 fold changes of the model. See detail in DESeq2 Manuel.）',
-		step2bm: 'Baby monkey',
-		step2my: 'All Samples',
+		step2option1: 'Baby monkeys [ ~ Age difference ]',
+		step2option2: 'Baby monkeys [ ~ Sex difference ]',
+		step2option3: 'Baby monkeys [ ~ Condition difference ]',
+		step2option4: 'All samples [ ~ Stage difference ]',
 		step2custom: 'Custom [~ design formula]',
-		setp2option1infoa:
-			'The effects of [sex] factors were corrected, and [stage] is taken as the main factor affecting the comparison results,\
-		supporting pairwise comparison between stages A-G.',
-		setp2option1infon:
-			'Take [stage] as the main factor affecting the comparison results, supporting pairwise comparison between stages A-G.',
-		setp2option2infot:
+		step2full: 'all',
+		step2option1_tooltip:
+			'The effects of [sex] factor were corrected, and [stage] is taken as the main factor affecting the comparison results,\
+		supporting pairwise comparison between stages A-G (Only baby monkeys, factor stage is the same as age).',
+		step2option2_tooltip:
 			'The effects of [stage] factors were corrected, and [sex] is taken as the main factor affecting the comparison results,\
-		supporting comparison between sex at all stages.',
-		setp2option2infof:
-			'Take [sex] as the main factor affecting the comparison results, supporting comparison between sex at all stages.',
-		setp2option3infoa:
-			'The effects of [sex] factors were corrected, and [environment] is taken as the main factor affecting the comparison results,\
-		supporting pairwise comparison between environments 1-4.',
-		setp2option3infon:
-			'Take [environment] as the main factor affecting the comparison results, supporting pairwise comparison between environments 1-4.',
-		setp2option4infoa:
+		uncheck (√ all) to compare sex differences in a single stage.',
+		step2option3_tooltip:
+			'The effects of [sex] factors were corrected, and [condition] is taken as the main factor affecting the comparison results,\
+		supporting pairwise comparison between conditions 1-5.',
+		step2option4_tooltip:
 			'The effects of [sex] factors were corrected, and [stage] is taken as the main factor affecting the comparison results,\
 		supporting pairwise comparison between baby monkeys stages A-G and their mother (M) and adult monkeys (O).',
-		setp2option4infon:
-			'Take [stage] as the main factor affecting the comparison results, supporting pairwise comparison between baby monkeys stages A-G and their mother (M) and adult monkeys (O).',
-		setp2option5info:
+		step2option5_tooltip:
 			'Optional data form matrix, according to the selected data custom design formula input. (Under development)',
-		step3: '3. Whether use a complete data matrix',
+		step3: '3. Select two groups for comparison',
 		step3info:
 			'Even compare differences between the same two stages, using different raw data sets will get different Deseq2 standardized results,\
 					thus affecting the results of some different expression genes (this is caused by the standardization algorithm of Deseq2,\
@@ -135,11 +130,11 @@ export default {
 					In order to ensure that the comparison results of the same two groups before and after each data increment are consistent,\
 		      		we also provide a method of only using the comparison group data to build the matrix for reference.\
 					The complete data matrix is used as default.',
-		step4: '4. Select two groups for comparison',
+		step4: '4. Get results',
 		step4info:
 			'Click the row name of the table above to set groups.\
 					You can switch groups by clicking the button Group1/Group2. It is automatically filled in special mode.',
-		step5: '5. Get DEG results',
+		step5: '',
 		step5gsea: '5. Get GSEA results',
 		step1info_gsea:
 			'In addition to the results of overexpression enrichment analysis (ORA) using artificial threshold screening,\
@@ -150,10 +145,13 @@ export default {
 			'Consistent with ORA preprocessing, we also normalized raw count data with DEseq2, \
 						and sorted geneList according to the numeric of LogFC between groups',
 		step3info_gsea: 'Here we only provide the most important comparative results.',
-		resetbtn: 'Reset',
-		submitbtn: 'Submit',
+		reset_btn: 'Reset',
+		submit_btn: 'Submit',
 		statisticalTitle: 'Statistical Results of Differentially Expressed Genes',
 		statisticalGseaTitle: 'Statistical Results of GSEA Enrichment Terms',
 		tools: 'Toolkit',
+		table_tooltip_death: ' Died before sampling',
+		table_tooltip_remove: 'Removed by G-ESD test as an outlier',
+		table_tooltip_population: 'Removed by sequencing pollution',
 	},
 }
