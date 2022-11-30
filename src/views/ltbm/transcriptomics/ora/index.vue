@@ -18,6 +18,7 @@ import UmapPlot from '../../components/UmapPlot.vue'
 import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 
 const oraParamStore = useDegParamStore()
+// @ts-ignore
 oraParamStore.setDegParam({ analyse: 'ora', model: 'M1', full: true, gender: 'a', groups: [] })
 </script>
 

@@ -3,7 +3,34 @@ import { defineStore } from 'pinia'
 type AnalyseType = 'ora' | 'gsea'
 type ModelType = 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
 type GenderType = 'm' | 'f' | 'a'
-type GroupType = 'BCRA' | 'BCRB' | 'BCRC' | 'BCRD' | 'BCRE' | 'BCRF' | 'BCRG' | 'MCR' | 'OCR' | ''
+const grouplist = [
+	'BCRA',
+	'BCRB',
+	'BCRC',
+	'BCRD',
+	'BCRE',
+	'BCRF',
+	'BCRG',
+	'MCR',
+	'OCR',
+	'BCRALLF',
+	'BCRALLM',
+	'BCRAF',
+	'BCRAM',
+	'BCRBF',
+	'BCRBM',
+	'BCRCF',
+	'BCRCM',
+	'BCRDF',
+	'BCRDM',
+	'BCREF',
+	'BCREM',
+	'BCRFF',
+	'BCRFM',
+	'BCRGF',
+	'BCRGM',
+] as const
+export type GroupType = typeof grouplist[number]
 
 interface DegParams {
 	analyse: AnalyseType

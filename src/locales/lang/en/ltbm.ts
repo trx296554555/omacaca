@@ -112,7 +112,7 @@ export default {
 			'The effects of [stage] factors were corrected, and [sex] is taken as the main factor affecting the comparison results,\
 		uncheck (√ all) to compare sex differences in a single stage.',
 		step2option3_tooltip:
-			'The effects of [sex] factors were corrected, and [condition] is taken as the main factor affecting the comparison results,\
+			'The effects of [sex] factors were corrected, and [breeding condition] is taken as the main factor affecting the comparison results,\
 		supporting pairwise comparison between conditions 1-5.',
 		step2option4_tooltip:
 			'The effects of [sex] factors were corrected, and [stage] is taken as the main factor affecting the comparison results,\

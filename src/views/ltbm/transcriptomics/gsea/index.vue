@@ -18,6 +18,7 @@ import UmapPlot from '../../components/UmapPlot.vue'
 import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 
 const gseaParamStore = useDegParamStore()
+// @ts-ignore
 gseaParamStore.setDegParam({ analyse: 'gsea', model: 'M1', full: true, gender: 'a', groups: [] })
 </script>
 
