@@ -3,174 +3,183 @@
 		<!-- stageA -->
 		<span class="timeline-stamp">2019-09-26</span>
 		<a-card title="Stage-A" class="timeline-card">
-			<template #extra
-				><a-tag color="success">
+			<template #extra>
+				<a-tag color="success">
 					<template #icon>
 						<moonIcon></moonIcon>
 					</template>
-					6 Months </a-tag
-				><a-tag color="success">
-					<template #icon><clock-circle-outlined /> </template>
-					DAY-1</a-tag
-				></template
-			>
-			<p>{{ $t('ltbm_introduction.stagea') }}</p>
+					6 Months
+				</a-tag>
+				<a-tag color="success">
+					<template #icon><clock-circle-outlined /></template>
+					DAY-1
+				</a-tag>
+			</template>
+			<p>{{ $t('ltbm_introduction.stage_a') }}</p>
 			<img src="@img/ltbmFig/LtbmBreastfeedMonkey.jpg" alt="BreastfeedMonkey" />
 		</a-card>
 		<!-- stageA note -->
 		<a-card class="timeline-card">
 			<strong>Notes</strong>
-			<li>{{ $t('ltbm_introduction.stageanote') }}</li>
+			<li>{{ $t('ltbm_introduction.stage_a_note') }}</li>
 		</a-card>
 		<!--stageM-->
 		<a-card title="Stage-Mother" class="timeline-card">
-			<template #extra
-				><a-tag color="success">
+			<template #extra>
+				<a-tag color="success">
 					<template #icon>
 						<moonIcon></moonIcon>
 					</template>
-					7 Years avg </a-tag
-				><a-tag color="success">
-					<template #icon><clock-circle-outlined /> </template>
-					DAY-1</a-tag
-				></template
-			>
-			<p>{{ $t('ltbm_introduction.stagem') }}</p>
+					7 Years avg
+				</a-tag>
+				<a-tag color="success">
+					<template #icon><clock-circle-outlined /></template>
+					DAY-1
+				</a-tag>
+			</template>
+			<p>{{ $t('ltbm_introduction.stage_m') }}</p>
 		</a-card>
 		<!-- stageB -->
 		<span class="timeline-stamp">2019-10-11</span>
 		<a-card title="Stage-B" class="timeline-card">
-			<template #extra
-				><a-tag color="success">
+			<template #extra>
+				<a-tag color="success">
 					<template #icon>
 						<moonIcon></moonIcon>
 					</template>
-					6.5 Months </a-tag
-				><a-tag color="success">
-					<template #icon><clock-circle-outlined /> </template>
-					DAY-15</a-tag
-				></template
-			>
-			<p>{{ $t('ltbm_introduction.stageb') }}</p>
+					6.5 Months
+				</a-tag>
+				<a-tag color="success">
+					<template #icon><clock-circle-outlined /></template>
+					DAY-15
+				</a-tag>
+			</template>
+			<p>{{ $t('ltbm_introduction.stage_b') }}</p>
 			<img src="@img/ltbmFig/LtbmInCubCircle.jpg" alt="InCubCircle" />
 		</a-card>
 		<!-- stageC -->
 		<span class="timeline-stamp">2019-11-12</span>
 		<a-card title="Stage-C" class="timeline-card">
-			<template #extra
-				><a-tag color="success">
+			<template #extra>
+				<a-tag color="success">
 					<template #icon>
 						<moonIcon></moonIcon>
 					</template>
-					7.5 Months </a-tag
-				><a-tag color="success">
-					<template #icon><clock-circle-outlined /> </template>
-					DAY-47</a-tag
-				></template
-			>
-			<p>{{ $t('ltbm_introduction.stagec') }}</p>
+					7.5 Months
+				</a-tag>
+				<a-tag color="success">
+					<template #icon><clock-circle-outlined /></template>
+					DAY-47
+				</a-tag>
+			</template>
+			<p>{{ $t('ltbm_introduction.stage_c') }}</p>
 		</a-card>
 		<!-- stageC note -->
 		<a-card class="timeline-card">
 			<strong>Notes</strong>
-			<li>{{ $t('ltbm_introduction.stagecnote') }}</li>
+			<li>{{ $t('ltbm_introduction.stage_c_note') }}</li>
 		</a-card>
 		<!-- stageD -->
 		<span class="timeline-stamp">2019-12-06</span>
 		<a-card title="Stage-D" class="timeline-card">
-			<template #extra
-				><a-tag color="success">
+			<template #extra>
+				<a-tag color="success">
 					<template #icon>
 						<moonIcon></moonIcon>
 					</template>
-					8.5 Months </a-tag
-				><a-tag color="success">
-					<template #icon><clock-circle-outlined /> </template>
-					DAY-71</a-tag
-				></template
-			>
-			<p>{{ $t('ltbm_introduction.staged') }}</p>
+					8.5 Months
+				</a-tag>
+				<a-tag color="success">
+					<template #icon><clock-circle-outlined /></template>
+					DAY-71
+				</a-tag>
+			</template>
+			<p>{{ $t('ltbm_introduction.stage_d') }}</p>
 			<img src="@img/ltbmFig/LtbmInCage.jpg" alt="InCage" />
 		</a-card>
 		<!-- stageD note -->
 		<a-card class="timeline-card">
 			<strong>Notes</strong>
-			<li>{{ $t('ltbm_introduction.stagednote') }}</li>
+			<li>{{ $t('ltbm_introduction.stage_d_note') }}</li>
 		</a-card>
 		<!-- stageE -->
 		<span class="timeline-stamp">2020-01-08</span>
 		<a-card title="Stage-E" class="timeline-card">
-			<template #extra
-				><a-tag color="success">
+			<template #extra>
+				<a-tag color="success">
 					<template #icon>
 						<moonIcon></moonIcon>
 					</template>
-					9.5 Months </a-tag
-				><a-tag color="success">
-					<template #icon><clock-circle-outlined /> </template>
-					DAY-104</a-tag
-				></template
-			>
-			<p>{{ $t('ltbm_introduction.stagee') }}</p>
+					9.5 Months
+				</a-tag>
+				<a-tag color="success">
+					<template #icon><clock-circle-outlined /></template>
+					DAY-104
+				</a-tag>
+			</template>
+			<p>{{ $t('ltbm_introduction.stage_e') }}</p>
 		</a-card>
 		<!-- stageF -->
 		<span class="timeline-stamp">2020-06-11</span>
 		<a-card title="Stage-F" class="timeline-card">
-			<template #extra
-				><a-tag color="success">
+			<template #extra>
+				<a-tag color="success">
 					<template #icon>
 						<moonIcon></moonIcon>
 					</template>
-					14.5 Months </a-tag
-				><a-tag color="success">
-					<template #icon><clock-circle-outlined /> </template>
-					DAY-259</a-tag
-				></template
-			>
-			<p>{{ $t('ltbm_introduction.stagef') }}</p>
+					14.5 Months
+				</a-tag>
+				<a-tag color="success">
+					<template #icon><clock-circle-outlined /></template>
+					DAY-259
+				</a-tag>
+			</template>
+			<p>{{ $t('ltbm_introduction.stage_f') }}</p>
 			<img src="@img/ltbmFig/LtbmInBigCage.jpg" alt="InBigCage" />
 		</a-card>
 		<!-- stageF note -->
 		<a-card class="timeline-card">
 			<strong>Notes</strong>
-			<li>{{ $t('ltbm_introduction.stagefnote') }}</li>
+			<li>{{ $t('ltbm_introduction.stage_f_note') }}</li>
 		</a-card>
 		<!-- stageG -->
 		<span class="timeline-stamp">2021-01-06</span>
 		<a-card title="Stage-G" class="timeline-card">
-			<template #extra
-				><a-tag color="success">
+			<template #extra>
+				<a-tag color="success">
 					<template #icon>
 						<moonIcon></moonIcon>
 					</template>
-					21.5 Months </a-tag
-				><a-tag color="success">
-					<template #icon><clock-circle-outlined /> </template>
-					DAY-468</a-tag
-				></template
-			>
-			<p>{{ $t('ltbm_introduction.stageg') }}</p>
+					21.5 Months
+				</a-tag>
+				<a-tag color="success">
+					<template #icon><clock-circle-outlined /></template>
+					DAY-468
+				</a-tag>
+			</template>
+			<p>{{ $t('ltbm_introduction.stage_g') }}</p>
 		</a-card>
 		<!-- stageG note -->
 		<a-card class="timeline-card">
 			<strong>Notes</strong>
-			<li>{{ $t('ltbm_introduction.stagegnote') }}</li>
+			<li>{{ $t('ltbm_introduction.stage_g_note') }}</li>
 		</a-card>
 		<!--stageO-->
 		<span class="timeline-stamp">2021-08-30</span>
 		<a-card title="Stage-Others" class="timeline-card">
-			<template #extra
-				><a-tag color="success">
+			<template #extra>
+				<a-tag color="success">
 					<template #icon>
 						<moonIcon></moonIcon>
 					</template>
-					8 Years avg </a-tag
-				><a-tag color="success">
-					<template #icon><clock-circle-outlined /> </template>
-					DAY-704</a-tag
-				></template
-			>
-			<p>{{ $t('ltbm_introduction.stageo') }}</p>
+					8 Years avg
+				</a-tag>
+				<a-tag color="success">
+					<template #icon><clock-circle-outlined /></template>
+					DAY-704
+				</a-tag>
+			</template>
+			<p>{{ $t('ltbm_introduction.stage_o') }}</p>
 		</a-card>
 	</div>
 </template>

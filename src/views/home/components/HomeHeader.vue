@@ -12,30 +12,29 @@
 						mode="inline"
 					>
 						<a-sub-menu key="sub1">
-							<template #expandIcon
-								><menu-outlined
+							<template #expandIcon>
+								<menu-outlined
 									:style="{
 										color: useThemeStoreWithOut().getThemeCol('primaryCol'),
 									}"
-							/></template>
-							<a-menu-item key="2"
-								><router-link to="/home">Home</router-link></a-menu-item
-							>
-							<a-menu-item key="3"
-								><router-link to="/news">News</router-link></a-menu-item
-							>
-							<a-menu-item key="4"
-								><router-link to="/member">Member</router-link></a-menu-item
-							>
-							<a-menu-item key="5"
-								><router-link to="/publication"
-									>Publication</router-link
-								></a-menu-item
-							>
+								/>
+							</template>
+							<a-menu-item key="2">
+								<router-link to="/home">Home</router-link>
+							</a-menu-item>
+							<a-menu-item key="3">
+								<router-link to="/news">News</router-link>
+							</a-menu-item>
+							<a-menu-item key="4">
+								<router-link to="/member">Member</router-link>
+							</a-menu-item>
+							<a-menu-item key="5">
+								<router-link to="/publication">Publication</router-link>
+							</a-menu-item>
 							<a-sub-menu key="sub2" title="Research">
-								<a-menu-item key="6"
-									><router-link to="/ltbm">Ltgem</router-link></a-menu-item
-								>
+								<a-menu-item key="6">
+									<router-link to="/ltbm">Ltgem</router-link>
+								</a-menu-item>
 								<!--<a-menu-item key="7"><router-link to="/ltbm">Ltgem</router-link></a-menu-item>-->
 							</a-sub-menu>
 						</a-sub-menu>

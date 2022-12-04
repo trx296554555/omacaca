@@ -18,18 +18,20 @@
 		<vxe-column
 			v-if="degParamStore.$state.degParams.model == 'M3'"
 			type="checkbox"
+			field="cd"
 			width="100"
-			title="Condition"
+			:title="t('ltbm_dega.condition')"
 		></vxe-column>
 		<vxe-column
 			v-if="degParamStore.$state.degParams.model != 'M3'"
 			type="checkbox"
+			field="id"
 			width="100"
-			title="Stage"
+			:title="t('ltbm_dega.stage')"
 		></vxe-column>
-		<vxe-column field="age" width="100" title="Age"></vxe-column>
+		<vxe-column field="age" width="100" :title="t('ltbm_dega.age')"></vxe-column>
 
-		<vxe-colgroup title="Sample (female)">
+		<vxe-colgroup :title="`${t('ltbm_dega.sample')} (${t('ltbm_dega.female')})`">
 			<vxe-column field="s1" title="01"></vxe-column>
 			<vxe-column field="s2" title="02"></vxe-column>
 			<vxe-column field="s3" title="03"></vxe-column>
@@ -41,7 +43,7 @@
 			<vxe-column field="s9" title="09"></vxe-column>
 			<vxe-column field="s10" title="10"></vxe-column>
 		</vxe-colgroup>
-		<vxe-colgroup title="Sample (male)">
+		<vxe-colgroup :title="`${t('ltbm_dega.sample')} (${t('ltbm_dega.male')})`">
 			<vxe-column field="s11" title="11"></vxe-column>
 			<vxe-column field="s12" title="12"></vxe-column>
 			<vxe-column field="s13" title="13"></vxe-column>
@@ -456,7 +458,7 @@ const selectChangeEvent: VxeTableEvents.CheckboxChange = ({ checked, row }) => {
 		$table?.toggleCheckboxRow(row)
 		return null
 	}
-
+	// 具体每个选择更新groups逻辑
 	if (mod === 'M1' || mod === 'M4') {
 		// M1和M4最大可选两个，填入对应stage
 		checked
@@ -526,5 +528,3 @@ watch(
 	}
 )
 </script>
-
-<style scoped lang="less"></style>

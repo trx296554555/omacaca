@@ -2,9 +2,9 @@
 	<a-collapse v-model:activeKey="activeKey" expand-icon-position="right" class="ltbm-collapse">
 		<a-collapse-panel key="1" :header="$t('ltbm_introduction.background')">
 			<p>{{ $t('ltbm_introduction.background1') }}</p>
-			<a href="https://www.nature.com/articles/s41586-019-1365-2" target="_blank"
-				><img src="@img/ltbmFig/LtbmAgeingResearch.jpg" alt="AgeingResearch"
-			/></a>
+			<a href="https://www.nature.com/articles/s41586-019-1365-2" target="_blank">
+				<img src="@img/ltbmFig/LtbmAgeingResearch.jpg" alt="AgeingResearch" />
+			</a>
 			<p>{{ $t('ltbm_introduction.background2') }}</p>
 			<p>{{ $t('ltbm_introduction.background3') }}</p>
 			<p>{{ $t('ltbm_introduction.background4') }}</p>
@@ -22,22 +22,22 @@
 			</p>
 			<ul>
 				<li>
-					<strong>{{ $t(`ltgebm_header_menu.dega`) }}</strong
-					>：允许用户浏览和检索特定的、不同组间的差异基因表达情况。同时提供了 ORA 与 GSEA
+					<strong>{{ $t(`ltgebm_header_menu.dega`) }}</strong>
+					：允许用户浏览和检索特定的、不同组间的差异基因表达情况。同时提供了 ORA 与 GSEA
 					两种方法进行功能富集，分析结果中还集成了GO term、KEGG
 					pathway和HP等基因功能注释信息。
 				</li>
 				<li>
-					<strong>{{ $t(`ltgebm_header_menu.tsa`) }}</strong
-					>：允许用户
+					<strong>{{ $t(`ltgebm_header_menu.tsa`) }}</strong>
+					：允许用户
 				</li>
 				<li>
-					<strong>{{ $t(`ltgebm_header_menu.tap`) }}</strong
-					>：允许用户
+					<strong>{{ $t(`ltgebm_header_menu.tap`) }}</strong>
+					：允许用户
 				</li>
 				<li>
-					<strong>{{ $t(`ltgebm_header_menu.meta`) }}</strong
-					>：允许用户
+					<strong>{{ $t(`ltgebm_header_menu.meta`) }}</strong>
+					：允许用户
 				</li>
 			</ul>
 			<p>

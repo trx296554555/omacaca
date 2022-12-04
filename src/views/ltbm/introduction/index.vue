@@ -4,8 +4,14 @@
 		<div class="homeTitle">
 			<transition appear enter-active-class="animate__animated animate__jackInTheBox">
 				<h2>
-					<strong>L</strong>ong-term <strong>T</strong>racking of <strong>B</strong>aby
-					<strong>M</strong>acaque
+					<strong>L</strong>
+					<span>ong-term&nbsp;</span>
+					<strong>T</strong>
+					<span>racking of&nbsp;</span>
+					<strong>B</strong>
+					<span>aby&nbsp;</span>
+					<strong>M</strong>
+					<span>acaque</span>
 				</h2>
 			</transition>
 		</div>

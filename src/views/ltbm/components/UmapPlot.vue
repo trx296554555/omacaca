@@ -1,67 +1,165 @@
 <template>
-	<div id="ttt"></div>
+	<div>
+		<div class="PlotTitle">
+			<p>Umap Chart</p>
+			<SavePlotBtn></SavePlotBtn>
+		</div>
+		<div id="umapPlot"></div>
+	</div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
-import { Line, LineOptions } from '@antv/g2plot'
-import { Plot } from '@antv/g2plot/src/core/plot'
+import { onMounted, watch, provide, reactive } from 'vue'
+
 import { useThemeStoreWithOut } from '@/store/modules/theme'
-let line: any
-const initChart = () => {
-	line = new Line('ttt', {
+import { useLocaleStoreWithOut } from '@/store/modules/locale'
+import { useDegParamStore } from '@/store/modules/ltbmDegParam'
+import { Scatter } from '@antv/g2plot'
+import SavePlotBtn from '@/components/SavePlotBtn.vue'
+import { plotObjType } from '#/g2plot'
+import { getUmapInfoList } from '@/api/metainfo'
+
+const degParamStore = useDegParamStore()
+
+const createUmapPlot = (renderType) => {
+	return new Scatter('umapPlot', {
 		data: [],
-		xField: 'year',
-		yField: 'value',
-		label: {},
-		point: {
-			size: 5,
-			shape: 'diamond',
-			style: {
-				fill: 'white',
-				stroke: '#5B8FF9',
-				lineWidth: 2,
-			},
+		renderer: renderType,
+		height: 450,
+		appendPadding: 15,
+		xField: 'm1_umap_dimension_1',
+		yField: 'm1_umap_dimension_2',
+		shapeField: 'sex',
+		colorField: 'stage',
+		size: 4,
+		tooltip: {
+			enterable: true,
+			fields: [
+				'sample_iD',
+				'sampling_time',
+				'age',
+				'sex',
+				'breeding_condition',
+				'envs',
+				'envs_info',
+				'diet',
+				'state',
+				'state_info',
+			],
 		},
-		tooltip: { showMarkers: false },
-		state: {
-			active: {
+		brush: {
+			enabled: true,
+			mask: {
 				style: {
-					shadowBlur: 4,
-					stroke: '#000',
-					fill: 'red',
+					fill: 'rgba(255,0,0,0.15)',
 				},
 			},
 		},
-		interactions: [{ type: 'marker-active' }],
+		yAxis: {
+			nice: true,
+			max: 4,
+			title: {
+				text: 'UMAP dimension 2',
+			},
+			grid: {
+				line: {
+					style: {
+						stroke: '#eee',
+					},
+				},
+			},
+		},
+		xAxis: {
+			title: {
+				text: 'UMAP dimension 1',
+			},
+			grid: {
+				line: {
+					style: {
+						stroke: '#eee',
+					},
+				},
+			},
+		},
+		shape: ({ sex }) => {
+			if (sex === 'Male') {
+				return 'circle'
+			}
+			return 'square'
+		},
+		interactions: [{ type: 'legend-highlight' }],
+		annotations: [],
 	})
-	const data = [
-		{ year: '1991', value: 3 },
-		{ year: '1992', value: 4 },
-		{ year: '1993', value: 3.5 },
-		{ year: '1994', value: 5 },
-		{ year: '1995', value: 4.9 },
-		{ year: '1996', value: 6 },
-		{ year: '1997', value: 7 },
-		{ year: '1998', value: 9 },
-		{ year: '1999', value: 13 },
-	]
-	line.changeData(data)
-	line.update({ theme: useThemeStoreWithOut().getTheme })
-	line.render()
 }
+
+async function updateUmapPlotData(plot: any) {
+	const getData = new Promise((resolve, reject) => {
+		getUmapInfoList({ lang: useLocaleStoreWithOut().getLocale })
+			.then((res) => {
+				resolve(res.data)
+			})
+			.catch((error) => {
+				reject(error)
+			})
+	})
+	const rawdata = (await getData) as any[]
+	let data: any[]
+	// 此处为自定义的数据清理
+	if (degParamStore.degParams.model === 'M4') {
+		data = rawdata.filter((item: any) => {
+			return item.m4_umap_dimension_1 !== null
+		})
+	} else {
+		data = rawdata.filter((item: any) => {
+			return item.m4_umap_dimension_1 !== null && item.stage !== 'MCR' && item.stage !== 'OCR'
+		})
+	}
+	plot.changeData(data)
+	plot.update({ theme: useThemeStoreWithOut().getTheme })
+}
+
+const plotObj: plotObjType = {
+	createPlotMethod: createUmapPlot,
+	updateDataMethod: updateUmapPlotData,
+}
+
 onMounted(() => {
-	initChart()
+	plotObj.plot = createUmapPlot('canvas')
+	updateUmapPlotData(plotObj.plot)
 })
-// const plotTheme =
+
 watch(
-	() => useThemeStoreWithOut().getTheme,
-	(newValue, oldValue) => {
-		console.log(newValue)
-		line.update({ theme: newValue })
-		console.log(newValue)
+	() => degParamStore.degParams.model,
+	(newV, oldV) => {
+		plotObj.updateDataMethod(plotObj.plot)
+		if (newV === 'M1' || newV === 'M2') {
+			plotObj.plot?.update({
+				colorField: 'stage',
+				xField: 'm1_umap_dimension_1',
+				yField: 'm1_umap_dimension_2',
+			})
+		} else if (newV === 'M3') {
+			plotObj.plot?.update({
+				colorField: 'breeding_condition',
+				xField: 'm1_umap_dimension_1',
+				yField: 'm1_umap_dimension_2',
+			})
+		} else {
+			plotObj.plot?.update({
+				colorField: 'stage',
+				xField: 'm4_umap_dimension_1',
+				yField: 'm4_umap_dimension_2',
+			})
+		}
 	}
 )
-</script>
+useLocaleStoreWithOut().$subscribe((mutation, state) => {
+	plotObj.updateDataMethod(plotObj.plot)
+})
 
-<style scoped></style>
+// 以下在所有plot组件默认使用，用于保存PNG/SVG 以及暗黑主题适应
+provide('plotObj', plotObj)
+useThemeStoreWithOut().$subscribe((mutation, state) => {
+	plotObj?.plot?.update({ theme: state.themeInfo.theme })
+})
+</script>

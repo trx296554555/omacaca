@@ -11,14 +11,16 @@
 					v-show="genderOptions.m.visible"
 					value="m"
 					:disabled="genderOptions.m.disabled"
-					>{{ $t(`ltbm_dega.male`) }}</a-radio
 				>
+					{{ $t(`ltbm_dega.male`) }}
+				</a-radio>
 				<a-radio
 					v-show="genderOptions.f.visible"
 					value="f"
 					:disabled="genderOptions.f.disabled"
-					>{{ $t(`ltbm_dega.female`) }}</a-radio
 				>
+					{{ $t(`ltbm_dega.female`) }}
+				</a-radio>
 			</a-radio-group>
 		</div>
 		<div class="DegStep">
@@ -37,26 +39,28 @@
 						v-show="modelOptions.opt2.visible"
 						value="M2"
 						:disabled="modelOptions.opt2.disabled"
-						>{{ $t(`ltbm_dega.step2option2`) }}</a-radio
 					>
+						{{ $t(`ltbm_dega.step2option2`) }}
+					</a-radio>
 					<a-checkbox
 						v-if="degParamStore.$state.degParams.model == 'M2'"
 						v-model:checked="degParamStore.$state.degParams.full"
 						style="font-size: 16px"
-						>{{ $t(`ltbm_dega.step2full`) }}</a-checkbox
 					>
+						{{ $t(`ltbm_dega.step2full`) }}
+					</a-checkbox>
 				</a-tooltip>
 				<a-tooltip placement="right">
 					<template #title>{{ $t(`ltbm_dega.step2option3_tooltip`) }}</template>
-					<a-radio v-show="modelOptions.opt3.visible" value="M3">{{
-						$t(`ltbm_dega.step2option3`)
-					}}</a-radio>
+					<a-radio v-show="modelOptions.opt3.visible" value="M3">
+						{{ $t(`ltbm_dega.step2option3`) }}
+					</a-radio>
 				</a-tooltip>
 				<a-tooltip placement="right">
 					<template #title>{{ $t(`ltbm_dega.step2option4_tooltip`) }}</template>
-					<a-radio value="M4" :disabled="modelOptions.opt4.disabled">{{
-						$t(`ltbm_dega.step2option4`)
-					}}</a-radio>
+					<a-radio value="M4" :disabled="modelOptions.opt4.disabled">
+						{{ $t(`ltbm_dega.step2option4`) }}
+					</a-radio>
 				</a-tooltip>
 				<a-tooltip placement="right">
 					<template #title>{{ $t(`ltbm_dega.step2option5_tooltip`) }}</template>
@@ -66,36 +70,42 @@
 		</div>
 		<div class="DegStep">
 			<p>{{ $t(`ltbm_dega.step3`) }}</p>
-			<div class="btn-group">
-				<a-button type="danger"
-					>{{
-						degParamStore.$state.degParams.groups[0]
-							? degParamStore.$state.degParams.groups[0]
-							: 'Group1'
-					}}
-				</a-button>
-			</div>
-			<div class="btn-group">
-				<a-button type="primary" class="my-btn-old">{{
-					degParamStore.$state.degParams.groups[1]
-						? degParamStore.$state.degParams.groups[1]
-						: 'Group2'
-				}}</a-button>
+			<div>
+				<div class="btn-group">
+					<a-button type="danger">
+						{{
+							degParamStore.$state.degParams.groups[0]
+								? degParamStore.$state.degParams.groups[0]
+								: 'Group1'
+						}}
+					</a-button>
+				</div>
+				<div class="btn-group">
+					<a-button type="primary" class="my-btn-old">
+						{{
+							degParamStore.$state.degParams.groups[1]
+								? degParamStore.$state.degParams.groups[1]
+								: 'Group2'
+						}}
+					</a-button>
+				</div>
 			</div>
 		</div>
 		<div class="DegStep">
 			<p>{{ $t(`ltbm_dega.step4`) }}</p>
-			<div class="btn-group">
-				<a-button type="primary" class="my-btn-secondary" @click="resetOptions">
-					<template #icon><redo-outlined /></template>
-					{{ $t(`ltbm_dega.reset_btn`) }}
-				</a-button>
-			</div>
-			<div class="btn-group">
-				<a-button type="primary">
-					<template #icon><check-outlined /></template>
-					{{ $t(`ltbm_dega.submit_btn`) }}
-				</a-button>
+			<div>
+				<div class="btn-group">
+					<a-button type="primary" class="my-btn-secondary" @click="resetOptions">
+						<template #icon><redo-outlined /></template>
+						{{ $t(`ltbm_dega.reset_btn`) }}
+					</a-button>
+				</div>
+				<div class="btn-group">
+					<a-button type="primary">
+						<template #icon><check-outlined /></template>
+						{{ $t(`ltbm_dega.submit_btn`) }}
+					</a-button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -170,12 +180,13 @@ const resetOptions = () => {
 }
 .DegStep {
 	@apply mb-3;
-	div:not(:first-child) {
+	& > div:not(:first-child) {
 		margin-left: 1.5rem;
 	}
 	.btn-group {
 		@apply inline-block;
 		padding-top: 0.75rem;
+		padding-right: 0.5rem;
 	}
 }
 :deep(.ant-radio-wrapper) {

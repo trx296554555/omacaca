@@ -9,56 +9,53 @@
 				<div class="md:hidden absolute left-0 top-0 z-0">
 					<a-menu
 						id="mobile-dropMenu"
+						v-model:openKeys="openKeys"
 						:style="'width:' + viewData.viewWidth + 'px'"
 						style="border: none"
 						mode="inline"
+						@click="handleClick"
 					>
 						<a-sub-menu key="sub1">
-							<template #expandIcon
-								><menu-outlined
+							<template #expandIcon>
+								<menu-outlined
 									:style="{
 										color: useThemeStoreWithOut().getThemeCol('primaryCol'),
 									}"
-							/></template>
-							<a-menu-item key="2"
-								><router-link to="/home">{{
-									$t('ltbm_title.home')
-								}}</router-link></a-menu-item
-							>
-							<a-menu-item key="3"
-								><router-link to="/news">{{
-									$t('ltbm_title.introduction')
-								}}</router-link></a-menu-item
-							>
+								/>
+							</template>
+							<a-menu-item key="2">
+								<router-link to="/home">{{ $t('ltbm_title.home') }}</router-link>
+							</a-menu-item>
+							<a-menu-item key="3">
+								<router-link to="/news">
+									{{ $t('ltbm_title.introduction') }}
+								</router-link>
+							</a-menu-item>
 							<a-sub-menu key="sub4" :title="$t('ltbm_title.transcriptomics')">
 								<a-sub-menu key="sub4-1" :title="$t('ltbm_title.csa')">
-									<a-menu-item
-										><router-link to="/ltbm/ora">{{
-											$t('ltbm_title.ora')
-										}}</router-link></a-menu-item
-									>
-									<a-menu-item
-										><router-link to="/ltbm/gsea">{{
-											$t('ltbm_title.gsea')
-										}}</router-link></a-menu-item
-									>
+									<a-menu-item key="sub4-1-1">
+										<router-link to="/ltbm/ora">
+											{{ $t('ltbm_title.ora') }}
+										</router-link>
+									</a-menu-item>
+									<a-menu-item key="sub4-1-2">
+										<router-link to="/ltbm/gsea">
+											{{ $t('ltbm_title.gsea') }}
+										</router-link>
+									</a-menu-item>
 								</a-sub-menu>
 								<a-sub-menu key="sub4-2" :title="$t('ltbm_title.lma')">
-									<a-menu-item
-										><router-link to="/">{{
-											$t('ltbm_title.tsa')
-										}}</router-link></a-menu-item
-									>
-									<a-menu-item
-										><router-link to="/">{{
-											$t('ltbm_title.vpa')
-										}}</router-link></a-menu-item
-									>
-									<a-menu-item
-										><router-link to="/">{{
-											$t('ltbm_title.wgcna')
-										}}</router-link></a-menu-item
-									>
+									<a-menu-item>
+										<router-link to="/">{{ $t('ltbm_title.tsa') }}</router-link>
+									</a-menu-item>
+									<a-menu-item>
+										<router-link to="/">{{ $t('ltbm_title.vpa') }}</router-link>
+									</a-menu-item>
+									<a-menu-item>
+										<router-link to="/">
+											{{ $t('ltbm_title.wgcna') }}
+										</router-link>
+									</a-menu-item>
 								</a-sub-menu>
 								<a-sub-menu key="sub3" title="Others" disabled>
 									<a-menu-item>wait1</a-menu-item>
@@ -66,15 +63,13 @@
 								</a-sub-menu>
 							</a-sub-menu>
 							<a-sub-menu key="sub5" :title="$t('ltbm_title.metagenomics')">
-								<a-menu-item key="sub5-1"
-									><router-link to="/ltbm">3232</router-link></a-menu-item
-								>
+								<a-menu-item key="sub5-1">
+									<router-link to="/ltbm">3232</router-link>
+								</a-menu-item>
 							</a-sub-menu>
-							<a-menu-item key="6"
-								><router-link to="/publication"
-									>Co-analysis</router-link
-								></a-menu-item
-							>
+							<a-menu-item key="6">
+								<router-link to="/publication">Co-analysis</router-link>
+							</a-menu-item>
 						</a-sub-menu>
 					</a-menu>
 				</div>
@@ -83,50 +78,46 @@
 			<!--Web端导航栏-->
 			<ul class="hidden md:flex">
 				<li>
-					<router-link to="/home" class="HeadLink">{{
-						$t('ltbm_title.home')
-					}}</router-link>
+					<router-link to="/home" class="HeadLink">
+						{{ $t('ltbm_title.home') }}
+					</router-link>
 				</li>
 				<li>
-					<router-link to="/ltbm/introduction" class="HeadLink">{{
-						$t('ltbm_title.introduction')
-					}}</router-link>
+					<router-link to="/ltbm/introduction" class="HeadLink">
+						{{ $t('ltbm_title.introduction') }}
+					</router-link>
 				</li>
 				<li class="hovered">
 					<a-dropdown>
-						<router-link to="/ltbm/ora" class="HeadLink">{{
-							$t('ltbm_title.transcriptomics')
-						}}</router-link>
+						<router-link to="/ltbm/ora" class="HeadLink">
+							{{ $t('ltbm_title.transcriptomics') }}
+						</router-link>
 						<template #overlay>
 							<a-menu>
 								<a-sub-menu key="sub1" :title="$t('ltbm_title.csa')">
-									<a-menu-item
-										><router-link to="/ltbm/ora">{{
-											$t('ltbm_title.ora')
-										}}</router-link></a-menu-item
-									>
-									<a-menu-item
-										><router-link to="/ltbm/gsea">{{
-											$t('ltbm_title.gsea')
-										}}</router-link></a-menu-item
-									>
+									<a-menu-item>
+										<router-link to="/ltbm/ora">
+											{{ $t('ltbm_title.ora') }}
+										</router-link>
+									</a-menu-item>
+									<a-menu-item>
+										<router-link to="/ltbm/gsea">
+											{{ $t('ltbm_title.gsea') }}
+										</router-link>
+									</a-menu-item>
 								</a-sub-menu>
 								<a-sub-menu key="sub2" :title="$t('ltbm_title.lma')">
-									<a-menu-item
-										><router-link to="/">{{
-											$t('ltbm_title.tsa')
-										}}</router-link></a-menu-item
-									>
-									<a-menu-item
-										><router-link to="/">{{
-											$t('ltbm_title.vpa')
-										}}</router-link></a-menu-item
-									>
-									<a-menu-item
-										><router-link to="/">{{
-											$t('ltbm_title.wgcna')
-										}}</router-link></a-menu-item
-									>
+									<a-menu-item>
+										<router-link to="/">{{ $t('ltbm_title.tsa') }}</router-link>
+									</a-menu-item>
+									<a-menu-item>
+										<router-link to="/">{{ $t('ltbm_title.vpa') }}</router-link>
+									</a-menu-item>
+									<a-menu-item>
+										<router-link to="/">
+											{{ $t('ltbm_title.wgcna') }}
+										</router-link>
+									</a-menu-item>
 								</a-sub-menu>
 								<a-sub-menu key="sub3" title="Others" disabled>
 									<a-menu-item>wait1</a-menu-item>
@@ -138,9 +129,9 @@
 				</li>
 				<li class="hovered">
 					<a-dropdown>
-						<router-link to="/research" class="HeadLink">{{
-							$t('ltbm_title.metagenomics')
-						}}</router-link>
+						<router-link to="/research" class="HeadLink">
+							{{ $t('ltbm_title.metagenomics') }}
+						</router-link>
 						<template #overlay>
 							<a-menu>
 								<a-menu-item>1st menu item</a-menu-item>
@@ -158,9 +149,9 @@
 					</a-dropdown>
 				</li>
 				<li>
-					<router-link to="/member" class="HeadLink">{{
-						$t('ltbm_title.co_analysis')
-					}}</router-link>
+					<router-link to="/member" class="HeadLink">
+						{{ $t('ltbm_title.co_analysis') }}
+					</router-link>
 				</li>
 			</ul>
 		</div>
@@ -172,6 +163,13 @@ import { onMounted, watch, reactive, ref } from 'vue'
 import type { MenuProps } from 'ant-design-vue'
 import { MenuOutlined } from '@ant-design/icons-vue'
 import { useThemeStoreWithOut } from '@/store/modules/theme'
+//
+const openKeys = ref([''])
+const handleClick: MenuProps['onClick'] = (menuInfo) => {
+	// console.log(openKeys)
+	// console.log('click ', menuInfo)
+	openKeys.value = ['']
+}
 
 // 用于自适应显示的数据，包括网页可见区域宽高等
 const viewData = reactive({

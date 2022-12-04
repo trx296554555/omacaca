@@ -33,12 +33,12 @@ oraParamStore.setDegParam({ analyse: 'ora', model: 'M1', full: true, gender: 'a'
 	@apply grid grid-rows-2 grid-cols-3 gap-6;
 }
 .theTable {
-	@apply col-span-3 row-span-1;
+	@apply col-span-1 sm:col-span-3 row-span-1;
 }
 .theOptions {
-	@apply col-span-1 row-span-1;
+	@apply col-span-2 sm:col-span-1 row-span-1;
 }
 .theUmapPlot {
-	@apply col-span-2 row-span-1;
+	@apply col-span-3 sm:col-span-2 row-span-1;
 }
 </style>

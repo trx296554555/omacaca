@@ -12,15 +12,16 @@
 						mode="inline"
 					>
 						<a-sub-menu key="sub1">
-							<template #expandIcon
-								><menu-outlined
+							<template #expandIcon>
+								<menu-outlined
 									:style="{
 										color: useThemeStoreWithOut().getThemeCol('primaryCol'),
 									}"
-							/></template>
-							<a-menu-item key="2">{{
-								useThemeStoreWithOut().getThemeCol('primaryCol')
-							}}</a-menu-item>
+								/>
+							</template>
+							<a-menu-item key="2">
+								{{ useThemeStoreWithOut().getThemeCol('primaryCol') }}
+							</a-menu-item>
 							<a-menu-item key="3">Option 6</a-menu-item>
 							<a-menu-item key="4">Option 6</a-menu-item>
 							<a-menu-item key="5">Option 6</a-menu-item>

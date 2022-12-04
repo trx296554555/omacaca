@@ -9,18 +9,18 @@
 				</div>
 				<ul>
 					<li>
-						<a href="https://biit.cs.ut.ee/gprofiler/gost" target="_blank"
-							>Function Enrichment (g:Profiler)
+						<a href="https://biit.cs.ut.ee/gprofiler/gost" target="_blank">
+							Function Enrichment (g:Profiler)
 						</a>
 					</li>
 					<li>
-						<a href="https://biodbnet-abcc.ncifcrf.gov/db/db2db.php" target="_blank"
-							>ID Convert (bioDBnet)
+						<a href="https://biodbnet-abcc.ncifcrf.gov/db/db2db.php" target="_blank">
+							ID Convert (bioDBnet)
 						</a>
 					</li>
 					<li>
-						<a href="https://biodbnet-abcc.ncifcrf.gov/db/db2db.php" target="_blank"
-							>Tree Visualization (ITOL)
+						<a href="https://biodbnet-abcc.ncifcrf.gov/db/db2db.php" target="_blank">
+							Tree Visualization (ITOL)
 						</a>
 					</li>
 					<li>
@@ -32,9 +32,9 @@
 						</a>
 					</li>
 					<li>
-						<a href="http://www.ehbio.com/test/venn/#/" target="_blank"
-							>Venn Plot (Evenn)</a
-						>
+						<a href="http://www.ehbio.com/test/venn/#/" target="_blank">
+							Venn Plot (Evenn)
+						</a>
 					</li>
 					<li>
 						<a href="https://tool.lu/" target="_blank">Tool Box (tools)</a>
@@ -48,38 +48,40 @@
 				</div>
 				<ul>
 					<li>
-						<a href="http://222.18.10.6:404/" target="_blank"
-							>服务器集群登录（校园网）
+						<a href="http://222.18.10.6:404/" target="_blank">
+							服务器集群登录（校园网）
 						</a>
 					</li>
 					<li>
-						<a href="http://192.168.199.228/core/auth/login/" target="_blank"
-							>服务器集群管理（内网）</a
-						>
+						<a href="http://192.168.199.228/core/auth/login/" target="_blank">
+							服务器集群管理（内网）
+						</a>
 					</li>
 					<li>
-						<a href="http://192.168.199.228:3000/login" target="_blank"
-							>服务器集群监控（内网）</a
-						>
+						<a href="http://192.168.199.228:3000/login" target="_blank">
+							服务器集群监控（内网）
+						</a>
 					</li>
 					<li>
-						<a href="https://192.168.199.138" target="_blank"
-							>储存服务器访问-WukongNas</a
-						>
+						<a href="https://192.168.199.138" target="_blank">
+							储存服务器访问-WukongNas
+						</a>
 					</li>
 					<li>
 						<a
 							href="https://sculife404pandanas.cn4.quickconnect.cn/#/signin"
 							target="_blank"
-							>储存服务器访问-PandaNas</a
 						>
+							储存服务器访问-PandaNas
+						</a>
 					</li>
 					<li>
 						<a
 							href="https://sculife404shukenas.quickconnect.cn/#/signin"
 							target="_blank"
-							>储存服务器访问-ShukeNas</a
 						>
+							储存服务器访问-ShukeNas
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -94,9 +96,9 @@
 					<li><a href="https://www.littleming.ml/" target="_blank">小明网盘</a></li>
 
 					<li>
-						<a href="http://big.cdu.edu.cn/macsnvdb/" target="_blank"
-							>Macaque SNV Database</a
-						>
+						<a href="http://big.cdu.edu.cn/macsnvdb/" target="_blank">
+							Macaque SNV Database
+						</a>
 					</li>
 				</ul>
 			</div>

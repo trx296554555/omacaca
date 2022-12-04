@@ -58,7 +58,9 @@ declare module '@vue/runtime-core' {
     PageNotFound: typeof import('./src/views/sys/exception/PageNotFound.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SavePlotBtn: typeof import('./src/components/SavePlotBtn.vue')['default']
     Test: typeof import('./src/views/main-out/Test.vue')['default']
+    TestLinePlot: typeof import('./src/views/ltbm/components/TestLinePlot.vue')['default']
     Tmp: typeof import('./src/components/tmp.vue')['default']
     UmapPlot: typeof import('./src/views/ltbm/components/UmapPlot.vue')['default']
   }
