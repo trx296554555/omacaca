@@ -29,8 +29,6 @@
 <script setup lang="ts">
 import LtbmCollapse from '@/views/ltbm/introduction/LtbmCollapse.vue'
 import LtbmTimeline from '@/views/ltbm/introduction/LtbmTimeline.vue'
-
-document.title = 'Long-term Tracking of Baby Macaque'
 </script>
 
 <style scoped lang="less">

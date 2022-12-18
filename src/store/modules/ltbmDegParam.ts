@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 
 type AnalyseType = 'ora' | 'gsea'
-type ModelType = 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
-type GenderType = 'm' | 'f' | 'a'
+export type ModelType = 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
+export type GenderType = 'm' | 'f' | 'a'
 const grouplist = [
 	'BCRA',
 	'BCRB',
@@ -38,6 +38,8 @@ interface DegParams {
 	full: boolean
 	gender: GenderType
 	groups: GroupType[]
+	lfc: number
+	padj: number
 }
 
 interface DegParamInfo {
@@ -53,6 +55,8 @@ export const useDegParamStore = defineStore({
 			full: true,
 			gender: 'a',
 			groups: [],
+			lfc: 1,
+			padj: 0.01,
 		},
 	}),
 	actions: {

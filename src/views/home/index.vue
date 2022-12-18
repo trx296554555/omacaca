@@ -9,3 +9,6 @@
 		<HomeFigure></HomeFigure>
 	</div>
 </template>
+<script setup>
+document.title = 'Omics Research of Wildlife'
+</script>

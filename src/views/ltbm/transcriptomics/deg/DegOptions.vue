@@ -101,7 +101,7 @@
 					</a-button>
 				</div>
 				<div class="btn-group">
-					<a-button type="primary">
+					<a-button type="primary" @click="submit">
 						<template #icon><check-outlined /></template>
 						{{ $t(`ltbm_dega.submit_btn`) }}
 					</a-button>
@@ -116,7 +116,8 @@ import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 import { reactive } from 'vue'
 import { RedoOutlined, CheckOutlined } from '@ant-design/icons-vue'
 import { useI18n } from '@/tools/useI18n'
-
+import { message } from 'ant-design-vue'
+import { router } from '@/router'
 // 翻译设置
 const { t } = useI18n()
 
@@ -171,6 +172,27 @@ degParamStore.$subscribe((mutation, state) => {
 // 绑定的4个按钮事件
 const resetOptions = () => {
 	degParamStore.setDegParam({ analyse: 'ora', model: 'M1', full: true, gender: 'a', groups: [] })
+}
+const submit = () => {
+	if (degParamStore.degParams.groups.length < 2) {
+		message.error('You need to select two groups for comparison !')
+	} else if (degParamStore.degParams.groups[0] > degParamStore.degParams.groups[1]) {
+		;[degParamStore.degParams.groups[0], degParamStore.degParams.groups[1]] = [
+			degParamStore.degParams.groups[1],
+			degParamStore.degParams.groups[0],
+		]
+	}
+	const { href } = router.resolve({
+		path: '/ltbm/orares',
+		query: {
+			model: degParamStore.degParams.model,
+			isFull: degParamStore.degParams.full ? 'T' : 'F',
+			gender: degParamStore.degParams.gender,
+			g1: degParamStore.degParams.groups[0],
+			g2: degParamStore.degParams.groups[1],
+		},
+	})
+	window.open(href, '_blank')
 }
 </script>
 

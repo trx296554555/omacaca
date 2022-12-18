@@ -65,6 +65,7 @@ import { VxeTablePropTypes, VxeTableInstance, VxeTableEvents, VxeTableDefines } 
 import XEUtils from 'xe-utils'
 import { useI18n } from '@/tools/useI18n'
 import { useDegParamStore, GroupType } from '@/store/modules/ltbmDegParam'
+import { message } from 'ant-design-vue'
 
 // 翻译设置
 const { t } = useI18n()
@@ -447,6 +448,7 @@ const selectChangeEvent: VxeTableEvents.CheckboxChange = ({ checked, row }) => {
 	if (mod !== 'M3') {
 		if (records.length > TableConfig.maxCheckNum) {
 			alert(TableConfig.maxCheckNum)
+			message.warning('This is a success message')
 			$table?.toggleCheckboxRow(row)
 			return null
 		}
