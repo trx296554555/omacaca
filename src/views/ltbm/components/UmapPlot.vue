@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="PlotTitle">
-			<p>Umap Chart</p>
+			<p>Umap Plot</p>
 			<SavePlotBtn></SavePlotBtn>
 		</div>
 		<div id="umapPlot"></div>
@@ -119,6 +119,7 @@ async function updateUmapPlotData(plot: any) {
 }
 
 const plotObj: plotObjType = {
+	plotName: 'UmapPlot',
 	createPlotMethod: createUmapPlot,
 	updateDataMethod: updateUmapPlotData,
 }

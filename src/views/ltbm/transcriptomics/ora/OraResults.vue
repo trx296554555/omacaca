@@ -14,9 +14,16 @@
 		<OraResSummary></OraResSummary>
 		<div class="OraDegRes">
 			<OraDegTable class="col-span-5 md:col-span-3"></OraDegTable>
-			<!--			<OraDegChart class="col-span-3 md:col-span-2">234</OraDegChart>-->
+			<OraDegChart class="col-span-5 md:col-span-2"></OraDegChart>
 		</div>
-		<div>up-enrichment res</div>
+		<div class="OraEnrichRes">
+			<h2>Up-regulation Gene Enrichment Results</h2>
+			<OraEnrichRes regulation="up"></OraEnrichRes>
+		</div>
+		<div class="OraEnrichRes">
+			<h2>Down-regulation Gene Enrichment Results</h2>
+			<OraEnrichRes regulation="down"></OraEnrichRes>
+		</div>
 		<div style="height: 1000px">down-enrichment res</div>
 	</div>
 </template>
@@ -28,6 +35,8 @@ import { useRoute } from 'vue-router'
 import type { SelectProps } from 'ant-design-vue'
 import OraResSummary from './OraResSummary.vue'
 import OraDegTable from './OraDegTable.vue'
+import OraDegChart from '../../components/VolcanoPlot.vue'
+import OraEnrichRes from './OraEnrichRes.vue'
 import { getDegRes } from '@/api/degres'
 
 const degParamStore = useDegParamStore()
@@ -102,14 +111,20 @@ watch(
 <style scoped lang="less">
 .OraResults {
 	@apply Container;
+	h2 {
+		@apply text-base md:text-3xl font-semibold py-4;
+	}
 }
 .OraResTitle {
 	@apply flex items-center;
 	h2 {
-		@apply text-base md:text-3xl font-semibold py-6 pr-4;
+		@apply pr-4;
 	}
 }
 .OraDegRes {
-	@apply grid grid-cols-5;
+	@apply grid grid-cols-5 gap-8;
+}
+.OraEnrichRes {
+	@apply my-4;
 }
 </style>

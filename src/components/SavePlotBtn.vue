@@ -22,12 +22,12 @@ const plotObj = inject('plotObj') as plotObjType
 async function savePlot(saveType) {
 	if (plotObj.plot) {
 		if (plotObj.plot.chart.renderer === saveType) {
-			downloadImage(plotObj.plot.chart)
+			downloadImage(plotObj.plot.chart, plotObj.plotName)
 		} else {
 			plotObj.plot.destroy()
 			plotObj.plot = plotObj.createPlotMethod(saveType)
 			await plotObj.updateDataMethod(plotObj.plot)
-			downloadImage(plotObj.plot.chart)
+			downloadImage(plotObj.plot.chart, plotObj.plotName)
 		}
 	}
 }

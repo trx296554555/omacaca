@@ -1,12 +1,6 @@
 <template>
 	<div id="OraResDegTable">
-		<vxe-grid
-			ref="xGrid"
-			v-bind="gridOptions"
-			class="mytable-scrollbar"
-			highlight-current-row
-			highlight-hover-row
-		>
+		<vxe-grid ref="xGrid" v-bind="gridOptions" class="mytable-scrollbar">
 			<template #toolbar_buttons>
 				<div class="flex hidden md:block">
 					<a-input
@@ -183,19 +177,21 @@ const searchReset = () => {
 }
 
 const gridOptions = reactive<VxeGridProps>({
-	border: true,
+	border: false,
 	size: 'small',
-	height: 530,
+	height: 528,
+	stripe: true,
 	rowConfig: {
 		keyField: 'id',
+		isCurrent: true,
 		isHover: true,
 	},
 	columnConfig: {
-		resizable: true,
+		resizable: false,
 	},
 	pagerConfig: {
-		pageSize: 50,
-		pageSizes: [50, 100, 200, 500],
+		pageSize: 10,
+		pageSizes: [10, 50, 100, 200, 500],
 	},
 	toolbarConfig: {
 		slots: {
