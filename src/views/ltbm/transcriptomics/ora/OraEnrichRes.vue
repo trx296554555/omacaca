@@ -25,7 +25,7 @@
 						<span class="dash-underline">Affinity propagation</span>
 					</a-tooltip>
 				</a-radio>
-				<a-radio :value="regulation + 'wcp'">
+				<a-radio :value="regulation + 'wsc'">
 					<a-tooltip>
 						<template #title>
 							Find top gene sets while maximizing gene coverage, implementation by
@@ -46,7 +46,7 @@
 							Table
 						</span>
 					</template>
-					<OraEnrichTable></OraEnrichTable>
+					<OraEnrichTable :regulation="regulation"></OraEnrichTable>
 				</a-tab-pane>
 				<a-tab-pane key="bubble">
 					<template #tab>
@@ -78,7 +78,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, provide, reactive, ref } from 'vue'
 import { TableOutlined, CloudOutlined, DotChartOutlined } from '@ant-design/icons-vue'
 import OraEnrichTable from './OraEnrichTable.vue'
 import BubblePlot from '@/views/ltbm/components/BubblePlot.vue'
@@ -97,6 +97,7 @@ const switchOption = reactive({
 	rereMethodRadio: props.regulation + 'all',
 	activeTabKey: 'table',
 })
+provide('switchOption', switchOption)
 </script>
 
 <style scoped lang="less">

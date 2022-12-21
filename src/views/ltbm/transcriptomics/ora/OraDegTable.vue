@@ -67,13 +67,13 @@ watch(
 			dataPromise.lfcPadj.charAt(2)
 	}
 )
+let getData = dataPromise.getDegData
 
 // 搜索基因ID
 const formData = reactive({
 	geneId: '',
 })
 
-let getData = dataPromise.getDegData
 // 复制粘贴配置
 const copy = async (Msg, regulation) => {
 	const source = ref(Msg)

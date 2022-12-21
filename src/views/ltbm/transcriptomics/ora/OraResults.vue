@@ -37,7 +37,7 @@ import OraResSummary from './OraResSummary.vue'
 import OraDegTable from './OraDegTable.vue'
 import OraDegChart from '../../components/VolcanoPlot.vue'
 import OraEnrichRes from './OraEnrichRes.vue'
-import { getDegRes } from '@/api/degres'
+import { getDegRes, getGpfRes } from '@/api/degres'
 
 const degParamStore = useDegParamStore()
 // 当前页面路由
@@ -94,6 +94,22 @@ function renewData() {
 		min_lfc: parseFloat(dataPromise.lfcPadj.split('-')[0]),
 		max_padj: parseFloat(dataPromise.lfcPadj.split('-')[1]) / 100,
 	})
+	dataPromise.getGpfUpData = getGpfRes({
+		model_type: modelType,
+		comp1,
+		comp2,
+		lfc_threshold: parseFloat(dataPromise.lfcPadj.split('-')[0]),
+		padj_threshold: parseFloat(dataPromise.lfcPadj.split('-')[1]) / 100,
+		regulation: 'up',
+	})
+	dataPromise.getGpfDownData = getGpfRes({
+		model_type: modelType,
+		comp1,
+		comp2,
+		lfc_threshold: parseFloat(dataPromise.lfcPadj.split('-')[0]),
+		padj_threshold: parseFloat(dataPromise.lfcPadj.split('-')[1]) / 100,
+		regulation: 'down',
+	})
 }
 renewData()
 
@@ -104,8 +120,6 @@ watch(
 		console.log(dataPromise)
 	}
 )
-// dataPromise.getGpfUpData = accessGpfData('up')
-// dataPromise.getGpfDownData = accessGpfData('down')
 </script>
 
 <style scoped lang="less">
