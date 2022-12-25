@@ -120,7 +120,7 @@ onMounted(() => {
 	if (viewData.viewWidth < 640) {
 		viewData.viewHeight = viewData.viewHeight * 0.4
 	} else {
-		console.log(viewData.viewWidth)
+		console.log('Release 1.2.0 Powered by Tang 296554555@qq.com')
 	}
 })
 
