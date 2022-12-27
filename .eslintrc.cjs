@@ -97,7 +97,7 @@ module.exports = {
 		// 强制在 JSX 属性中一致地使用双引号或单引号
 		// 'jsx-quotes': 'warn',
 		// 强制可嵌套的块的最大深度4
-		'max-depth': 'warn',
+		'max-depth': ['warn', 5],
 		// 强制最大行数 300
 		// "max-lines": ["warn", { "max": 1200 }],
 		// 强制函数最大代码行数 50

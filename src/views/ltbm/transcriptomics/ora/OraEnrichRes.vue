@@ -56,8 +56,14 @@
 						</span>
 					</template>
 					<div class="grid grid-cols-2 gap-8">
-						<TopBubblePlot class="col-span-2 md:col-span-1"></TopBubblePlot>
-						<BubblePlot class="col-span-2 md:col-span-1"></BubblePlot>
+						<TopBubblePlot
+							:regulation="regulation"
+							class="col-span-2 md:col-span-1"
+						></TopBubblePlot>
+						<!--						<BubblePlot-->
+						<!--							:regulation="regulation"-->
+						<!--							class="col-span-2 md:col-span-1"-->
+						<!--						></BubblePlot>-->
 					</div>
 				</a-tab-pane>
 				<a-tab-pane key="words">
