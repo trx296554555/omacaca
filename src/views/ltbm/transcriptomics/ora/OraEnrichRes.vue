@@ -60,10 +60,7 @@
 							:regulation="regulation"
 							class="col-span-2 md:col-span-1"
 						></TopBubblePlot>
-						<!--						<BubblePlot-->
-						<!--							:regulation="regulation"-->
-						<!--							class="col-span-2 md:col-span-1"-->
-						<!--						></BubblePlot>-->
+						<div :regulation="regulation" class="col-span-2 md:col-span-1"></div>
 					</div>
 				</a-tab-pane>
 				<a-tab-pane key="words">
@@ -73,21 +70,19 @@
 							Word Cloud
 						</span>
 					</template>
-					<WordCloudPlot></WordCloudPlot>
+					<WordCloudPlot :regulation="regulation"></WordCloudPlot>
 				</a-tab-pane>
 			</a-tabs>
 		</div>
-		<div class="EnrichItem">item</div>
+
+		<div class="EnrichItem"><OraEnrichInfo :regulation="regulation"></OraEnrichInfo></div>
 	</div>
-	{{ switchOption.rereMethodRadio }}
-	{{ switchOption.activeTabKey }}
 </template>
 
 <script setup lang="ts">
 import { computed, provide, reactive, ref } from 'vue'
 import { TableOutlined, CloudOutlined, DotChartOutlined } from '@ant-design/icons-vue'
 import OraEnrichTable from './OraEnrichTable.vue'
-import BubblePlot from '@/views/ltbm/components/BubblePlot.vue'
 import TopBubblePlot from '@/views/ltbm/components/TopBubblePlot.vue'
 import WordCloudPlot from '@/views/ltbm/components/WordCloudPlot.vue'
 

@@ -44,6 +44,7 @@ interface DegParams {
 
 interface DegParamInfo {
 	degParams: DegParams
+	oraItemInfo: any
 }
 
 export const useDegParamStore = defineStore({
@@ -58,10 +59,43 @@ export const useDegParamStore = defineStore({
 			lfc: 1,
 			padj: 0.01,
 		},
+		oraItemInfo: {
+			up: {
+				term_id: '',
+				term_name: '',
+				source: '',
+				adjusted_p_value: 0,
+				term_size: 0,
+				query_size: 0,
+				intersection_size: 0,
+				rich_factor: 0,
+				regulation: '',
+				represent_term_ap: false,
+				represent_term_wsc: false,
+				intersections: '',
+			},
+			down: {
+				term_id: '',
+				term_name: '',
+				source: '',
+				adjusted_p_value: 0,
+				term_size: 0,
+				query_size: 0,
+				intersection_size: 0,
+				rich_factor: 0,
+				regulation: '',
+				represent_term_ap: false,
+				represent_term_wsc: false,
+				intersections: '',
+			},
+		},
 	}),
 	actions: {
 		setDegParam(newParam: Partial<DegParams>) {
 			this.degParams = { ...this.degParams, ...newParam }
+		},
+		setOraItem(newParam: any) {
+			this.oraItemInfo = { ...this.oraItemInfo, ...newParam }
 		},
 		// setDegParam<S extends DegParamInfo, K extends keyof S>(key: K, data: Partial<S[K]>) {
 		// 	// @ts-ignore

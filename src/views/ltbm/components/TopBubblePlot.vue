@@ -4,7 +4,7 @@
 			<p>Bubble Plot</p>
 			<SavePlotBtn></SavePlotBtn>
 		</div>
-		<div :id="'umapPlot' + regulation"></div>
+		<div :id="'BubblePlot' + regulation"></div>
 	</div>
 </template>
 <script setup lang="ts">
@@ -68,14 +68,14 @@ watch(
 )
 
 const createBubblePlot = (renderType) => {
-	return new Scatter('umapPlot' + props.regulation, {
+	return new Scatter('BubblePlot' + props.regulation, {
 		data: [],
 		renderer: renderType,
-		height: 450,
-		padding: [0, 0, 60, 16],
-		appendPadding: 20,
+		height: 650,
+		padding: [0, 0, 0, 240],
+		appendPadding: [0, 20, 120, 0],
 		xField: 'rich_factor',
-		yField: 'term_id',
+		yField: 'term_name',
 		sizeField: 'intersection_size',
 		size: [4, 16],
 		shapeField: 'source',
@@ -91,17 +91,26 @@ const createBubblePlot = (renderType) => {
 		legend: {
 			layout: 'horizontal',
 			position: 'bottom',
+			label: {
+				// @ts-ignore
+				formatter: (value) => {
+					if (value) {
+						// 返回10的值次方
+						return Math.pow(10, -value).toFixed(2)
+					}
+					return value
+				},
+			},
 		},
 		xAxis: {
 			nice: true,
 			min: 0,
 			title: {
-				text: 'Negative Log10 Padj',
+				text: 'Rich Factor',
 			},
 			label: {
 				offset: 10,
 			},
-			// line:null,
 			line: {
 				style: {
 					stroke: '#000',
@@ -117,10 +126,14 @@ const createBubblePlot = (renderType) => {
 					},
 				},
 			},
+			tickMethod: 'r-pretty',
 		},
 		yAxis: {
 			nice: true,
-			label: null,
+			label: {
+				offset: 20,
+				autoEllipsis: true,
+			},
 			line: null,
 			grid: {
 				line: {
@@ -157,7 +170,7 @@ const createBubblePlot = (renderType) => {
 
 async function updateBubblePlotData(plot: any) {
 	const rawdata = (await getData) as { data: any[] }
-	console.log(rawdata)
+	// console.log(rawdata)
 	let data = [] as any[]
 	// 此处为自定义的数据清理
 	// 先判断获取到的富集结果是否超过20个
@@ -194,7 +207,7 @@ async function updateBubblePlotData(plot: any) {
 }
 
 const plotObj: plotObjType = {
-	plotName: 'VolcanoPlot',
+	plotName: 'BubblePlot',
 	createPlotMethod: createBubblePlot,
 	updateDataMethod: updateBubblePlotData,
 }

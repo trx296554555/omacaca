@@ -24,7 +24,6 @@
 			<h2>Down-regulation Gene Enrichment Results</h2>
 			<OraEnrichRes regulation="down"></OraEnrichRes>
 		</div>
-		<div style="height: 1000px">down-enrichment res</div>
 	</div>
 </template>
 

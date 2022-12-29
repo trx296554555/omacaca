@@ -1,6 +1,11 @@
 <template>
 	<div :id="'DegResErcTable' + regulation">
-		<vxe-grid ref="xGrid" v-bind="gridOptions" class="mytable-scrollbar">
+		<vxe-grid
+			ref="xGrid"
+			v-bind="gridOptions"
+			class="mytable-scrollbar"
+			@current-change="changeCurrentEvent"
+		>
 			<template #toolbar_buttons>
 				<div class="flex hidden md:block">
 					<a-input
@@ -29,10 +34,11 @@
 
 <script setup lang="ts">
 import { reactive, ref, inject, watch } from 'vue'
-import { VxeGridInstance, VxeGridProps } from 'vxe-table'
+import { VxeGridInstance, VxeGridProps, VxeTableEvents } from 'vxe-table'
 import XEUtils from 'xe-utils'
 import { SearchOutlined } from '@ant-design/icons-vue'
 import linkSvg from '@/assets/icons/link.svg'
+import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 
 const props = defineProps({
 	regulation: {
@@ -41,6 +47,8 @@ const props = defineProps({
 		required: true,
 	},
 })
+// 设置当前选中项
+const degParamStore = useDegParamStore()
 
 // 数据获取
 const dataPromise = inject('dataPromise') as any
@@ -182,6 +190,14 @@ const xGrid = ref({} as VxeGridInstance)
 const searchEvent = () => {
 	const $grid = xGrid.value
 	$grid.commitProxy('query')
+}
+// 设置选中行数据用于显示Info
+getData.then((res) => degParamStore.setOraItem({ [props.regulation]: res.data[0] }))
+const changeCurrentEvent: VxeTableEvents.CurrentChange = () => {
+	const $grid = xGrid.value
+	const currentData = $grid.getCurrentRecord()
+	// 设定ora对象值，key为props.regulation，值为currentData
+	degParamStore.setOraItem({ [props.regulation]: currentData })
 }
 
 const searchReset = () => {
