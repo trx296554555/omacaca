@@ -116,7 +116,6 @@ watch(
 	() => dataPromise.lfcPadj,
 	() => {
 		renewData()
-		console.log(dataPromise)
 	}
 )
 </script>

@@ -96,7 +96,7 @@ const getTermLink = (termId) => {
 // 转换为科学计数法
 const toScientificNotation = (value) => {
 	if (value < 0.00001) {
-		return value.toExponential(2)
+		return value.toExponential(3)
 	}
 	return value.toFixed(6)
 }

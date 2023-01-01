@@ -91,6 +91,8 @@
 					<p>友情链接</p>
 				</div>
 				<ul>
+					<li><a href="https://omacaca.netlify.app/" target="_blank">外网镜像站</a></li>
+
 					<li><a href="http://uprobiotics.cn/" target="_blank">益生菌产学研联盟</a></li>
 
 					<li><a href="https://www.littleming.ml/" target="_blank">小明网盘</a></li>

@@ -277,9 +277,7 @@ const gridOptions = reactive<VxeGridProps>({
 			minWidth: '80',
 			// type: 'html',
 			formatter({ cellValue }) {
-				const p = Math.floor(Math.log(cellValue) / Math.LN10)
-				const n = XEUtils.toFixed(XEUtils.round(cellValue * Math.pow(10, -p), 4), 4)
-				return n + 'e' + p
+				return cellValue.toExponential(3)
 			},
 		},
 	],
