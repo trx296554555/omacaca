@@ -85,7 +85,7 @@ const title = ref(dataPromise.titlePrefix + '-OraResult')
 document.title = title.value
 
 function renewData() {
-	const modelType = model + (isFull ? 'T' : 'F') + gender
+	const modelType = model + isFull + gender
 	dataPromise.getDegData = getDegRes({
 		model_type: modelType,
 		comp1,
