@@ -46,8 +46,10 @@ const reduceData = (rawDataPro) => {
 const changeNowData = () => {
 	if (props.regulation === 'up') {
 		return reduceData(dataPromise.getGpfUpData)
+	} else if (props.regulation === 'down') {
+		return reduceData(dataPromise.getGpfDownData)
 	}
-	return reduceData(dataPromise.getGpfDownData)
+	return reduceData(dataPromise.getGseaData)
 }
 
 let getData = changeNowData()
@@ -173,6 +175,14 @@ async function updateBubblePlotData(plot: any) {
 	// console.log(rawdata)
 	let data = [] as any[]
 	// 此处为自定义的数据清理
+	// 在rawdata.data中添加新的字段
+	if (props.regulation === 'none') {
+		rawdata.data = rawdata.data.map((item) => {
+			item.negative_log10_of_adjusted_p_value = -Math.log10(item.p_adjust)
+			item.intersection_size = item.leading_edge_number
+			return item
+		})
+	}
 	// 先判断获取到的富集结果是否超过20个
 	// 如果超过了20个则 按BP、KEGG、HP、CC、MF顺序依次抽取padj最小的
 

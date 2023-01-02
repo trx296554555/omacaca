@@ -46,7 +46,7 @@
 							Table
 						</span>
 					</template>
-					<OraEnrichTable :regulation="regulation"></OraEnrichTable>
+					<GseaEnrichTable :regulation="regulation"></GseaEnrichTable>
 				</a-tab-pane>
 				<a-tab-pane key="bubble">
 					<template #tab>
@@ -75,22 +75,22 @@
 			</a-tabs>
 		</div>
 
-		<div class="EnrichItem"><OraEnrichInfo :regulation="regulation"></OraEnrichInfo></div>
+		<div class="EnrichItem"><GseaEnrichInfo :regulation="regulation"></GseaEnrichInfo></div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { computed, provide, reactive, ref } from 'vue'
 import { TableOutlined, CloudOutlined, DotChartOutlined } from '@ant-design/icons-vue'
-import OraEnrichTable from './OraEnrichTable.vue'
-import OraEnrichInfo from './OraEnrichInfo.vue'
+import GseaEnrichTable from './GseaEnrichTable.vue'
+import GseaEnrichInfo from './GseaEnrichInfo.vue'
 import TopBubblePlot from '@/views/ltbm/components/TopBubblePlot.vue'
 import WordCloudPlot from '@/views/ltbm/components/WordCloudPlot.vue'
 
 const props = defineProps({
 	regulation: {
 		type: String,
-		default: 'up',
+		default: 'none',
 		required: true,
 	},
 })

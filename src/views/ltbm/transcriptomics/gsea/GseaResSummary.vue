@@ -37,20 +37,8 @@
 				used for the enrichment analysis.
 				<br />
 				<br />
-				<strong>DEG Detection method:&nbsp;</strong>
+				<strong>Log fold change calculated by:&nbsp;</strong>
 				Deseq2
-				<br />
-				<strong>Parameters for DEG Detection:&nbsp;</strong>
-				<br />
-				<strong>&emsp;Design Formula:&nbsp;</strong>
-				{{ designFormulaList[degParamStore.degParams.model] }}
-				<br />
-				<strong>&emsp;log2 Fold Change Threshold:&nbsp;</strong>
-				{{ dataPromise.lfcPadj.charAt(0) }}
-				<br />
-				<strong>&emsp;Significance Threshold:&nbsp;</strong>
-				FDR &lt; 0.0{{ dataPromise.lfcPadj.charAt(2) }}
-				<br />
 				<br />
 				<strong>Gene Functional Enrichment method:&nbsp;</strong>
 				<span>{{ degParamStore.degParams.analyse.toUpperCase() }}</span>
@@ -65,24 +53,20 @@
 				Only annotated genes
 				<br />
 				<strong>&emsp;Significance Level:&nbsp;</strong>
-				FDR &lt; {{ degParamStore.degParams.padj }}
+				FDR &lt; 0.01
 				<br />
 				<strong>&emsp;FDR Method:&nbsp;</strong>
 				BH
 				<br />
-				<strong>&emsp;g:Profiler database version:&nbsp;</strong>
-				e107_eg54_p17_4c13d1d
+				<strong>&emsp;GSEA Pathway database version:&nbsp;</strong>
+				MSigDB (v7.5) (not the latest)
 				<br />
 				<br />
 				&emsp;Based on the above parameters, In the comparison of
 				<strong>{{ degParamStore.degParams.groups[0] }}</strong>
 				and
 				<strong>{{ degParamStore.degParams.groups[1] }}</strong>
-				,
-				<strong>{{ resultList.deg_up }}</strong>
-				up-regulated genes and
-				<strong>{{ resultList.deg_down }}</strong>
-				down-regulated genes were found. After the enrichment analysis,
+				, After the GSEA enrichment analysis,
 				<strong>{{ resultList.enrich_up }}</strong>
 				positive related categories and
 				<strong>{{ resultList.enrich_down }}</strong>
@@ -102,45 +86,14 @@ const degParamStore = useDegParamStore()
 
 const dataPromise = inject('dataPromise') as any
 
-const designFormulaList = ref({
-	M1: '~ sex + stage',
-	M2: '~ stage + sex',
-	M3: '~ sex + condition',
-	M4: '~ sex + stage',
-})
-
-const resultList = reactive({ deg_up: 1, deg_down: 1, enrich_up: 1, enrich_down: 1 })
+const resultList = reactive({ enrich_up: 1, enrich_down: 1 })
 
 onMounted(() => {
 	// 挂载后更新deg 和 enrich的统计数据
-	dataPromise.getDegData.then((res: any) => {
-		// 统计res.data 中log2FoldChange > 0 的个数
-		resultList.deg_up = res.data.filter((item: any) => item.log2FoldChange > 0).length
-		resultList.deg_down = res.data.filter((item: any) => item.log2FoldChange < 0).length
-	})
-	dataPromise.getGpfUpData.then((res: any) => {
-		resultList.enrich_up = res.data.length
-	})
-	dataPromise.getGpfDownData.then((res: any) => {
-		resultList.enrich_down = res.data.length
+	dataPromise.getGseaData.then((res: any) => {
+		// 统计 res.data 中 nes > 0 的个数
+		resultList.enrich_up = res.data.filter((item: any) => item.nes > 0).length
+		resultList.enrich_down = res.data.filter((item: any) => item.nes < 0).length
 	})
 })
-
-watch(
-	() => dataPromise.lfcPadj,
-	() => {
-		// degParamStore.degParams 更新后更新deg 和 enrich的统计数据
-		dataPromise.getDegData.then((res: any) => {
-			// 统计res.data 中log2FoldChange > 0 的个数
-			resultList.deg_up = res.data.filter((item: any) => item.log2FoldChange > 0).length
-			resultList.deg_down = res.data.filter((item: any) => item.log2FoldChange < 0).length
-		})
-		dataPromise.getGpfUpData.then((res: any) => {
-			resultList.enrich_up = res.data.length
-		})
-		dataPromise.getGpfDownData.then((res: any) => {
-			resultList.enrich_down = res.data.length
-		})
-	}
-)
 </script>

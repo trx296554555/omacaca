@@ -45,6 +45,7 @@ interface DegParams {
 interface DegParamInfo {
 	degParams: DegParams
 	oraItemInfo: any
+	gseaItemInfo: any
 }
 
 export const useDegParamStore = defineStore({
@@ -89,6 +90,25 @@ export const useDegParamStore = defineStore({
 				intersections: '',
 			},
 		},
+		gseaItemInfo: {
+			term_id: '',
+			term_name: '',
+			source: '',
+			msigdb_id: '',
+			setsize: 0,
+			enrichmentscore: 0,
+			nes: 0,
+			pvalue: 0,
+			p_adjust: 0,
+			qvalues: 0,
+			rank: 2014,
+			leading_edge: '',
+			leading_edge_number: 0,
+			rich_factor: 0,
+			represent_term_ap: false,
+			represent_term_wsc: false,
+			core_enrichment: '',
+		},
 	}),
 	actions: {
 		setDegParam(newParam: Partial<DegParams>) {
@@ -96,6 +116,9 @@ export const useDegParamStore = defineStore({
 		},
 		setOraItem(newParam: any) {
 			this.oraItemInfo = { ...this.oraItemInfo, ...newParam }
+		},
+		setGseaItem(newParam: any) {
+			this.gseaItemInfo = { ...this.gseaItemInfo, ...newParam }
 		},
 		// setDegParam<S extends DegParamInfo, K extends keyof S>(key: K, data: Partial<S[K]>) {
 		// 	// @ts-ignore

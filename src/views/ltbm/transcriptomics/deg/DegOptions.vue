@@ -171,7 +171,7 @@ degParamStore.$subscribe((mutation, state) => {
 
 // 绑定的4个按钮事件
 const resetOptions = () => {
-	degParamStore.setDegParam({ analyse: 'ora', model: 'M1', full: true, gender: 'a', groups: [] })
+	degParamStore.setDegParam({ model: 'M1', full: true, gender: 'a', groups: [] })
 }
 const submit = () => {
 	if (degParamStore.degParams.groups.length < 2) {
@@ -182,17 +182,31 @@ const submit = () => {
 			degParamStore.degParams.groups[0],
 		]
 	}
-	const { href } = router.resolve({
-		path: '/ltbm/orares',
-		query: {
-			model: degParamStore.degParams.model,
-			isFull: degParamStore.degParams.full ? 'T' : 'F',
-			gender: degParamStore.degParams.gender,
-			g1: degParamStore.degParams.groups[0],
-			g2: degParamStore.degParams.groups[1],
-		},
-	})
-	window.open(href, '_blank')
+	if (degParamStore.degParams.analyse === 'ora') {
+		const { href } = router.resolve({
+			path: '/ltbm/orares',
+			query: {
+				model: degParamStore.degParams.model,
+				isFull: degParamStore.degParams.full ? 'T' : 'F',
+				gender: degParamStore.degParams.gender,
+				g1: degParamStore.degParams.groups[0],
+				g2: degParamStore.degParams.groups[1],
+			},
+		})
+		window.open(href, '_blank')
+	} else {
+		const { href } = router.resolve({
+			path: '/ltbm/gseares',
+			query: {
+				model: degParamStore.degParams.model,
+				isFull: degParamStore.degParams.full ? 'T' : 'F',
+				gender: degParamStore.degParams.gender,
+				g1: degParamStore.degParams.groups[0],
+				g2: degParamStore.degParams.groups[1],
+			},
+		})
+		window.open(href, '_blank')
+	}
 }
 </script>
 

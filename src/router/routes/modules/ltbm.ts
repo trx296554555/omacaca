@@ -41,6 +41,14 @@ const ltbm: AppRouteModule = {
 				title: 'Ltbm Over-representation Enrichment Analysis Results',
 			},
 		},
+		{
+			path: 'gseares',
+			name: 'GseaResultPage',
+			component: () => import('@/views/ltbm/transcriptomics/gsea/GseaResults.vue'),
+			meta: {
+				title: 'Ltbm Gene Set Analysis Results',
+			},
+		},
 	],
 }
 

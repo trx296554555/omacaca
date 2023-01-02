@@ -20,20 +20,33 @@
 
 				<a-statistic
 					title="FDR"
-					:value="termDetailInfo.adjusted_p_value"
+					:value="termDetailInfo.p_adjust"
 					:formatter="({ value }) => toScientificNotation(value)"
 				/>
-				<a-statistic title="Term Size" :value="termDetailInfo.term_size" />
-				<a-statistic title="Query Size" :value="termDetailInfo.query_size" />
-				<a-statistic title="Intersection Size" :value="termDetailInfo.intersection_size" />
+				<a-statistic
+					title="Q-value"
+					:value="termDetailInfo.qvalues"
+					:formatter="({ value }) => toScientificNotation(value)"
+				/>
+				<a-statistic
+					title="Enrichment Score"
+					:value="termDetailInfo.enrichmentscore"
+					:precision="5"
+				/>
+				<a-statistic
+					title="Normalized Enrichment Score"
+					:value="termDetailInfo.nes"
+					:precision="5"
+				/>
+				<a-statistic title="Term Size" :value="termDetailInfo.setsize" />
+				<a-statistic
+					title="Leading Edge Number"
+					:value="termDetailInfo.leading_edge_number"
+				/>
 				<a-statistic
 					title="Rich Factor"
 					:value="termDetailInfo.rich_factor"
 					:formatter="({ value }) => toScientificNotation(value)"
-				/>
-				<a-statistic
-					title="Regulation Type"
-					:value="termDetailInfo.regulation.toUpperCase()"
 				/>
 				<a-statistic
 					title="Retained After AP"
@@ -43,17 +56,24 @@
 					title="Retained After WSC"
 					:value="termDetailInfo.represent_term_wsc ? 'True' : 'False'"
 				/>
+				<a
+					:href="
+						'https://www.gsea-msigdb.org/gsea/msigdb/cards/' + termDetailInfo.msigdb_id
+					"
+					target="_blank"
+				>
+					MsigDB
+					<img src="/src/assets/icons/link.svg" width="24" height="24" />
+				</a>
 			</div>
 			<div class="ItemFigure">
-				<OraVennPlot :regulation="regulation"></OraVennPlot>
+				<a-image :src="termDetailInfo.barcodePngUrl" alt="barcodePNG" />
 			</div>
 		</div>
 		<div class="ItemGeneList">
-			<p class="title">Intersection Genes</p>
+			<p class="title">Core Enrichment Genes</p>
 			<template
-				v-for="(item, index) in degParamStore.oraItemInfo[
-					props.regulation
-				].intersections.split(',')"
+				v-for="(item, index) in degParamStore.gseaItemInfo.core_enrichment.split(',')"
 				:key="index"
 			>
 				<a-tag class="ItemGene" color="success">
@@ -68,18 +88,17 @@
 
 <script setup lang="ts">
 import { useDegParamStore } from '@/store/modules/ltbmDegParam'
-import { computed, onMounted, reactive, ref } from 'vue'
-import OraVennPlot from '@/views/ltbm/transcriptomics/ora/OraVennPlot.vue'
+import { computed } from 'vue'
 const props = defineProps({
 	regulation: {
 		type: String,
-		default: 'up',
+		default: 'none',
 		required: true,
 	},
 })
 // 使用一个全局的pinia store，保存记录当前选中的enrichment term，用于子组件中数据公用
 const degParamStore = useDegParamStore()
-const termDetailInfo = computed(() => degParamStore.oraItemInfo[props.regulation])
+const termDetailInfo = computed(() => degParamStore.gseaItemInfo)
 
 const getTermLink = (termId) => {
 	if (termId) {
@@ -90,8 +109,8 @@ const getTermLink = (termId) => {
 			const url = 'https://hpo.jax.org/app/browse/term/'
 			return url + termId
 		}
-		const url = 'https://www.genome.jp/dbget-bin/www_bget?pathway:map'
-		return url + termId.split(':')[1]
+		const url = 'https://www.genome.jp/entry/pathway+'
+		return url + termId
 	}
 	return null
 }

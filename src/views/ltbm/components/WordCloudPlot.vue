@@ -46,8 +46,10 @@ const reduceData = (rawDataPro) => {
 const changeNowData = () => {
 	if (props.regulation === 'up') {
 		return reduceData(dataPromise.getGpfUpData)
+	} else if (props.regulation === 'down') {
+		return reduceData(dataPromise.getGpfDownData)
 	}
-	return reduceData(dataPromise.getGpfDownData)
+	return reduceData(dataPromise.getGseaData)
 }
 
 let getData = changeNowData()
@@ -105,7 +107,7 @@ const createWordCloudPlot = (renderType) => {
 
 async function updateWordCloudPlotData(plot: any) {
 	const rawdata = (await getData) as { data: any[] }
-	// console.log(rawdata)
+	console.log(rawdata)
 	const data = [] as any[]
 	// 此处为自定义的数据清理
 	const inSignificanceList = [
