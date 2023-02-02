@@ -5,7 +5,7 @@
 		<div class="DegAnalysis">
 			<div class="theTable"><DegSelTable></DegSelTable></div>
 			<div class="theOptions"><DegOptions></DegOptions></div>
-			<div class="theUmapPlot"><UmapPlot></UmapPlot></div>
+			<div class="theUmapPlot"><UmapPlot analysis="gsea"></UmapPlot></div>
 		</div>
 		<div style="height: 200px"></div>
 	</div>

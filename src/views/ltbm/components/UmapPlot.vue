@@ -4,7 +4,7 @@
 			<p>Umap Plot</p>
 			<SavePlotBtn></SavePlotBtn>
 		</div>
-		<div id="umapPlot"></div>
+		<div :id="'umapPlot' + analysis"></div>
 	</div>
 </template>
 
@@ -19,10 +19,18 @@ import SavePlotBtn from '@/components/SavePlotBtn.vue'
 import { plotObjType } from '#/g2plot'
 import { getUmapInfoList } from '@/api/metainfo'
 
+const props = defineProps({
+	analysis: {
+		type: String,
+		default: 'ora',
+		required: false,
+	},
+})
+
 const degParamStore = useDegParamStore()
 
 const createUmapPlot = (renderType) => {
-	return new Scatter('umapPlot', {
+	return new Scatter('umapPlot' + props.analysis, {
 		data: [],
 		renderer: renderType,
 		height: 450,
