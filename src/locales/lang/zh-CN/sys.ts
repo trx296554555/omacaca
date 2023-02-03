@@ -23,6 +23,9 @@ export default {
 			errMsg505: 'http版本不支持该请求!',
 			errTitle: '错误 404',
 		},
+		info: {
+			noPlotInfo: '抱歉，在当前分析选项下，无对应数据可获取，可尝试更换分析选项。',
+		},
 		errorLog: {
 			tableTitle: '错误日志列表',
 			tableColumnType: '类型',

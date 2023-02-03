@@ -26,6 +26,10 @@ export default {
 			errMsg505: 'The http version does not support the request!',
 			errTitle: 'Error 404',
 		},
+		info: {
+			noPlotInfo:
+				'Sorry, no corresponding data is available under current analysis options, try to change the analysis options.',
+		},
 		errorLog: {
 			tableTitle: 'Error log list',
 			tableColumnType: 'Type',

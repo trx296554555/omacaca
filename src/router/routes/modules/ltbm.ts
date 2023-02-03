@@ -49,6 +49,14 @@ const ltbm: AppRouteModule = {
 				title: 'Ltbm Gene Set Analysis Results',
 			},
 		},
+		{
+			path: 'vpa',
+			name: 'vpaPage',
+			component: () => import('@/views/ltbm/transcriptomics/vpa/index.vue'),
+			meta: {
+				title: 'Ltbm Variance Partition Analysis',
+			},
+		},
 	],
 }
 

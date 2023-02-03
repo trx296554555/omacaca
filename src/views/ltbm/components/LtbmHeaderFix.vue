@@ -49,7 +49,9 @@
 										<router-link to="/">{{ $t('ltbm_title.tsa') }}</router-link>
 									</a-menu-item>
 									<a-menu-item>
-										<router-link to="/">{{ $t('ltbm_title.vpa') }}</router-link>
+										<router-link to="/ltbm/vpa">
+											{{ $t('ltbm_title.vpa') }}
+										</router-link>
 									</a-menu-item>
 									<a-menu-item>
 										<router-link to="/">
@@ -111,7 +113,9 @@
 										<router-link to="/">{{ $t('ltbm_title.tsa') }}</router-link>
 									</a-menu-item>
 									<a-menu-item>
-										<router-link to="/">{{ $t('ltbm_title.vpa') }}</router-link>
+										<router-link to="/ltbm/vpa">
+											{{ $t('ltbm_title.vpa') }}
+										</router-link>
 									</a-menu-item>
 									<a-menu-item>
 										<router-link to="/">

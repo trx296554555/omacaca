@@ -80,7 +80,9 @@ declare module '@vue/runtime-core' {
     Tmp: typeof import('./src/components/tmp.vue')['default']
     TopBubblePlot: typeof import('./src/views/ltbm/components/TopBubblePlot.vue')['default']
     UmapPlot: typeof import('./src/views/ltbm/components/UmapPlot.vue')['default']
+    Varpart: typeof import('./src/views/ltbm/transcriptomics/varpart/index.vue')['default']
     VolcanoPlot: typeof import('./src/views/ltbm/components/VolcanoPlot.vue')['default']
+    Vpa: typeof import('./src/views/ltbm/transcriptomics/vpa/index.vue')['default']
     WordCloudPlot: typeof import('./src/views/ltbm/components/WordCloudPlot.vue')['default']
   }
 }

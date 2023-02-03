@@ -7,6 +7,8 @@ enum Api {
 	LTBM_DEG_RES = '/ltbm/degtable',
 	LTBM_GPF_RES = 'ltbm/gpftable',
 	LTBM_GSEA_RES = 'ltbm/gseatable',
+	LTBM_HTM_RES = 'ltbm/deghtmtable',
+	LTBM_STK_RES = 'ltbm/degstktable',
 }
 
 /**
@@ -48,6 +50,24 @@ type GseaParams = {
 	source?: string
 	ordering?: string
 	search?: string
+	page?: number
+	size?: number
+}
+
+type HtmParams = {
+	analyse: string
+	model_type: string
+	lfc_threshold: number
+	padj_threshold: number
+	page?: number
+	size?: number
+}
+
+type StkParams = {
+	analyse: string
+	model_type: string
+	lfc_threshold: number
+	padj_threshold: number
 	page?: number
 	size?: number
 }
@@ -101,6 +121,20 @@ interface GseaResListItem {
 	rich_factor: number
 }
 
+interface HtmResListItem {
+	x: string
+	y: string
+	up: number
+	down: number
+	size: number
+	rate: number
+}
+
+interface StkResListItem {
+	category: string
+	LogFC: string
+	value: number
+}
 /**
  * @description: API
  */
@@ -121,6 +155,20 @@ export const getGpfRes = (params: GpfParams) =>
 export const getGseaRes = (params: GseaParams) =>
 	defHttp.get<GseaResListItem>({
 		url: Api.LTBM_GSEA_RES,
+		params,
+		headers: {},
+	})
+
+export const getHtmRes = (params: HtmParams) =>
+	defHttp.get<HtmResListItem>({
+		url: Api.LTBM_HTM_RES,
+		params,
+		headers: {},
+	})
+
+export const getStkRes = (params: StkParams) =>
+	defHttp.get<StkResListItem>({
+		url: Api.LTBM_STK_RES,
 		params,
 		headers: {},
 	})

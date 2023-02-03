@@ -24,6 +24,7 @@
 				<DegTotalStkPlot class="md:col-span-1 col-span-2"></DegTotalStkPlot>
 			</div>
 		</div>
+		<div style="height: 5rem"></div>
 	</div>
 </template>
 
@@ -35,8 +36,9 @@ import DegTotalHtmPlot from '../../components/DegTotalHtmPlot.vue'
 
 import UmapPlot from '../../components/UmapPlot.vue'
 import { useDegParamStore } from '@/store/modules/ltbmDegParam'
-import { provide, reactive, ref } from 'vue'
+import { provide, reactive, ref, watch } from 'vue'
 import { SelectProps } from 'ant-design-vue'
+import { getHtmRes, getStkRes } from '@/api/degres'
 
 const oraParamStore = useDegParamStore()
 // @ts-ignore
@@ -75,7 +77,39 @@ const dataPromise = reactive<dataPromiseType>({
 	lfcPadj: '1-1',
 })
 provide('dataPromise', dataPromise)
-console.log(dataPromise)
+
+function renewData() {
+	const modelType =
+		oraParamStore.degParams.model +
+		(oraParamStore.degParams.full ? 'T' : 'F') +
+		oraParamStore.degParams.gender
+	dataPromise.getHtmData = getHtmRes({
+		analyse: 'ora',
+		model_type: modelType,
+		lfc_threshold: parseFloat(dataPromise.lfcPadj.split('-')[0]),
+		padj_threshold: parseFloat(dataPromise.lfcPadj.split('-')[1]) / 100,
+	})
+	dataPromise.getStkData = getStkRes({
+		analyse: 'ora',
+		model_type: modelType,
+		lfc_threshold: parseFloat(dataPromise.lfcPadj.split('-')[0]),
+		padj_threshold: parseFloat(dataPromise.lfcPadj.split('-')[1]) / 100,
+	})
+}
+
+renewData()
+watch(
+	() => dataPromise.lfcPadj,
+	() => {
+		renewData()
+	}
+)
+watch(
+	() => oraParamStore.degParams,
+	() => {
+		renewData()
+	}
+)
 </script>
 
 <style scoped lang="less">
