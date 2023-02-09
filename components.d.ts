@@ -83,6 +83,9 @@ declare module '@vue/runtime-core' {
     Varpart: typeof import('./src/views/ltbm/transcriptomics/varpart/index.vue')['default']
     VolcanoPlot: typeof import('./src/views/ltbm/components/VolcanoPlot.vue')['default']
     Vpa: typeof import('./src/views/ltbm/transcriptomics/vpa/index.vue')['default']
+    VpaExpResGroupBy: typeof import('./src/views/ltbm/transcriptomics/vpa/VpaExpResGroupBy.vue')['default']
+    VpaResTable: typeof import('./src/views/ltbm/transcriptomics/vpa/VpaResTable.vue')['default']
+    VpaViolinPlot: typeof import('./src/views/ltbm/components/VpaViolinPlot.vue')['default']
     WordCloudPlot: typeof import('./src/views/ltbm/components/WordCloudPlot.vue')['default']
   }
 }

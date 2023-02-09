@@ -21,7 +21,7 @@ import { useI18n } from 'vue-i18n'
 import { useLocale } from '@/locales/useLocale'
 import { ref, reactive } from 'vue'
 import { glob } from '@/tools/env'
-import { apiDemoList } from '@/api/degres'
+import { apiDemoList } from '@/api/degRes'
 import { message } from 'ant-design-vue'
 
 const num = ref(0)

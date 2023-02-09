@@ -38,7 +38,7 @@ import UmapPlot from '../../components/UmapPlot.vue'
 import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 import { provide, reactive, ref, watch } from 'vue'
 import { SelectProps } from 'ant-design-vue'
-import { getHtmRes, getStkRes } from '@/api/degres'
+import { getHtmRes, getStkRes } from '@/api/degRes'
 
 const oraParamStore = useDegParamStore()
 // @ts-ignore

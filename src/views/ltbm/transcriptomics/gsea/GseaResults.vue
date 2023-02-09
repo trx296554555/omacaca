@@ -18,7 +18,7 @@ import { useDegParamStore, ModelType, GenderType, GroupType } from '@/store/modu
 import { useRoute } from 'vue-router'
 import GseaResSummary from './GseaResSummary.vue'
 import GseaEnrichRes from './GseaEnrichRes.vue'
-import { getGseaRes } from '@/api/degres'
+import { getGseaRes } from '@/api/degRes'
 
 const degParamStore = useDegParamStore()
 // 当前页面路由

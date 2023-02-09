@@ -30,7 +30,7 @@ import DegTotalHtmPlot from '../../components/DegTotalHtmPlot.vue'
 import UmapPlot from '../../components/UmapPlot.vue'
 import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 import { provide, reactive, ref, watch } from 'vue'
-import { getHtmRes, getStkRes } from '@/api/degres'
+import { getHtmRes, getStkRes } from '@/api/degRes'
 
 const gseaParamStore = useDegParamStore()
 // @ts-ignore

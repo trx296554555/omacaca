@@ -17,7 +17,7 @@ import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 import { Scatter } from '@antv/g2plot'
 import SavePlotBtn from '@/components/SavePlotBtn.vue'
 import { plotObjType } from '#/g2plot'
-import { getUmapInfoList } from '@/api/metainfo'
+import { getUmapInfoList } from '@/api/metaInfoRes'
 
 const props = defineProps({
 	analysis: {

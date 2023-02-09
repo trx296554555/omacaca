@@ -36,7 +36,7 @@ import OraResSummary from './OraResSummary.vue'
 import OraDegTable from './OraDegTable.vue'
 import OraDegChart from '../../components/VolcanoPlot.vue'
 import OraEnrichRes from './OraEnrichRes.vue'
-import { getDegRes, getGpfRes } from '@/api/degres'
+import { getDegRes, getGpfRes } from '@/api/degRes'
 
 const degParamStore = useDegParamStore()
 // 当前页面路由
