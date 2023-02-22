@@ -5,8 +5,8 @@
 
 		<div class="VpaAnalysis">
 			<div class="theViolinPlot"><VpaViolinPlot></VpaViolinPlot></div>
-			<div class="theResTable"></div>
-			<div class="expResGroupBy"></div>
+			<div class="theResTable"><VpaResTable></VpaResTable></div>
+			<div class="itemInfo"><VpaResInfo></VpaResInfo></div>
 		</div>
 
 		<div style="height: 5rem"></div>
@@ -15,29 +15,20 @@
 
 <script setup lang="ts">
 import { provide, reactive } from 'vue'
-import { getHtmRes, getStkRes } from '@/api/degRes'
 import { getVpaRes } from '@/api/geneSetRes'
 import VpaViolinPlot from '@/views/ltbm/components/VpaViolinPlot.vue'
+import VpaResTable from '@/views/ltbm/transcriptomics/vpa/VpaResTable.vue'
+import VpaResInfo from '@/views/ltbm/transcriptomics/vpa/VpaResInfo.vue'
 
 interface dataPromiseType {
 	getVpaData?: Promise<any>
-	getGeneExpData?: Promise<any>
-	selectedGene: string
 }
 
-const dataPromise = reactive<dataPromiseType>({
-	selectedGene: '1-1',
-})
+const dataPromise = reactive<dataPromiseType>({})
 
 provide('dataPromise', dataPromise)
 
 dataPromise.getVpaData = getVpaRes({})
-
-function renewData() {
-	console.log('test')
-}
-
-renewData()
 </script>
 
 <style scoped lang="less">
@@ -53,8 +44,9 @@ renewData()
 }
 
 .theResTable {
+	@apply my-3;
 }
 
-.expResGroupBy {
+.itemInfo {
 }
 </style>

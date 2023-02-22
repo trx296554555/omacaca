@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch, provide, reactive, inject } from 'vue'
+import { onMounted, watch, provide, inject } from 'vue'
 
 import { useThemeStoreWithOut } from '@/store/modules/theme'
 import { Violin } from '@antv/g2plot'
@@ -27,6 +27,8 @@ const createViolinPlot = (renderType) => {
 		appendPadding: 15,
 		shape: 'hollow-smooth',
 		kde: {
+			type: 'triangular',
+			sampleSize: 100,
 			min: 0.0,
 			width: 3,
 		},
@@ -38,8 +40,8 @@ const createViolinPlot = (renderType) => {
 		},
 		yAxis: {
 			nice: true,
+			max: 1,
 			label: {
-				offset: 1.5,
 				autoRotate: true,
 			},
 		},

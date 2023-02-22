@@ -5,6 +5,7 @@ import { defHttp } from '@/http'
  */
 enum Api {
 	LTBM_VPA_RES = '/ltbm/vpatable',
+	LTBM_EXP_GROUPBY_RES = '/ltbm/geneexpgroupby',
 }
 
 /**
@@ -16,6 +17,13 @@ type VpaParams = {
 	search?: string
 	page?: number
 	size?: number
+}
+
+type ExpGroupByParams = {
+	model_type?: string
+	gene_id_ENSG: string
+	groupby: string
+	lang: string
 }
 
 /**
@@ -31,12 +39,24 @@ interface VpaResListItem {
 	padj: number
 }
 
+interface ExpGroupByResListItem {
+	data: any
+	describe: any
+}
+
 /**
  * @description: API
  */
 export const getVpaRes = (params: VpaParams) =>
 	defHttp.get<VpaResListItem>({
 		url: Api.LTBM_VPA_RES,
+		params,
+		headers: {},
+	})
+
+export const getExpGroupByRes = (params: ExpGroupByParams) =>
+	defHttp.get<ExpGroupByResListItem>({
+		url: Api.LTBM_EXP_GROUPBY_RES,
 		params,
 		headers: {},
 	})
