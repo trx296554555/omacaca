@@ -165,4 +165,17 @@ export default {
 						and sorted geneList according to the numeric of LogFC between groups',
 		step3info_gsea: 'Here we only provide the most important comparative results.',
 	},
+	ltbm_vpa: {
+		source: 'Source of gene expression variation',
+		factor: 'Factor',
+		explained: 'explained',
+		info: 'of the variation in gene expression in total 143 samples of baby monkeys',
+		individual: 'Individual',
+		age: 'Age',
+		condition: 'Condition',
+		hemoglobin: 'Hemoglobin',
+		sex: 'Sex',
+		state: 'State',
+		more: 'More',
+	},
 }

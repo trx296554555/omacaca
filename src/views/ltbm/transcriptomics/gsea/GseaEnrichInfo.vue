@@ -2,8 +2,8 @@
 	<div>
 		<h4 class="title">
 			Gene Set:
-			<a :href="getTermLink(termDetailInfo.term_id)" target="_blank">
-				{{ termDetailInfo.term_id }}
+			<a :href="getTermLink(nowGeneId)" target="_blank">
+				{{ nowGeneId }}
 				<img
 					src="@/assets/icons/link.svg"
 					alt="link"
@@ -99,6 +99,16 @@ const props = defineProps({
 // 使用一个全局的pinia store，保存记录当前选中的enrichment term，用于子组件中数据公用
 const degParamStore = useDegParamStore()
 const termDetailInfo = computed(() => degParamStore.gseaItemInfo)
+
+// 选中时移除高亮的html标签
+const nowGeneId = computed(() => {
+	//  ENSMMUG0000<span class="keyword-lighten">001</span>6323
+	// 移除特定字符串
+	const reg1 = /<span class="keyword-lighten">/g
+	const reg2 = /<\/span>/g
+	const a = termDetailInfo.value.term_id.replace(reg1, '')
+	return a.replace(reg2, '')
+})
 
 const getTermLink = (termId) => {
 	if (termId) {

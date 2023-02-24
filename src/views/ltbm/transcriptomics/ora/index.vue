@@ -1,7 +1,7 @@
 <template>
 	<div id="LtbmORA" class="LtbmORA">
 		<div class="h-12 md:h-16"></div>
-		<div class="pageTitle">{{ $t(`ltbm_title.deg`) }} (ORA)</div>
+		<h3 class="pageTitle">{{ $t(`ltbm_title.deg`) }} (ORA)</h3>
 		<div class="DegAnalysis">
 			<div class="theTable"><DegSelTable></DegSelTable></div>
 			<div class="theOptions"><DegOptions></DegOptions></div>
@@ -10,7 +10,7 @@
 		<hr class="dividingLine" />
 		<div class="DegStatistics">
 			<div class="statisticsTitle">
-				<h2 class="pageTitle">{{ $t(`ltbm_dega.statisticalTitle`) }}</h2>
+				<h3 class="pageTitle">{{ $t(`ltbm_dega.statisticalTitle`) }}</h3>
 				<div class="pl-3">
 					<a-select
 						v-model:value="dataPromise.lfcPadj"
@@ -115,9 +115,6 @@ watch(
 <style scoped lang="less">
 .LtbmORA {
 	@apply Container;
-}
-.pageTitle {
-	@apply text-2xl py-6;
 }
 .DegAnalysis {
 	@apply grid grid-rows-2 grid-cols-3 gap-6;

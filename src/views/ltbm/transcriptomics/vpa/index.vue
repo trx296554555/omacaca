@@ -1,7 +1,7 @@
 <template>
 	<div id="LtbmVPA" class="LtbmVPA">
 		<div class="h-12 md:h-16"></div>
-		<div class="pageTitle">{{ $t(`ltbm_title.vpa`) }}</div>
+		<h3 class="pageTitle">{{ $t(`ltbm_title.vpa`) }}</h3>
 
 		<div class="VpaAnalysis">
 			<div class="theViolinPlot"><VpaViolinPlot></VpaViolinPlot></div>
@@ -35,18 +35,11 @@ dataPromise.getVpaData = getVpaRes({})
 .LtbmVPA {
 	@apply Container;
 }
-
-.pageTitle {
-	@apply text-2xl py-6;
-}
-
 .VpaAnalysis {
 }
-
 .theResTable {
 	@apply my-3;
 }
-
 .itemInfo {
 }
 </style>

@@ -57,6 +57,22 @@ const ltbm: AppRouteModule = {
 				title: 'Ltbm Variance Partition Analysis',
 			},
 		},
+		{
+			path: 'tsa',
+			name: 'tsaPage',
+			component: () => import('@/views/ltbm/transcriptomics/tsa/index.vue'),
+			meta: {
+				title: 'Ltbm Time Series Analysis',
+			},
+		},
+		{
+			path: 'wgcna',
+			name: 'wgcnaPage',
+			component: () => import('@/views/ltbm/transcriptomics/wgcna/index.vue'),
+			meta: {
+				title: 'Ltbm Weighted Gene Co-expression Network Analysis',
+			},
+		},
 	],
 }
 

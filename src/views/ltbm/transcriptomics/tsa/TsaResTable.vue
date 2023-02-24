@@ -1,6 +1,11 @@
 <template>
-	<div id="OraResDegTable">
-		<vxe-grid ref="xGrid" v-bind="gridOptions" class="mytable-scrollbar">
+	<div id="TsaResTable">
+		<vxe-grid
+			ref="xGrid"
+			v-bind="gridOptions"
+			class="mytable-scrollbar"
+			@current-change="changeCurrentEvent"
+		>
 			<template #toolbar_buttons>
 				<div class="flex hidden md:block">
 					<a-input
@@ -21,19 +26,6 @@
 					>
 						Reset
 					</a-button>
-					<a-tooltip title="Copy the gene ID list to the clipboard">
-						<a-radio-group>
-							<a-radio-button value="a" @click="copyAllGeneId('All')">
-								All
-							</a-radio-button>
-							<a-radio-button value="u" @click="copyAllGeneId('Up-regulation')">
-								Up
-							</a-radio-button>
-							<a-radio-button value="d" @click="copyAllGeneId('Down-regulation')">
-								Down
-							</a-radio-button>
-						</a-radio-group>
-					</a-tooltip>
 				</div>
 			</template>
 		</vxe-grid>
@@ -41,78 +33,34 @@
 </template>
 
 <script setup lang="ts">
-import { inject, reactive, ref, watch } from 'vue'
-import { VxeGridInstance, VxeGridProps } from 'vxe-table'
+import { inject, onMounted, reactive, ref, watch } from 'vue'
+import { VxeGridInstance, VxeGridProps, VxeTableEvents } from 'vxe-table'
 import XEUtils from 'xe-utils'
-import { useClipboard } from '@vueuse/core'
 import { SearchOutlined } from '@ant-design/icons-vue'
 import linkSvg from '@/assets/icons/link.svg'
-import { message } from 'ant-design-vue'
+import { useGeneSetParamStore } from '@/store/modules/ltbmGeneSetParam'
 
 // 数据获取
 const dataPromise = inject('dataPromise') as any
+const geneSetParamStore = useGeneSetParamStore()
+
 watch(
-	() => dataPromise.lfcPadj,
+	() => dataPromise.getTsaData,
 	(nowV, prevV) => {
-		getData = dataPromise.getDegData
+		getData = dataPromise.getTsaData
 		const $grid = xGrid.value
 		$grid.commitProxy('query')
 		// @ts-ignore
-		gridOptions.exportConfig.filename =
-			'DEG-RES-' +
-			dataPromise.titlePrefix +
-			'-lfc' +
-			dataPromise.lfcPadj.charAt(0) +
-			'padj00' +
-			dataPromise.lfcPadj.charAt(2)
+		gridOptions.exportConfig.filename = 'TSA-RES-cluster' + geneSetParamStore.tsa_cluster
+		getData.then((res) => geneSetParamStore.setTsaItem(res.data[1]))
 	}
 )
-let getData = dataPromise.getDegData
 
+let getData = dataPromise.getTsaData
 // 搜索基因ID
 const formData = reactive({
 	geneId: '',
 })
-
-// 复制粘贴配置
-const copy = async (Msg, regulation) => {
-	const source = ref(Msg)
-	const { text, copy, copied, isSupported } = useClipboard({ source })
-	try {
-		// 复制
-		await copy(Msg)
-	} catch (e) {
-		// 复制失败
-		console.error(e)
-	}
-	if (copied) {
-		message.success(regulation + ' Gene ID Copied!')
-	} else {
-		message.error(regulation + ' Gene ID Failed!')
-	}
-}
-
-const copyAllGeneId = (regulation) => {
-	const copyListUp = [] as any[]
-	const copyListDown = [] as any[]
-
-	getData.then((res) => {
-		res.data.forEach((item) => {
-			if (item.log2FoldChange > 0) {
-				copyListUp.push(item.gene_id_ENSG)
-			} else {
-				copyListDown.push(item.gene_id_ENSG)
-			}
-		})
-		if (regulation === 'Up-regulation') {
-			copy(copyListUp.join('\n'), regulation)
-		} else if (regulation === 'Down-regulation') {
-			copy(copyListDown.join('\n'), regulation)
-		} else {
-			copy(copyListUp.join('\n') + '\n' + copyListDown.join('\n'), regulation)
-		}
-	})
-}
 
 // 表格相关配置
 const sortFilterMethod = (data, sortList, filterList) => {
@@ -135,13 +83,13 @@ const sortFilterMethod = (data, sortList, filterList) => {
 		}
 	}
 
-	function filterLfc(filterList) {
+	function filterCore(filterList) {
 		if (filterList[0].values.length === 2) {
 			return data
-		} else if (filterList[0].values[0] === '上调') {
-			return data.filter((item) => item.log2FoldChange > 0)
-		} else if (filterList[0].values[0] === '下调') {
-			return data.filter((item) => item.log2FoldChange < 0)
+		} else if (filterList[0].values[0] === 'true') {
+			return data.filter((item) => item.is_core === true)
+		} else if (filterList[0].values[0] === 'false') {
+			return data.filter((item) => item.is_core === false)
 		}
 	}
 
@@ -154,12 +102,12 @@ const sortFilterMethod = (data, sortList, filterList) => {
 	}
 
 	if (sortList[0] && filterList[0]) {
-		const filterData = filterLfc(filterList)
+		const filterData = filterCore(filterList)
 		return filterData.sort(fieldSorter(sortExpArr))
 	} else if (sortList[0]) {
 		return data.sort(fieldSorter(sortExpArr))
 	} else if (filterList[0]) {
-		return filterLfc(filterList)
+		return filterCore(filterList)
 	}
 }
 
@@ -173,6 +121,13 @@ const searchReset = () => {
 	formData.geneId = ''
 	const $grid = xGrid.value
 	$grid.commitProxy('query')
+}
+
+const changeCurrentEvent: VxeTableEvents.CurrentChange = () => {
+	const $grid = xGrid.value
+	const currentData = $grid.getCurrentRecord()
+	// 设定ora对象值，key为props.regulation，值为currentData
+	geneSetParamStore.setTsaItem(currentData)
 }
 
 const gridOptions = reactive<VxeGridProps>({
@@ -212,71 +167,48 @@ const gridOptions = reactive<VxeGridProps>({
 			field: 'gene_id_ENSG',
 			title: 'gene_id_ENSG',
 			// sortable: true,
-			width: '28%',
+			width: '40%',
 			type: 'html',
 			formatter({ cellValue }, url = 'https://www.uniprot.org/uniprot/?query=') {
 				const reg1 = /<span class="keyword-lighten">/g
 				const reg2 = /<\/span>/g
 				const a = cellValue.replace(reg1, '')
 				const b = a.replace(reg2, '')
-				return `<a href=${url + b} target=_blank>
+				return `<a href="${url + b}" target="_blank">
 						${cellValue}
-						<img src="${linkSvg}" alt='link' width="18" height="18" style="padding-bottom:4px">
+						<img src="${linkSvg}" alt="link" width="18" height="18" style="padding-bottom:4px">
 					</a>`
 			},
 		},
 		{
-			field: 'baseMean',
-			title: 'baseMean',
-			sortable: true,
-			// width:"15%",
-			formatter({ cellValue }, digits = 4) {
-				return XEUtils.toFixed(XEUtils.round(cellValue, digits), digits)
-			},
+			field: 'cluster',
+			title: 'cluster',
+			visible: true,
 		},
 		{
-			field: 'log2FoldChange',
-			title: 'log2FC',
-			sortable: true,
-			// width:"15%",
+			field: 'is_core',
+			title: 'core',
+			visible: true,
 			filters: [
 				{
-					label: 'Up-regulation',
-					value: '上调',
+					label: 'True',
+					value: 'true',
 				},
 				{
-					label: 'Down-regulation',
-					value: '下调',
+					label: 'False',
+					value: 'false',
 				},
 			],
-			formatter({ cellValue }, digits = 4) {
-				return XEUtils.toFixed(XEUtils.round(cellValue, digits), digits)
-			},
 		},
 		{
-			field: 'lfcSE',
-			title: 'lfcSE',
-			visible: false,
-		},
-		{
-			field: 'stat',
-			title: 'stat',
-			visible: false,
-		},
-		{
-			field: 'pvalue',
-			title: 'pvalue',
-			visible: false,
-		},
-		{
-			field: 'padj',
-			title: 'padj(BH)',
+			field: 'membership',
+			title: 'membership',
 			sortable: true,
-			width: '25%',
+			width: '20%',
 			minWidth: '80',
 			// type: 'html',
 			formatter({ cellValue }) {
-				return cellValue.toExponential(3)
+				return cellValue.toFixed(2)
 			},
 		},
 	],
@@ -369,13 +301,7 @@ const gridOptions = reactive<VxeGridProps>({
 	},
 	exportConfig: {
 		type: 'csv',
-		filename:
-			'DEG-RES-' +
-			dataPromise.titlePrefix +
-			'-lfc' +
-			dataPromise.lfcPadj.charAt(0) +
-			'padj00' +
-			dataPromise.lfcPadj.charAt(2),
+		filename: 'TSA-RES-cluster' + geneSetParamStore.tsa_cluster,
 		mode: 'all',
 		modes: ['all', 'current'],
 	},

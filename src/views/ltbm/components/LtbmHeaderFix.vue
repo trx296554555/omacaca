@@ -46,7 +46,9 @@
 								</a-sub-menu>
 								<a-sub-menu key="sub4-2" :title="$t('ltbm_title.lma')">
 									<a-menu-item>
-										<router-link to="/">{{ $t('ltbm_title.tsa') }}</router-link>
+										<router-link to="/ltbm/tsa">
+											{{ $t('ltbm_title.tsa') }}
+										</router-link>
 									</a-menu-item>
 									<a-menu-item>
 										<router-link to="/ltbm/vpa">
@@ -54,7 +56,7 @@
 										</router-link>
 									</a-menu-item>
 									<a-menu-item>
-										<router-link to="/">
+										<router-link to="/ltbm/wgcna">
 											{{ $t('ltbm_title.wgcna') }}
 										</router-link>
 									</a-menu-item>
@@ -110,7 +112,9 @@
 								</a-sub-menu>
 								<a-sub-menu key="sub2" :title="$t('ltbm_title.lma')">
 									<a-menu-item>
-										<router-link to="/">{{ $t('ltbm_title.tsa') }}</router-link>
+										<router-link to="/ltbm/tsa">
+											{{ $t('ltbm_title.tsa') }}
+										</router-link>
 									</a-menu-item>
 									<a-menu-item>
 										<router-link to="/ltbm/vpa">
@@ -118,7 +122,7 @@
 										</router-link>
 									</a-menu-item>
 									<a-menu-item>
-										<router-link to="/">
+										<router-link to="/ltbm/wgcna">
 											{{ $t('ltbm_title.wgcna') }}
 										</router-link>
 									</a-menu-item>

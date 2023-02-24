@@ -8,9 +8,10 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { onMounted, watch, provide, reactive, inject } from 'vue'
+import { onMounted, watch, provide, inject } from 'vue'
 import { WordCloud } from '@antv/g2plot'
 import { useThemeStoreWithOut } from '@/store/modules/theme'
+import SavePlotBtn from '@/components/SavePlotBtn.vue'
 import { plotObjType } from '#/g2plot'
 
 const props = defineProps({
@@ -43,28 +44,20 @@ const reduceData = (rawDataPro) => {
 	}
 	return rawDataPro
 }
-const changeNowData = () => {
-	if (props.regulation === 'up') {
-		return reduceData(dataPromise.getGpfUpData)
-	} else if (props.regulation === 'down') {
-		return reduceData(dataPromise.getGpfDownData)
-	}
-	return reduceData(dataPromise.getGseaData)
-}
 
-let getData = changeNowData()
+let getData = reduceData(dataPromise.enrichResData)
 
 watch(
-	() => dataPromise.lfcPadj,
+	() => dataPromise.enrichResData,
 	() => {
-		getData = changeNowData()
+		getData = reduceData(dataPromise.enrichResData)
 		updateWordCloudPlotData(plotObj.plot)
 	}
 )
 watch(
 	() => switchOption.rereMethodRadio,
 	() => {
-		getData = changeNowData()
+		getData = reduceData(dataPromise.enrichResData)
 		updateWordCloudPlotData(plotObj.plot)
 	}
 )

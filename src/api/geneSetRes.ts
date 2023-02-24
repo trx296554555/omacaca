@@ -6,6 +6,7 @@ import { defHttp } from '@/http'
 enum Api {
 	LTBM_VPA_RES = '/ltbm/vpatable',
 	LTBM_EXP_GROUPBY_RES = '/ltbm/geneexpgroupby',
+	LTBM_TSA_RES = '/ltbm/tsares',
 }
 
 /**
@@ -26,6 +27,10 @@ type ExpGroupByParams = {
 	lang: string
 }
 
+type TsaParams = {
+	cluster: string
+}
+
 /**
  * @description: 数据返回格式
  */
@@ -44,11 +49,19 @@ interface ExpGroupByResListItem {
 	describe: any
 }
 
+interface TsaResListItem {
+	data: {
+		tsa: any
+		tsa_enrichment: any
+	}
+}
+
 /**
  * @description: API
  */
 export const getVpaRes = (params: VpaParams) =>
 	defHttp.get<VpaResListItem>({
+		timeout: 1000 * 45,
 		url: Api.LTBM_VPA_RES,
 		params,
 		headers: {},
@@ -57,6 +70,13 @@ export const getVpaRes = (params: VpaParams) =>
 export const getExpGroupByRes = (params: ExpGroupByParams) =>
 	defHttp.get<ExpGroupByResListItem>({
 		url: Api.LTBM_EXP_GROUPBY_RES,
+		params,
+		headers: {},
+	})
+
+export const getTsaRes = (params: TsaParams) =>
+	defHttp.get<TsaResListItem>({
+		url: Api.LTBM_TSA_RES,
 		params,
 		headers: {},
 	})

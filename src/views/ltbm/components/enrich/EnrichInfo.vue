@@ -32,8 +32,8 @@
 					:formatter="({ value }) => toScientificNotation(value)"
 				/>
 				<a-statistic
-					title="Regulation Type"
-					:value="termDetailInfo.regulation.toUpperCase()"
+					title="Category"
+					:value="termDetailInfo[dataPromise.category].toUpperCase()"
 				/>
 				<a-statistic
 					title="Retained After AP"
@@ -45,17 +45,12 @@
 				/>
 			</div>
 			<div class="ItemFigure">
-				<OraVennPlot :regulation="regulation"></OraVennPlot>
+				<EnrichVennPlot :regulation="regulation"></EnrichVennPlot>
 			</div>
 		</div>
 		<div class="ItemGeneList">
 			<p class="title">Intersection Genes</p>
-			<template
-				v-for="(item, index) in degParamStore.oraItemInfo[
-					props.regulation
-				].intersections.split(',')"
-				:key="index"
-			>
+			<template v-for="(item, index) in termDetailInfo.intersections.split(',')" :key="index">
 				<a-tag class="ItemGene" color="success">
 					<a :href="'https://www.uniprot.org/uniprot/?query=' + item" target="_blank">
 						{{ item }}
@@ -67,9 +62,8 @@
 </template>
 
 <script setup lang="ts">
-import { useDegParamStore } from '@/store/modules/ltbmDegParam'
-import { computed, onMounted, reactive, ref } from 'vue'
-import OraVennPlot from '@/views/ltbm/transcriptomics/ora/OraVennPlot.vue'
+import { computed, inject } from 'vue'
+import EnrichVennPlot from '@/views/ltbm/components/enrich/EnrichVennPlot.vue'
 const props = defineProps({
 	regulation: {
 		type: String,
@@ -77,13 +71,13 @@ const props = defineProps({
 		required: true,
 	},
 })
-// 使用一个全局的pinia store，保存记录当前选中的enrichment term，用于子组件中数据公用
-const degParamStore = useDegParamStore()
-const termDetailInfo = computed(() => degParamStore.oraItemInfo[props.regulation])
+// 使用一个全局的pinia store，保存记录当前选中的enrichment term，用于子组件中数据公用 由dataPromise传入
+const dataPromise = inject('dataPromise') as any
+
+const termDetailInfo = computed(() => dataPromise.ItemStore[dataPromise.ItemStoreInfo])
 
 // 选中时移除高亮的html标签
 const nowGeneId = computed(() => {
-	//  ENSMMUG0000<span class="keyword-lighten">001</span>6323
 	// 移除特定字符串
 	const reg1 = /<span class="keyword-lighten">/g
 	const reg2 = /<\/span>/g
@@ -116,7 +110,7 @@ const toScientificNotation = (value) => {
 
 <style scoped lang="less">
 .title {
-	@apply font-sans text-center 2xl:text-left py-6 text-2xl;
+	@apply font-sans text-center 2xl:text-left py-6 text-xl;
 }
 .ItemInfo {
 	@apply grid grid-cols-2 gap-6 justify-center 2xl:justify-start px-6;

@@ -137,4 +137,17 @@ export default {
 			'与ORA的预处理一致，我们同样使用了Deseq2对数据进行了标准化，并按照分组间LogFC的大小顺序对geneList进行了排序。',
 		step3info_gsea: '这里我们只提供最重要的比较结果。',
 	},
+	ltbm_vpa: {
+		source: '基因表达变异的来源',
+		factor: '因素',
+		explained: '解释了总共143个小猴子样本中',
+		info: '的基因表达的变化差异来源',
+		individual: '个体',
+		age: '年龄',
+		condition: '饲养条件',
+		hemoglobin: '样本血红蛋白比例',
+		sex: '性别',
+		state: '健康状态',
+		more: '更多',
+	},
 }

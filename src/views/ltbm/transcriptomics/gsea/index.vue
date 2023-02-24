@@ -1,7 +1,7 @@
 <template>
 	<div id="LtbmGSEA" class="LtbmGSEA">
 		<div class="h-12 md:h-16"></div>
-		<div class="pageTitle">{{ $t(`ltbm_title.gsea`) }} (GSEA)</div>
+		<h3 class="pageTitle">{{ $t(`ltbm_title.gsea`) }} (GSEA)</h3>
 		<div class="DegAnalysis">
 			<div class="theTable"><DegSelTable></DegSelTable></div>
 			<div class="theOptions"><DegOptions></DegOptions></div>
@@ -10,7 +10,7 @@
 		<hr class="dividingLine" />
 		<div class="DegStatistics">
 			<div class="statisticsTitle">
-				<h2 class="pageTitle">{{ $t(`ltbm_dega.statisticalTitle`) }}</h2>
+				<h3 class="pageTitle">{{ $t(`ltbm_dega.statisticalTitle`) }}</h3>
 			</div>
 			<div class="statisticsRes">
 				<DegTotalHtmPlot class="md:col-span-1 col-span-2"></DegTotalHtmPlot>
@@ -82,9 +82,6 @@ watch(
 <style scoped lang="less">
 .LtbmGSEA {
 	@apply Container;
-}
-.pageTitle {
-	@apply text-2xl py-6;
 }
 .DegAnalysis {
 	@apply grid grid-rows-2 grid-cols-3 gap-6;

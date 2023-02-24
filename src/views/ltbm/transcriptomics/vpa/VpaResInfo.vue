@@ -1,6 +1,6 @@
 <template>
 	<div class="VpaItem">
-		<h4 class="title">Source of gene expression variation</h4>
+		<h4 class="title">{{ $t(`ltbm_vpa.source`) }}</h4>
 		<div class="VpaItemInfo">
 			<div>
 				<div class="VpaItemDescription">
@@ -19,25 +19,26 @@
 					</p>
 
 					<p class="folded_corner">
-						Factor {{ geneSetParamStore.factor }} explained
+						{{ $t(`ltbm_vpa.factor`) }} {{ geneSetParamStore.factor }}
+						{{ $t(`ltbm_vpa.explained`) }}
 						{{
 							XEUtils.toFixed(
 								geneSetParamStore.vpaItemInfo[geneSetParamStore.factor] * 100,
 								2
 							)
-						}}% of the variation in gene expression in total 143 samples of baby monkeys
+						}}% {{ $t(`ltbm_vpa.info`) }}
 					</p>
 				</div>
 				<div class="VpaItemSeleection">
 					<a-radio-group v-model:value="geneSetParamStore.factor">
-						<a-radio value="individual">Individual</a-radio>
-						<a-radio value="age">Age</a-radio>
-						<a-radio value="breeding_condition">Condition</a-radio>
-						<a-radio value="hemoglobin">Hemoglobin</a-radio>
-						<a-radio value="sex">Sex</a-radio>
-						<a-radio value="is_health">State</a-radio>
+						<a-radio value="individual">{{ $t(`ltbm_vpa.individual`) }}</a-radio>
+						<a-radio value="age">{{ $t(`ltbm_vpa.age`) }}</a-radio>
+						<a-radio value="breeding_condition">{{ $t(`ltbm_vpa.condition`) }}</a-radio>
+						<a-radio value="hemoglobin">{{ $t(`ltbm_vpa.hemoglobin`) }}</a-radio>
+						<a-radio value="sex">{{ $t(`ltbm_vpa.sex`) }}</a-radio>
+						<a-radio value="is_health">{{ $t(`ltbm_vpa.state`) }}</a-radio>
 						<a-radio value="custom">
-							More...
+							{{ $t(`ltbm_vpa.more`) }}...
 							<a-input
 								v-if="geneSetParamStore.factor === 'custom'"
 								v-model:value="customParams.model_type"
@@ -70,8 +71,9 @@ import VpaBoxPlot from '@/views/ltbm/components/VpaBoxPlot.vue'
 import { getExpGroupByRes } from '@/api/geneSetRes'
 import XEUtils from 'xe-utils'
 
-// 因子AGE解释了基因A表达变化30%的变异，在小猴的178个样本中
 const geneSetParamStore = useGeneSetParamStore()
+
+// 选中时移除高亮的html标签
 const nowGeneId = computed(() => {
 	//  ENSMMUG0000<span class="keyword-lighten">001</span>6323
 	// 移除特定字符串
