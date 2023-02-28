@@ -6,13 +6,11 @@
 		style="border-radius: 4px; border: 0; margin-bottom: 24px; overflow: hidden"
 	>
 		<a-collapse-panel key="1">
-			<template #header><div class="text-xl font-semibold">Summary</div></template>
+			<template #header>
+				<div class="text-xl font-semibold">{{ $t(`ltbm_tsa.summary`) }}</div>
+			</template>
 			<div>
-				<p>
-					&emsp;&emsp;为了识别基因表达水平在猕猴婴儿发育过程中的动态变化趋势，我们对所有猕猴样
-					本进行了时序表达分析，使用Mfuzz识别表达谱的潜在时间序列模式，并将相似模式的基因聚类，
-					低表达和标准差小于0.1的基因被过滤掉，最终得到 20 类表达谱。
-				</p>
+				<p>&emsp;&emsp;{{ $t(`ltbm_tsa.gaol`) }}</p>
 				<div class="grid grid-cols-5 grid-rows-4 gap-4 py-6">
 					<div v-for="i in 20" :key="i" class="col-span-1 row-span-1">
 						<a href="" @click.prevent="selectCluster(i)">
@@ -26,9 +24,10 @@
 				</div>
 
 				<p>
-					&emsp;&emsp;在cluster {{ tsaDataStatitics.now_cluster }}中，共有
-					{{ tsaDataStatitics.total }}个基因，其中membership大于0.5的核心基因(绿色)共
-					{{ tsaDataStatitics.coreGene }}个。
+					&emsp;&emsp;{{ $t(`ltbm_tsa.statistical_1`) }}
+					{{ tsaDataStatitics.now_cluster }} {{ $t(`ltbm_tsa.statistical_2`) }}
+					{{ tsaDataStatitics.total }} {{ $t(`ltbm_tsa.statistical_3`) }}
+					{{ tsaDataStatitics.coreGene }} {{ $t(`ltbm_tsa.statistical_4`) }}
 				</p>
 			</div>
 		</a-collapse-panel>

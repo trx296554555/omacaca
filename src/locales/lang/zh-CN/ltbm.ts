@@ -150,4 +150,17 @@ export default {
 		state: '健康状态',
 		more: '更多',
 	},
+	ltbm_tsa: {
+		summary: '总结',
+		gaol: '为了识别基因表达水平在猕猴婴儿发育过程中的动态变化趋势，我们对所有猕猴婴儿样本进行了时序表达分析，\
+				使用Mfuzz识别表达谱的潜在时间序列模式，并将相似模式的基因聚类，\
+				低表达和标准差小于0.1的基因被过滤掉，最终得到 20 类表达谱。',
+		statistical_1: '在cluster',
+		statistical_2: '中，共有',
+		statistical_3: '个基因，其中membership大于0.5的核心基因(绿色)共',
+		statistical_4: '个。',
+		profile: '聚类概况',
+		trajectory: '基因表达趋势',
+		enrichment_res: '富集结果',
+	},
 }

@@ -102,6 +102,11 @@ declare module '@vue/runtime-core' {
     VpaResTable: typeof import('./src/views/ltbm/transcriptomics/vpa/VpaResTable.vue')['default']
     VpaViolinPlot: typeof import('./src/views/ltbm/components/VpaViolinPlot.vue')['default']
     Wgcna: typeof import('./src/views/ltbm/transcriptomics/wgcna/index.vue')['default']
+    WgcnaGsMmChart: typeof import('./src/views/ltbm/transcriptomics/wgcna/WgcnaGsMmChart.vue')['default']
+    WgcnaGsMmTable: typeof import('./src/views/ltbm/transcriptomics/wgcna/WgcnaGsMmTable.vue')['default']
+    WgcnaMtHtmPlot: typeof import('./src/views/ltbm/components/WgcnaMtHtmPlot.vue')['default']
+    WgcnaNetwork: typeof import('./src/views/ltbm/transcriptomics/wgcna/WgcnaNetwork.vue')['default']
+    WgcnaResSummary: typeof import('./src/views/ltbm/transcriptomics/wgcna/WgcnaResSummary.vue')['default']
     WordCloudPlot: typeof import('./src/views/ltbm/components/WordCloudPlot.vue')['default']
   }
 }

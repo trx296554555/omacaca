@@ -178,4 +178,19 @@ export default {
 		state: 'State',
 		more: 'More',
 	},
+	ltbm_tsa: {
+		summary: 'Summary',
+		gaol: 'In order to identify the dynamic change trend of gene expression level in the baby monkeys, \
+			we performed time series analysis on all samples of baby monkeys. \
+			Mfuzz was used to identify potential time series patterns in expression profiles \
+			and cluster genes with similar patterns. Genes with low expression and standard deviation less than 0.1 were filtered out, \
+			finally 20 types of expression profiles were obtained.',
+		statistical_1: 'In cluster',
+		statistical_2: ', a total of ',
+		statistical_3: 'genes were identified, among which there are',
+		statistical_4: 'core genes (green) with membership greater than 0.5.',
+		profile: 'Cluster Profile',
+		trajectory: 'Gene expression trajectory',
+		enrichment_res: 'Enrichment Results',
+	},
 }

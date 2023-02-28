@@ -7,6 +7,8 @@ enum Api {
 	LTBM_VPA_RES = '/ltbm/vpatable',
 	LTBM_EXP_GROUPBY_RES = '/ltbm/geneexpgroupby',
 	LTBM_TSA_RES = '/ltbm/tsares',
+	LTBM_WGCNA_MT_RES = '/ltbm/wgcnamttable',
+	LTBM_WGCNA_RES = '/ltbm/wgcnares',
 }
 
 /**
@@ -29,6 +31,16 @@ type ExpGroupByParams = {
 
 type TsaParams = {
 	cluster: string
+}
+
+type WgcnaMtParams = {
+	page?: number
+	size?: number
+}
+
+type WgcnaParams = {
+	module: string
+	ordering?: string
 }
 
 /**
@@ -56,6 +68,26 @@ interface TsaResListItem {
 	}
 }
 
+interface WgcnaMtResListItem {
+	x: string
+	y: string
+	correlation_value: number
+	p_value: number
+	analyse: string
+	model_type: string
+}
+
+interface WgcnaResListItem {
+	data: {
+		module: string
+		gene_num: number
+		label: number
+		gsmm_info: any
+		enrichment: any
+		network: any
+	}
+}
+
 /**
  * @description: API
  */
@@ -77,6 +109,21 @@ export const getExpGroupByRes = (params: ExpGroupByParams) =>
 export const getTsaRes = (params: TsaParams) =>
 	defHttp.get<TsaResListItem>({
 		url: Api.LTBM_TSA_RES,
+		params,
+		headers: {},
+	})
+
+export const getWgcnaMtRes = (params: WgcnaMtParams) =>
+	defHttp.get<WgcnaMtResListItem>({
+		url: Api.LTBM_WGCNA_MT_RES,
+		params,
+		headers: {},
+	})
+
+export const getWgcnaRes = (params: WgcnaParams) =>
+	defHttp.get<WgcnaResListItem>({
+		timeout: 1000 * 45,
+		url: Api.LTBM_WGCNA_RES,
 		params,
 		headers: {},
 	})

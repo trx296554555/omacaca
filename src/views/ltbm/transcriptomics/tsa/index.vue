@@ -5,7 +5,7 @@
 		<div class="TsaSummary">
 			<TsaResSummary></TsaResSummary>
 		</div>
-		<h4 class="pageSubTitle">Cluster Profile</h4>
+		<h4 class="pageSubTitle">{{ $t(`ltbm_tsa.profile`) }}</h4>
 		<div class="TsaProfile">
 			<div class="TsaProfilePlot">
 				<a-image
@@ -20,7 +20,7 @@
 			<TsaResTable class="TsaProfileTable"></TsaResTable>
 		</div>
 		<h4 class="pageSubTitle">
-			Gene Expression Trajectory
+			{{ $t(`ltbm_tsa.trajectory`) }}
 			<a href="" target="_blank">
 				{{ nowGeneId }}
 				<img
@@ -35,7 +35,9 @@
 		<div class="TsaLinePlot">
 			<TsaLinePlot></TsaLinePlot>
 		</div>
-		<h4 class="pageSubTitle">Cluster {{ geneSetParamStore.tsa_cluster }} Enrichment Results</h4>
+		<h4 class="pageSubTitle">
+			Cluster {{ geneSetParamStore.tsa_cluster }} {{ $t(`ltbm_tsa.enrichment_res`) }}
+		</h4>
 		<div class="TsaEnrichRes">
 			<EnrichRes regulation="tsa"></EnrichRes>
 		</div>

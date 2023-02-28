@@ -4,6 +4,8 @@ interface GeneSetParamInfo {
 	factor: string
 	vpa_default: boolean
 	tsa_cluster: string
+	wgcna_module: string
+	wgcna_trait: string
 	vpaItemInfo: any
 	tsaItemInfo: any
 	tsaEnrichItemInfo: any
@@ -17,6 +19,8 @@ export const useGeneSetParamStore = defineStore({
 		factor: 'age',
 		vpa_default: false,
 		tsa_cluster: '1',
+		wgcna_module: 'pink',
+		wgcna_trait: 'age',
 		vpaItemInfo: {
 			age: 0,
 			condition: 0,
@@ -50,7 +54,23 @@ export const useGeneSetParamStore = defineStore({
 			term_size: 7,
 		},
 		wgcnaItemInfo: {},
-		wgcnaEnrichItemInfo: {},
+		wgcnaEnrichItemInfo: {
+			adjusted_p_value: 0,
+			module: 'pink',
+			effective_domain_size: 0,
+			intersection_size: 0,
+			intersections: '',
+			model_type: 'WGCNA',
+			negative_log10_of_adjusted_p_value: 0,
+			query_size: 0,
+			represent_term_ap: true,
+			represent_term_wsc: true,
+			rich_factor: 0.07,
+			source: 'GO:BP',
+			term_id: 'GO:0007006',
+			term_name: 'mitochondrial membrane organization',
+			term_size: 7,
+		},
 	}),
 	actions: {
 		setVpaItem(newParam: any) {
