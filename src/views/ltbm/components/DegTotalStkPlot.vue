@@ -159,13 +159,13 @@ onMounted(() => {
 
 watch(
 	() => dataPromise.lfcPadj,
-	(newV, oldV) => {
+	() => {
 		plotObj.updateDataMethod(plotObj.plot)
 	}
 )
 watch(
 	() => degParamStore.degParams,
-	(newV, oldV) => {
+	() => {
 		plotObj.updateDataMethod(plotObj.plot)
 	}
 )

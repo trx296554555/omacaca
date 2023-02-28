@@ -1,66 +1,149 @@
 <template>
-	<div id="tttt"></div>
+	<div ref="parentContent" class="parentContent">
+		<div class="NetPlotTitle">
+			<p>Top 30 HubGene Network</p>
+			<SaveNetPlotBtn></SaveNetPlotBtn>
+		</div>
+		<div id="wgcnaNet"></div>
+	</div>
 </template>
 
 <script setup lang="ts">
 import G6 from '@antv/g6'
-import { onMounted } from 'vue'
+import { inject, onMounted, watch, ref, provide } from 'vue'
+import { GraphObjType } from '#/g6graph'
+import { useThemeStoreWithOut } from '@/store/modules/theme'
+import SaveNetPlotBtn from '@/components/SaveNetPlotBtn.vue'
 
-onMounted(() => {
-	const container = document.getElementById('tttt')
-	const graph = new G6.Graph({
-		container: 'tttt',
-		width: 500,
-		height: 500,
+const dataPromise = inject('dataPromise') as any
+
+const parentContent = ref()
+
+type paramType = {
+	renderType: string
+	height: number
+	width: number
+}
+
+const createNetwork = (param: paramType) => {
+	return new G6.Graph({
+		container: 'wgcnaNet',
+		renderer: param.renderType,
+		height: param.height,
+		width: param.width,
+		fitView: true,
+		fitViewPadding: 45,
+		fitCenter: true,
+		modes: {
+			default: ['zoom-canvas', 'drag-canvas', 'drag-node'],
+		},
 		layout: {
 			type: 'force',
+			linkDistance: 250,
+			nodeSize: 50,
+			preventOverlap: true,
 		},
 		defaultNode: {
-			size: 15,
+			size: 20,
 		},
 	})
+}
 
-	fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/relations.json')
-		.then((res) => res.json())
-		.then((data) => {
-			graph.data({
-				nodes: data.nodes,
-				edges: data.edges.map(function (edge, i) {
-					edge.id = 'edge' + i
-					return Object.assign({}, edge)
-				}),
+async function updateNetWorkData(graph: any) {
+	const getData = new Promise((resolve, reject) => {
+		dataPromise.networkData
+			.then((res) => {
+				resolve(res.data)
 			})
-			graph.render()
-
-			graph.on('node:dragstart', function (e) {
-				graph.layout()
-				refreshDragedNodePosition(e)
+			.catch((error) => {
+				reject(error)
 			})
-			graph.on('node:drag', function (e) {
-				const forceLayout = graph.get('layoutController').layoutMethods[0]
-				forceLayout.execute()
-				refreshDragedNodePosition(e)
-			})
-			graph.on('node:dragend', function (e) {
-				e.item.get('model').fx = null
-				e.item.get('model').fy = null
-			})
-
-			if (typeof window !== 'undefined') {
-				window.onresize = () => {
-					if (!graph || graph.get('destroyed')) return
-					if (!container || !container.scrollWidth || !container.scrollHeight) return
-					graph.changeSize(container.scrollWidth, container.scrollHeight)
-				}
-			}
+	})
+	const rawData = (await getData) as any[]
+	const data = {
+		nodes: [] as any[],
+		edges: [] as any[],
+	}
+	// 自定义数据处理
+	const tmpNodes = [] as any[]
+	rawData.forEach((item) => {
+		data.edges.push({
+			source: item.fromnode,
+			target: item.tonode,
+			weight: item.weight,
 		})
+		if (!tmpNodes.includes(item.fromnode)) {
+			tmpNodes.push(item.fromnode)
+			data.nodes.push({
+				id: item.fromnode,
+				label: item.fromnode,
+			})
+		}
+		if (!tmpNodes.includes(item.tonode)) {
+			tmpNodes.push(item.tonode)
+			data.nodes.push({
+				id: item.tonode,
+				label: item.tonode,
+			})
+		}
+	})
+	graph.set('defaultNode', {
+		size: 20,
+		style: {
+			fill: useThemeStoreWithOut().getThemeCol('primaryCol'),
+			stroke: useThemeStoreWithOut().getThemeCol('primaryCol'),
+		},
+		labelCfg: {
+			style: {
+				fill: useThemeStoreWithOut().getThemeCol('blackCol'),
+				fontSize: 12,
+			},
+		},
+	})
+	graph.changeData(data)
+	graph.render()
+}
 
-	function refreshDragedNodePosition(e) {
-		const model = e.item.get('model')
-		model.fx = e.x
-		model.fy = e.y
+const plotObj: GraphObjType = {
+	plotName: 'Wgcna Network',
+	createPlotMethod: createNetwork,
+	updateDataMethod: updateNetWorkData,
+}
+
+onMounted(() => {
+	plotObj.plot = createNetwork({
+		renderType: 'canvas',
+		height: 500,
+		width: parentContent.value.clientWidth,
+	})
+	if (typeof window !== 'undefined') {
+		window.onresize = () => {
+			if (!plotObj.plot || plotObj.plot.get('destroyed')) return
+			if (
+				!parentContent.value ||
+				!parentContent.value.scrollWidth ||
+				!parentContent.value.scrollHeight
+			) {
+				return
+			}
+			plotObj.plot.changeSize(
+				parentContent.value.scrollWidth,
+				parentContent.value.scrollHeight
+			)
+		}
 	}
 })
-</script>
 
-<style scoped></style>
+watch(
+	() => dataPromise.networkData,
+	() => {
+		updateNetWorkData(plotObj.plot)
+	}
+)
+
+// 以下在所有plot组件默认使用，用于保存PNG/SVG 以及暗黑主题适应
+provide('plotObj', plotObj)
+useThemeStoreWithOut().$subscribe((mutation, state) => {
+	updateNetWorkData(plotObj.plot)
+})
+</script>

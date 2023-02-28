@@ -7,9 +7,19 @@
 		</div>
 		<h4 class="pageSubTitle">
 			Module {{ geneSetParamStore.wgcna_module }}
-			<span class="dash-underline">GS</span>
+			<a-tooltip>
+				<template #title>
+					Find top gene sets while maximizing gene coverage, implementation by WebGestalt.
+				</template>
+				<span class="dash-underline">GS</span>
+			</a-tooltip>
 			-
-			<span class="dash-underline">MM</span>
+			<a-tooltip>
+				<template #title>
+					Find top gene sets while maximizing gene coverage, implementation by WebGestalt.
+				</template>
+				<span class="dash-underline">MM</span>
+			</a-tooltip>
 			Result
 		</h4>
 		<div class="WgcnaProfile">
@@ -105,6 +115,9 @@ watch(
 	.WgcnaProfileChart {
 		@apply col-span-5 md:col-span-2;
 	}
+}
+.WgcnaNetwork {
+	border: @black-color 1px solid;
 }
 .dash-underline {
 	border-bottom: 1px dashed #b5b5b5;

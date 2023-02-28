@@ -10,8 +10,12 @@ export const themeSetting: ThemeSetting = {
 	theme: THEME.LIGHT,
 	// theme color
 	themeCol: {
-		light: { primaryCol: '#5dbe8a' },
-		dark: { primaryCol: '#2e5d44' },
+		light: { primaryCol: '#5dbe8a', whiteCol: '#fff', blackCol: '#262626' },
+		dark: {
+			primaryCol: '#2e5d44',
+			whiteCol: 'rgba(255,255,255,0.85)',
+			blackCol: 'rgba(255,255,255,0.85)',
+		},
 	},
 	// default theme
 	fallback: THEME.LIGHT,
