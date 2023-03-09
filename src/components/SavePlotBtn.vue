@@ -27,7 +27,9 @@ async function savePlot(saveType) {
 			plotObj.plot.destroy()
 			plotObj.plot = plotObj.createPlotMethod(saveType)
 			await plotObj.updateDataMethod(plotObj.plot)
-			downloadImage(plotObj.plot.chart, plotObj.plotName)
+			setTimeout(() => {
+				downloadImage(plotObj.plot.chart, plotObj.plotName)
+			}, 1000)
 		}
 	}
 }

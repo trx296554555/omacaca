@@ -49,6 +49,19 @@ const createNetwork = (param: paramType) => {
 	})
 }
 
+function middle(argsIn) {
+	const args = [...argsIn] // 收集参数转为数组
+	args.sort(function (a, b) {
+		return a - b
+	}) // 排序
+	if (args.length % 2 === 0) {
+		// 判断数字个数是奇数还是偶数
+		return (args[args.length / 2 - 1] + args[args.length / 2]) / 2 // 偶数个取中间两个数的平均数
+	}
+	// 向上取整
+	return args[Math.ceil(args.length / 2)] // 奇数个取最中间那个数
+}
+
 async function updateNetWorkData(graph: any) {
 	const getData = new Promise((resolve, reject) => {
 		dataPromise.networkData
@@ -66,12 +79,15 @@ async function updateNetWorkData(graph: any) {
 	}
 	// 自定义数据处理
 	const tmpNodes = [] as any[]
+	const medianWight = middle(rawData.map((item) => item.weight))
 	rawData.forEach((item) => {
-		data.edges.push({
-			source: item.fromnode,
-			target: item.tonode,
-			weight: item.weight,
-		})
+		if (item.weight > medianWight) {
+			data.edges.push({
+				source: item.fromnode,
+				target: item.tonode,
+				weight: item.weight,
+			})
+		}
 		if (!tmpNodes.includes(item.fromnode)) {
 			tmpNodes.push(item.fromnode)
 			data.nodes.push({

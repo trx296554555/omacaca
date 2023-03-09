@@ -39,6 +39,9 @@ const createHeatmapPlot = (renderType) => {
 		color: '#219ebc-#fffacd-#f43b47',
 		label: {
 			content: ({ correlationValue, pValue }) => {
+				if (pValue > 0.05) {
+					return ''
+				}
 				return `${correlationValue}\n${pValue}`
 			},
 			style: {

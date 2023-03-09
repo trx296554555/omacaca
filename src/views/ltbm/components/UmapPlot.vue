@@ -90,7 +90,7 @@ const createUmapPlot = (renderType) => {
 			},
 		},
 		shape: ({ sex }) => {
-			if (sex === 'Male') {
+			if (sex === 'Male' || sex === '雄性') {
 				return 'circle'
 			}
 			return 'square'

@@ -58,12 +58,14 @@
 				</li>
 				<!--Hoverable Link-->
 				<li class="hovered">
-					<router-link to="/research" class="HeadLink">Research</router-link>
+					<router-link to="/ltbm" class="HeadLink">Research</router-link>
 					<div
 						ref="MegaMenu"
 						class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl nv-bg-carousel-r"
 					>
-						<div class="px-4 mx-auto w-full flex flex-wrap justify-between mx-2">
+						<div
+							class="px-4 mx-auto w-full flex flex-row-reverse flex-wrap justify-between mx-2"
+						>
 							<div class="w-full mb-4">
 								<p class="font-bold text-primary-700 text-xl">
 									Provides Interactive Visual Data Analysis
@@ -197,7 +199,7 @@ watch(
 	left: 0;
 	top: 100%;
 	position: absolute;
-	text-align: left;
+	text-align: right;
 	width: 100%;
 	transition: all 0.2s ease-in-out 0.2s;
 }

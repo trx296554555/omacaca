@@ -16,7 +16,6 @@ declare module '@vue/runtime-core' {
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     ADropdown: typeof import('ant-design-vue/es')['Dropdown']
     AInput: typeof import('ant-design-vue/es')['Input']
-    AInputSearch: typeof import('ant-design-vue/es')['InputSearch']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     App: typeof import('./src/App.vue')['default']
