@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch, provide, reactive } from 'vue'
+import { onMounted, watch, provide } from 'vue'
 
 import { useThemeStoreWithOut } from '@/store/modules/theme'
 import { useLocaleStoreWithOut } from '@/store/modules/locale'
@@ -139,7 +139,7 @@ onMounted(() => {
 
 watch(
 	() => degParamStore.degParams.model,
-	(newV, oldV) => {
+	(newV) => {
 		plotObj.updateDataMethod(plotObj.plot)
 		if (newV === 'M1' || newV === 'M2') {
 			plotObj.plot?.update({
@@ -162,7 +162,7 @@ watch(
 		}
 	}
 )
-useLocaleStoreWithOut().$subscribe((mutation, state) => {
+useLocaleStoreWithOut().$subscribe(() => {
 	plotObj.updateDataMethod(plotObj.plot)
 })
 
