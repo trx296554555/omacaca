@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, inject, watch } from 'vue'
+import { inject, reactive, ref, watch } from 'vue'
 import { VxeGridInstance, VxeGridProps, VxeTableEvents } from 'vxe-table'
 import XEUtils from 'xe-utils'
 import { SearchOutlined } from '@ant-design/icons-vue'
@@ -151,8 +151,7 @@ const sortFilterMethod = (data, sortList, filterList) => {
 	} else if (sortList[0]) {
 		return data.sort(fieldSorter(sortExpArr))
 	} else if (filterList[0]) {
-		const filterData = filterMethod(filterList)
-		return filterData
+		return filterMethod(filterList)
 	}
 }
 const xGrid = ref({} as VxeGridInstance)
@@ -175,6 +174,10 @@ const changeCurrentEvent: VxeTableEvents.CurrentChange = () => {
 	const $grid = xGrid.value
 	const currentData = $grid.getCurrentRecord()
 	degParamStore.setGseaItem({ ...currentData, barcodePngUrl: getBarcodeUrl(currentData) })
+	const scrollDom = document.getElementById(props.regulation + 'EnrichItemAnchor')
+	if (scrollDom) {
+		scrollDom.scrollIntoView({ behavior: 'smooth' })
+	}
 }
 
 const searchReset = () => {

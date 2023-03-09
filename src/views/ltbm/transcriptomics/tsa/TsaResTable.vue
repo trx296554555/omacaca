@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, onMounted, reactive, ref, watch } from 'vue'
+import { inject, reactive, ref, watch } from 'vue'
 import { VxeGridInstance, VxeGridProps, VxeTableEvents } from 'vxe-table'
 import XEUtils from 'xe-utils'
 import { SearchOutlined } from '@ant-design/icons-vue'
@@ -46,7 +46,7 @@ const geneSetParamStore = useGeneSetParamStore()
 
 watch(
 	() => dataPromise.getTsaData,
-	(nowV, prevV) => {
+	() => {
 		getData = dataPromise.getTsaData
 		const $grid = xGrid.value
 		$grid.commitProxy('query')
@@ -128,6 +128,10 @@ const changeCurrentEvent: VxeTableEvents.CurrentChange = () => {
 	const currentData = $grid.getCurrentRecord()
 	// 设定ora对象值，key为props.regulation，值为currentData
 	geneSetParamStore.setTsaItem(currentData)
+	const scrollDom = document.getElementById('TsaLinePlotAnchor')
+	if (scrollDom) {
+		scrollDom.scrollIntoView({ behavior: 'smooth' })
+	}
 }
 
 const gridOptions = reactive<VxeGridProps>({

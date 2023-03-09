@@ -5,33 +5,33 @@
 		<div class="WgcnaSummary">
 			<WgcnaResSummary></WgcnaResSummary>
 		</div>
-		<h4 class="pageSubTitle">
-			Module {{ geneSetParamStore.wgcna_module }}
+		<h4 id="WgcnaGsmmResAnchor" class="pageSubTitle">
+			{{ $t(`ltbm_wgcna.module`) }} {{ geneSetParamStore.wgcna_module }}
 			<a-tooltip>
-				<template #title>
-					Find top gene sets while maximizing gene coverage, implementation by WebGestalt.
-				</template>
+				<template #title>{{ $t(`ltbm_wgcna.gs`) }}</template>
 				<span class="dash-underline">GS</span>
 			</a-tooltip>
 			-
 			<a-tooltip>
-				<template #title>
-					Find top gene sets while maximizing gene coverage, implementation by WebGestalt.
-				</template>
+				<template #title>{{ $t(`ltbm_wgcna.mm`) }}</template>
 				<span class="dash-underline">MM</span>
 			</a-tooltip>
-			Result
+			{{ $t(`ltbm_wgcna.results`) }}
 		</h4>
 		<div class="WgcnaProfile">
 			<WgcnaGsMmTable class="WgcnaProfileTable"></WgcnaGsMmTable>
 			<WgcnaGsMmChart class="WgcnaProfileChart"></WgcnaGsMmChart>
 		</div>
-		<h4 class="pageSubTitle">Module {{ geneSetParamStore.wgcna_module }} HubGene Network</h4>
+		<h4 class="pageSubTitle">
+			{{ $t(`ltbm_wgcna.module`) }} {{ geneSetParamStore.wgcna_module }} HubGene
+			{{ $t(`ltbm_wgcna.network`) }}
+		</h4>
 		<div class="WgcnaNetwork">
 			<WgcnaNetwork></WgcnaNetwork>
 		</div>
 		<h4 class="pageSubTitle">
-			Module {{ geneSetParamStore.wgcna_module }} {{ $t(`ltbm_tsa.enrichment_res`) }}
+			{{ $t(`ltbm_wgcna.module`) }} {{ geneSetParamStore.wgcna_module }}
+			{{ $t(`ltbm_wgcna.enrichment_res`) }}
 		</h4>
 		<div class="WgcnaEnrichRes">
 			<EnrichRes regulation="wgcna"></EnrichRes>

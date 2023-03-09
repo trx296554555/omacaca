@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch, provide, reactive, inject } from 'vue'
+import { onMounted, watch, provide, inject } from 'vue'
 
 import { useDegParamStore } from '@/store/modules/ltbmDegParam'
 import { useThemeStoreWithOut } from '@/store/modules/theme'
@@ -127,18 +127,19 @@ async function updateHeatmapPlotData(plot: any) {
 				reject(error)
 			})
 	})
-	const rawdata = (await getData) as any[]
+	const rawData = (await getData) as any[]
 	// 此处为自定义的数据清理
 
 	// 在rawdata中真复制自身第一个元素，并修改其size为0
 	// 用于heatmap中最小值覆盖显示
-	const data = rawdata
+	const data = rawData
 	data.push(Object.assign({}, data[0], {}))
 	data[data.length - 1].size = 0
 	plot.changeData(data)
 	plot.update({
 		theme: useThemeStoreWithOut().getTheme,
 	})
+	plot.off()
 	plot.on('element:click', (ev) => {
 		const circleElement = ev.target.get('element')
 		const data = circleElement.getModel().data
@@ -168,13 +169,13 @@ onMounted(() => {
 
 watch(
 	() => dataPromise.lfcPadj,
-	(newV, oldV) => {
+	() => {
 		plotObj.updateDataMethod(plotObj.plot)
 	}
 )
 watch(
 	() => degParamStore.degParams,
-	(newV, oldV) => {
+	() => {
 		plotObj.updateDataMethod(plotObj.plot)
 	}
 )

@@ -145,7 +145,7 @@ const sortFilterMethod = (data, sortList, filterList) => {
 				filterExpr.push(filterArr.join('&&'))
 			}
 		}
-		return data.filter(function (item) {
+		return data.filter(function () {
 			// eslint-disable-next-line no-eval
 			return eval(filterExpr.join('&&'))
 		})
@@ -178,6 +178,10 @@ const changeCurrentEvent: VxeTableEvents.CurrentChange = () => {
 	const $grid = xGrid.value
 	const currentData = $grid.getCurrentRecord()
 	dataPromise.ItemStoreSet(currentData)
+	const scrollDom = document.getElementById('EnrichItemAnchor')
+	if (scrollDom) {
+		scrollDom.scrollIntoView({ behavior: 'smooth' })
+	}
 }
 
 const searchReset = () => {

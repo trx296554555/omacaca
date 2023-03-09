@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div :id="props.regulation + 'EnrichItemAnchor'">
 		<h4 class="title">
 			Gene Set:
 			<a :href="getTermLink(nowGeneId)" target="_blank">
@@ -68,7 +68,7 @@
 
 <script setup lang="ts">
 import { useDegParamStore } from '@/store/modules/ltbmDegParam'
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed } from 'vue'
 import OraVennPlot from '@/views/ltbm/transcriptomics/ora/OraVennPlot.vue'
 const props = defineProps({
 	regulation: {

@@ -125,6 +125,7 @@ async function updateStackedPlotData(plot: any) {
 		theme: useThemeStoreWithOut().getTheme,
 		annotations,
 	})
+	plot.off()
 	plot.on('axis-label:click', (ev) => {
 		const target = ev.target
 		const delegateObject = target.get('delegateObject')

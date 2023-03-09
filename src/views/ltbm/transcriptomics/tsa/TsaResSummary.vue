@@ -50,6 +50,10 @@ const tsaDataStatitics = reactive({
 
 function selectCluster(cluster: number) {
 	geneSetParamStore.tsa_cluster = cluster.toString()
+	const scrollDom = document.getElementById('TsaProfileAnchor')
+	if (scrollDom) {
+		scrollDom.scrollIntoView({ behavior: 'smooth' })
+	}
 }
 
 watch(

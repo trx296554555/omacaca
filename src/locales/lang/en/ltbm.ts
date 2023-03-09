@@ -193,4 +193,19 @@ export default {
 		trajectory: 'Gene expression trajectory',
 		enrichment_res: 'Enrichment Results',
 	},
+	ltbm_wgcna: {
+		mt_title: 'Module−Trait Relationships',
+		mt_info: 'Click Axis label or any Value toggle to currently select the module or trait',
+		info: 'To investigate gene expression patterns in samples, we performed WGCNA on all samples of baby monkeys. \
+			The genes with similar expression patterns were clustered, gene function enrichment was performed for each module, \
+			and the correlation between the modules and specific traits or phenotypes was analyzed.\
+			Also calculate the correlation of gene expression with module (MM) and phenotypic data (GS) to find the Hub Gene in each module, \
+			and build the Top 30 Hub Gene network.',
+		gs: 'Gene significance:The absolute value of the correlation of gene expression profiles with the eigengene of this module',
+		mm: 'Module Membership:The absolute value of the correlation between gene expression profiles and phenotypic traits',
+		module: 'Module',
+		network: 'Network',
+		results: 'Results',
+		enrichment_res: 'Enrichment Results',
+	},
 }

@@ -5,7 +5,7 @@
 		<div class="TsaSummary">
 			<TsaResSummary></TsaResSummary>
 		</div>
-		<h4 class="pageSubTitle">{{ $t(`ltbm_tsa.profile`) }}</h4>
+		<h4 id="TsaProfileAnchor" class="pageSubTitle">{{ $t(`ltbm_tsa.profile`) }}</h4>
 		<div class="TsaProfile">
 			<div class="TsaProfilePlot">
 				<a-image
@@ -19,7 +19,7 @@
 			</div>
 			<TsaResTable class="TsaProfileTable"></TsaResTable>
 		</div>
-		<h4 class="pageSubTitle">
+		<h4 id="TsaLinePlotAnchor" class="pageSubTitle">
 			{{ $t(`ltbm_tsa.trajectory`) }}
 			<a href="" target="_blank">
 				{{ nowGeneId }}

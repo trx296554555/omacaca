@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="EnrichItemAnchor">
 		<h4 class="title">
 			Gene Set:
 			<a :href="getTermLink(nowGeneId)" target="_blank">

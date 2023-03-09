@@ -4,7 +4,7 @@
 			<p>
 				<a-tooltip>
 					<template #title>
-						点击 Axis label 或任意 Value 切换当前选中module或trait
+						{{ $t(`ltbm_wgcna.mt_info`) }}
 					</template>
 					Module−trait Heatmap
 				</a-tooltip>
@@ -115,7 +115,7 @@ async function updateHeatmapPlotData(plot: any) {
 			pValue: toScientificNotation(d.p_value),
 		}
 	})
-
+	const scrollDom = document.getElementById('WgcnaGsmmResAnchor')
 	plot.changeData(data)
 	plot.update({
 		theme: useThemeStoreWithOut().getTheme,
@@ -125,6 +125,9 @@ async function updateHeatmapPlotData(plot: any) {
 		const data = circleElement.getModel().data
 		geneSetParamStore.wgcna_module = data.y.replace('ME', '')
 		geneSetParamStore.wgcna_trait = data.x.toLowerCase()
+		if (scrollDom) {
+			scrollDom.scrollIntoView({ behavior: 'smooth' })
+		}
 	})
 	plot.on('axis-label:click', (ev) => {
 		const textElement = ev.target.cfg.attrs.text
@@ -132,6 +135,9 @@ async function updateHeatmapPlotData(plot: any) {
 			geneSetParamStore.wgcna_module = textElement.replace('ME', '')
 		} else {
 			geneSetParamStore.wgcna_trait = textElement.toLowerCase()
+		}
+		if (scrollDom) {
+			scrollDom.scrollIntoView({ behavior: 'smooth' })
 		}
 	})
 }

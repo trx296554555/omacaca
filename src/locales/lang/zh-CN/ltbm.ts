@@ -163,4 +163,18 @@ export default {
 		trajectory: '基因表达趋势',
 		enrichment_res: '富集结果',
 	},
+	ltbm_wgcna: {
+		mt_title: '模块−特征关系',
+		mt_info: '点击 Axis label 或任意 Value 切换当前选中module或trait',
+		info: '为了研究样本中的基因表达模式，我们对所有猕猴婴儿样本进行了WGCNA，\
+			将表达模式相似的基因进行聚类，对于每个模块进行了基因功能富集，并分析模块与特定性状或表型之间的关联关系，\
+			同时计算基因表达与模块（MM）和表型数据（GS）的相关性，用以寻找每个模块中的核心基因（HubGene），\
+			并构建了Top30的HubGene网络。',
+		gs: 'Gene significance:基因表达谱与这个模块的eigengene的相关性绝对值',
+		mm: 'Module Membership:基因表达谱和表型性状之间的相关性的绝对值',
+		module: '模块',
+		network: '网络',
+		results: '结果',
+		enrichment_res: '富集结果',
+	},
 }
