@@ -61,6 +61,8 @@ watch(
 	() => {
 		// 挂载后更新统计数据
 		dataPromise.getTsaData.then((res) => {
+			console.log(geneSetParamStore.tsa_cluster)
+			console.log(res.data)
 			tsaDataStatitics.now_cluster = geneSetParamStore.tsa_cluster
 			tsaDataStatitics.total = res.data.length
 			tsaDataStatitics.coreGene = res.data.filter((item: any) => item.is_core === true).length

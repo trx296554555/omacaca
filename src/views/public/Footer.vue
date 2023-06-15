@@ -1,5 +1,5 @@
 <template>
-	<footer id="Footer" v-show="!isErrorStore.isError" class="FooterBg">
+	<footer id="Footer"  class="FooterBg">
 			<div class="Footer">
 				<div class="foot-link grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 py-2">
 					<div class="col-span-2">
@@ -46,7 +46,7 @@
 								href="https://beian.miit.gov.cn/#/Integrated/index"
 								style="margin-bottom: 0; display: inline; font-size: 0.5rem"
 								target="_blank"
-							>蜀ICP备2021011041号-1</a
+							>蜀ICP备2021011041号-2</a
 							>
 							{{ $t('footer.location') }}
 						</p>

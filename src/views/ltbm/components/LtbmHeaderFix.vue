@@ -71,9 +71,13 @@
 									<router-link to="/ltbm">3232</router-link>
 								</a-menu-item>
 							</a-sub-menu>
-							<a-menu-item key="6">
-								<router-link to="/publication">Co-analysis</router-link>
-							</a-menu-item>
+							<a-sub-menu key="sub6" :title="$t('ltbm_title.co_analysis')">
+								<a-menu-item key="sub6-1">
+									<router-link to="/ltbm/spa">
+										{{ $t('ltbm_title.spa') }}
+									</router-link>
+								</a-menu-item>
+							</a-sub-menu>
 						</a-sub-menu>
 					</a-menu>
 				</div>
@@ -156,10 +160,25 @@
 						</template>
 					</a-dropdown>
 				</li>
-				<li>
-					<router-link to="/member" class="HeadLink">
-						{{ $t('ltbm_title.co_analysis') }}
-					</router-link>
+				<li class="hovered">
+					<a-dropdown>
+						<router-link to="/research" class="HeadLink">
+							{{ $t('ltbm_title.co_analysis') }}
+						</router-link>
+						<template #overlay>
+							<a-menu>
+								<a-menu-item>
+									<router-link to="/ltbm/spa">
+										{{ $t('ltbm_title.spa') }}
+									</router-link>
+								</a-menu-item>
+								<a-sub-menu key="sub1" title="Others" disabled>
+									<a-menu-item>123</a-menu-item>
+									<a-menu-item>634</a-menu-item>
+								</a-sub-menu>
+							</a-menu>
+						</template>
+					</a-dropdown>
 				</li>
 			</ul>
 		</div>

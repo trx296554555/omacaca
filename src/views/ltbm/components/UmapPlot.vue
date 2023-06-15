@@ -43,7 +43,7 @@ const createUmapPlot = (renderType) => {
 		tooltip: {
 			enterable: true,
 			fields: [
-				'sample_iD',
+				'sample_id',
 				'sampling_time',
 				'age',
 				'sex',

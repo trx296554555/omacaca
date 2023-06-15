@@ -3,7 +3,7 @@ import type { AppRouteModule } from '@/router/types'
 export const aboutUs: AppRouteModule = {
 	path: '/aboutus',
 	name: 'About us',
-	component: () => import('@/views/home/Help.vue'),
+	component: () => import('@/views/public/Help.vue'),
 	meta: {
 		title: '关于我们',
 	},
@@ -12,7 +12,7 @@ export const aboutUs: AppRouteModule = {
 export const contact: AppRouteModule = {
 	path: '/contact',
 	name: 'Contact us',
-	component: () => import('@/views/home/Help.vue'),
+	component: () => import('@/views/public/Help.vue'),
 	meta: {
 		title: '联系我们',
 	},
@@ -21,7 +21,7 @@ export const contact: AppRouteModule = {
 export const helpPage: AppRouteModule = {
 	path: '/help',
 	name: 'Help',
-	component: () => import('@/views/home/Help.vue'),
+	component: () => import('@/views/public/Help.vue'),
 	meta: {
 		title: '帮助',
 	},

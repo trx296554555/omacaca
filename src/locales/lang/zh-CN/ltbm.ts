@@ -14,6 +14,7 @@ export default {
 		tsa: '时间序列分析',
 		vpa: '方差分解分析',
 		wgcna: '加权基因共表达网络分析',
+		spa: '特殊个体-时期分析',
 	},
 	ltbm_introduction: {
 		background: '背景',

@@ -73,6 +73,14 @@ const ltbm: AppRouteModule = {
 				title: 'Ltbm Weighted Gene Co-expression Network Analysis',
 			},
 		},
+		{
+			path: 'spa',
+			name: 'spaPage',
+			component: () => import('@/views/ltbm/coAnalysis/special2monkeys/index.vue'),
+			meta: {
+				title: 'Ltbm Special Individual-Period Analysis',
+			},
+		},
 	],
 }
 

@@ -14,6 +14,7 @@ export default {
 		tsa: 'Time Series Analysis',
 		vpa: 'Variance Partition Analysis',
 		wgcna: 'Weighted Gene Co-expression Network Analysis',
+		spa: 'Special Individual-Period Analysis',
 	},
 	ltbm_introduction: {
 		background: 'Background',
