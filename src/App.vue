@@ -1,7 +1,7 @@
 <template>
 	<a-config-provider>
 		<RouterView />
-		<Footer></Footer>
+		<FooterFix></FooterFix>
 	</a-config-provider>
 </template>
 <script setup lang="ts">

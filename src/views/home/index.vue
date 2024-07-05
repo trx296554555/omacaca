@@ -1,6 +1,7 @@
 <template>
 	<div id="HomePage" class="bg-white dark:bg-dark">
-		<HomeHeader></HomeHeader>
+		<!--备案审核使用-->
+		<HomeHeaderFix></HomeHeaderFix>
 		<HomeCarousel></HomeCarousel>
 		<HomeIntroduction></HomeIntroduction>
 		<HomeNews></HomeNews>

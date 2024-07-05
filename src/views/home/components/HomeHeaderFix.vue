@@ -3,7 +3,7 @@
 		<div class="md:flex justify-between">
 			<div class="flex relative py-2.5 md:py-4">
 				<img class="h-7 mx-4 mt-0 z-10" src="@icon/monkey.svg" />
-				<h1 class="HomeTitle">Omics Research of Wildlife</h1>
+				<h1 class="HomeTitle">欧我的猴子惹</h1>
 				<div class="md:hidden absolute left-0 top-0 z-0">
 					<a-menu
 						id="mobile-dropMenu"

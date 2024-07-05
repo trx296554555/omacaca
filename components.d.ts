@@ -43,6 +43,7 @@ declare module '@vue/runtime-core' {
     EnrichVennPlot: typeof import('./src/views/ltbm/components/enrich/EnrichVennPlot.vue')['default']
     EnrichWordCloudPlot: typeof import('./src/views/ltbm/components/enrich/EnrichWordCloudPlot.vue')['default']
     Footer: typeof import('./src/views/public/Footer.vue')['default']
+    FooterFix: typeof import('./src/views/public/FooterFix.vue')['default']
     Gsea: typeof import('./src/views/ltbm/transcriptomics/gsea/index.vue')['default']
     GseaEnrichInfo: typeof import('./src/views/ltbm/transcriptomics/gsea/GseaEnrichInfo.vue')['default']
     GseaEnrichRes: typeof import('./src/views/ltbm/transcriptomics/gsea/GseaEnrichRes.vue')['default']
