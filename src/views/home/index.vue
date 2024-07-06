@@ -11,5 +11,5 @@
 	</div>
 </template>
 <script setup>
-document.title = 'Omics Research of Wildlife'
+document.title = '欧我的猴子惹'
 </script>
