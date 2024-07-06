@@ -78,11 +78,7 @@
 						</a>
 					</div>
 					<div class="flex justify-center md:justify-end items-center">
-						<router-link to="/aboutus">{{ $t("footer.aboutUs") }}</router-link>
-						<router-link to="/contact">{{ $t("footer.contactUs") }}</router-link>
-						<a href="https://www.scu.edu.cn/"
-						   target="_blank">{{ $t("footer.sichuanUniversity") }}</a>
-						<router-link to="/help">{{ $t("footer.help") }}</router-link>
+						<p>Do nothing is better than anything</p>
 					</div>
 				</div>
 			</div>
